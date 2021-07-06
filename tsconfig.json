@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-native",
+    "lib": ["dom", "ESNext"],
+    "types" : ["node"],
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl" : "./"
+  },
+  "exclude": ["./node_modules", "babel.config.js", "metro.config.js"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./*.js", "App.tsx", "index.tsx"]
+}
