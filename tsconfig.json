@@ -3,7 +3,6 @@
     "outDir": "./dist",
     "skipLibCheck": true,
     "sourceMap": true,
-    "noEmit": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
@@ -18,11 +17,14 @@
     "target": "ESNext",
     "jsx": "react-native",
     "lib": ["dom", "ESNext"],
-    "types" : ["node"],
+    "types" : ["jest", "node"],
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl" : "./"
+    "baseUrl" : "./",
+    "paths": {
+      "rtl-config": ["./testConfiguration/rtl-config"]
+    }
   },
-  "exclude": ["./node_modules", "./coverage"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./*.js", "App.tsx", "index.tsx", "babel.config.js", "metro.config.js"]
+  "exclude": ["./node_modules", "babel.config.js", "metro.config.js"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./*.js", "App.tsx", "index.tsx", "./testConfiguration/**/*"]
 }
