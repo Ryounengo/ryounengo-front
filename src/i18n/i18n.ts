@@ -11,7 +11,7 @@ const resources = {
 } as const;
 
 const i18nOptions: InitOptions = {
-    fallbackLng: "fr",
+    fallbackLng: "en",
     ns: ["common"],
     fallbackNS: "common",
     react: {

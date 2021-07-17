@@ -1,6 +1,3 @@
-import commonEN from "./en/common.json";
-import commonFR from "./fr/common.json";
+export * from "./en";
 
-export const commonEn = commonEN;
-
-export const commonFr = commonFR;
+export * from "./fr";
