@@ -1,9 +1,9 @@
 import { render } from "rtl-config";
-import { Feature } from "../Feature";
+import { CreateDeck } from "../Feature";
 
 describe("test", () => {
     test("test", () => {
-        const { toJSON } = render(<Feature />);
+        const { toJSON } = render(<CreateDeck />);
 
         expect(toJSON()).toMatchSnapshot();
     });

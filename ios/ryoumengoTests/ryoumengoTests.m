@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface ankiFrontTests : XCTestCase
+@interface ryoumengoTests : XCTestCase
 
 @end
 
-@implementation ankiFrontTests
+@implementation ryoumengoTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
