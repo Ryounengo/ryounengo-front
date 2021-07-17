@@ -1,25 +1,28 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-
-import english from "./en.json";
-import french from "./fr.json";
+import i18next, { InitOptions } from "i18next";
+import { commonEn, commonFr } from "./translations";
 
 const resources = {
     en: {
-        translation: english
+        common: commonEn,
     },
     fr: {
-        translation: french
-    }
+        common: commonFr,
+    },
+} as const;
+
+const i18nOptions: InitOptions = {
+    fallbackLng: "fr",
+    ns: ["common"],
+    fallbackNS: "common",
+    react: {
+        useSuspense: true,
+    },
+    debug: process.env.NODE_ENV === "development",
+    resources,
 };
 
-i18n.use(initReactI18next).init({
-    resources,
-    lng: 'fr',
-    fallbackLng: "fr",
-    interpolation: {
-            escapeValue: false
-    }
-})
+const i18n = i18next.createInstance();
 
-export default i18n;
+i18n.init(i18nOptions);
+
+export { i18n };
