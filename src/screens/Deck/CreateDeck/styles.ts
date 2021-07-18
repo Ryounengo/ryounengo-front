@@ -10,7 +10,11 @@ export const useStyle = () => {
             width: 150,
             marginTop: 12,
             marginBottom: 12,
-            backgroundColor: colors.rose[500],
+            backgroundColor: colors.rose[300],
+        },
+        selectedCard: {
+            borderColor: colors.black,
+            borderWidth: 2,
         },
         cardWrapper: {
             flexWrap: "wrap",

@@ -1,0 +1,7 @@
+{
+  "required": "Ce champ est obligatoire",
+  "minLength": "Ce champ doit comporter au moins {{count}} character",
+  "minLength_plural": "Ce champ doit comporter au moins {{count}} characters",
+  "maxLength": "Ce champ ne peut pas comporter plus de {{count}} character",
+  "maxLength_plural": "Ce champ ne peut pas comporter plus de {{count}} characters"
+}

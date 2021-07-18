@@ -1,12 +1,16 @@
 import i18next, { InitOptions } from "i18next";
-import { commonEn, commonFr } from "./translations";
+import { commonEn, commonFr, deckEn, deckFr, validationEn, validationFr } from "./translations";
 
 const resources = {
     en: {
         common: commonEn,
+        deck: deckEn,
+        validation: validationEn,
     },
     fr: {
         common: commonFr,
+        deck: deckFr,
+        validation: validationFr,
     },
 } as const;
 

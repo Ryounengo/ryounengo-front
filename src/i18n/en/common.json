@@ -1,3 +1,7 @@
 {
-    "Hello World": "Hello World !"
+  "search": "Search",
+  "submit": "Submit",
+  "name": "Name",
+  "description": "Description",
+  "genericError": "An error occurred. If it persists, please contact us."
 }

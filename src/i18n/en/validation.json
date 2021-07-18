@@ -1,0 +1,7 @@
+{
+  "required": "This field is required",
+  "minLength": "This field requires at least {{count}} character",
+  "minLength_plural": "This field requires at least {{count}} characters",
+  "maxLength": "This field cannot be longer than {{count}} character",
+  "maxLength_plural": "This field cannot be longer than {{count}} characters"
+}
