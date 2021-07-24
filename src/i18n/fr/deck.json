@@ -5,5 +5,8 @@
     "createDeck": "Créer un deck",
     "deck": "Deck",
     "decks": "Decks",
-    "chooseDeckType": "Choisis un type de deck"
+    "chooseDeckType": "Choisis un type de deck",
+    "isPrivate": "Ce deck est privé",
+    "tagsExamples": "nature,kanji",
+    "tags": "Mots clées"
 }

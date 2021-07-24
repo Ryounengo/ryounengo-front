@@ -4,7 +4,7 @@ import { getToken } from "../../utils/authUtils";
 import { useTranslation } from "react-i18next";
 
 export interface IError {
-    errorMessage: string;
+    message: string;
     status?: number;
 }
 
@@ -57,7 +57,7 @@ const handleResponse = async (response: Response, genericErrorMessage: string): 
         } else {
             throw new Error();
         }
-    } catch {
+    } catch (err) {
         // eslint-disable-next-line no-throw-literal
         throw {
             errorMessage: genericErrorMessage,
@@ -123,7 +123,7 @@ export const useFetch = () => {
                 setState({ error: undefined, isLoading: true });
 
                 try {
-                    const headers = await httpRequestInit(options, isSecured);
+                    const headers = httpRequestInit(options, isSecured);
                     const response = await fetch(url, headers);
                     const parsedResponse = (await handleResponse(response, genericErrorMessage)) as T;
 
@@ -135,8 +135,8 @@ export const useFetch = () => {
                 } catch (err) {
                     if (!didCancel.current) {
                         const error: IError = {
-                            errorMessage: err.errorMessage || err.detail || err.title || genericErrorMessage,
-                            status: err.status,
+                            message: err.error.message ?? genericErrorMessage,
+                            status: err.error.status || 500,
                         };
                         setState({ error, isLoading: false });
 

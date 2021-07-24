@@ -10,8 +10,8 @@ export type TCreateDeckStackParams = {
 };
 
 export interface ICreateDeckForm {
-    deckType: EDeckType;
     name: string;
     description: string;
-    tags: string[];
+    tags: string;
+    isPrivate: boolean;
 }

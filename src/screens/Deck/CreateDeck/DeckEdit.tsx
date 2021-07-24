@@ -1,10 +1,11 @@
-import { Button, Icon, Select, VStack } from "native-base";
-import { EDeckType, TCreateDeckStackParams } from "./ICreateDeck";
+import { Button, VStack } from "native-base";
+import { TCreateDeckStackParams } from "./ICreateDeck";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateDeck } from "./useCreateDeck";
-import { Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { TextInput } from "../../../common";
+import { CheckboxField } from "../../../common/form/CheckboxField";
+import { tagsRegex } from "../../../utils/regex";
 
 type TParams = StackScreenProps<TCreateDeckStackParams, "deckEdit">;
 
@@ -31,7 +32,7 @@ export const DeckEdit = (props: TParams) => {
             />
             <TextInput
                 control={control}
-                error={errors.name}
+                error={errors.description}
                 label={t("description")}
                 name="description"
                 placeholder={t("description")}
@@ -40,31 +41,17 @@ export const DeckEdit = (props: TParams) => {
                     maxLength: { value: 150, message: t("validation:maxLength", { count: 150 }) },
                 }}
             />
-            <Controller
+            <TextInput
                 control={control}
+                error={errors.tags}
+                label={t("deck:tags")}
                 name="tags"
-                render={(renderProps) => (
-                    <Select
-                        dropdownCloseIcon={<Icon name="arrow-drop-down" size={6} />}
-                        dropdownOpenIcon={<Icon name="arrow-drop-up" size={6} />}
-                        placeholder={t("deck:hiragana")}
-                        selectedValue={renderProps.field.value}
-                        width={150}
-                        onValueChange={(itemValue: string) => {
-                            renderProps.field.onChange(itemValue);
-                        }}
-                    >
-                        {Object.values(EDeckType).map((deckType) => (
-                            <Select.Item
-                                key={deckType}
-                                label={t(`deck:${deckType.toLocaleLowerCase()}`)}
-                                value="deckType"
-                            />
-                        ))}
-                    </Select>
-                )}
-                rules={{ required: t<string>("validation:required") }}
+                placeholder={t("deck:tagsExamples")}
+                rules={{
+                    pattern: { value: tagsRegex, message: t("common:wrongFormat") },
+                }}
             />
+            <CheckboxField control={control} error={errors.isPrivate} label={t("deck:isPrivate")} name="isPrivate" />
             <Button isLoading={postCreateDeckState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
                 {t("submit")}
             </Button>
