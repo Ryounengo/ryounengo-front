@@ -1,12 +1,5 @@
-import { NativeBaseProvider } from "native-base";
 import { Router } from "./Router";
 
-const App = () => {
-    return (
-        <NativeBaseProvider>
-            <Router />
-        </NativeBaseProvider>
-    );
-};
+const App = () => <Router />;
 
 export default App;

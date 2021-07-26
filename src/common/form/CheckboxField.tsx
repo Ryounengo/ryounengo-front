@@ -18,6 +18,8 @@ export const CheckboxField = <T extends FieldValues>(props: IParams<T>) => {
         <FormControl isInvalid={Boolean(error)} isRequired>
             <Controller
                 control={control}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 name={name}
                 render={(renderProps) => (
                     <Checkbox

@@ -21,6 +21,8 @@ export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
             <FormControl.Label>{label}</FormControl.Label>
             <Controller
                 control={control}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 name={name}
                 render={(renderProps) => (
                     <Input

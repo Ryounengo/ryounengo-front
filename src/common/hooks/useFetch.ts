@@ -14,6 +14,7 @@ export interface IFetchState {
 }
 
 const CONTENT_TYPE_HEADER_PARAM = "Content-Type";
+const JSON_CONTENT_TYPE = "json";
 export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 type specialBody = { body?: any };
 type useFetchSpecialType = { isSecured?: boolean; forwardError?: boolean };
@@ -48,11 +49,11 @@ const handleResponse = async (response: Response, genericErrorMessage: string): 
             return true;
         }
 
-        if (contentType === null) {
+        if (!contentType) {
             throw new Error();
         } else if (handleBlob.some((type) => contentType.includes(type))) {
-            parsedResponse = response.blob();
-        } else if (contentType.includes("json")) {
+            parsedResponse = await response.blob();
+        } else if (contentType.includes(JSON_CONTENT_TYPE)) {
             parsedResponse = await response.json();
         } else {
             throw new Error();
@@ -86,9 +87,9 @@ const httpRequestInit = (options: specialRequestInitCaller, isSecured: boolean):
         }
         if (payload.headers.get(CONTENT_TYPE_HEADER_PARAM)?.includes("multipart/form-data")) {
             // Remove 'Content-Type' header to allow browser to add along with the correct 'boundary'
-            payload.headers.delete("Content-Type");
+            payload.headers.delete(CONTENT_TYPE_HEADER_PARAM);
         }
-        if (payload.headers.get(CONTENT_TYPE_HEADER_PARAM)?.includes("json")) {
+        if (payload.headers.get(CONTENT_TYPE_HEADER_PARAM)?.includes(JSON_CONTENT_TYPE)) {
             payload.body = JSON.stringify(options.body);
         }
     }
