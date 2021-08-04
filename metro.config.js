@@ -1,4 +1,5 @@
 /* eslint-disable require-await */
+
 module.exports = {
     transformer: {
         getTransformOptions: async () => ({

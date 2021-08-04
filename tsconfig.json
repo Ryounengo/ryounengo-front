@@ -23,8 +23,14 @@
     "baseUrl" : "./",
     "paths": {
       "rtl-config": ["./testConfiguration/rtl-config"]
-    }
+    },
+    "typeRoots": ["./src/types", "node_modules/@types"]
   },
-  "exclude": ["./node_modules", "babel.config.js", "metro.config.js"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./*.js", "App.tsx", "index.tsx", "./testConfiguration/**/*"]
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./index.tsx",
+    "./testConfiguration/**/*",
+    "./*.js"
+  ]
 }

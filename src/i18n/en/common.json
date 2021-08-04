@@ -1,3 +1,10 @@
 {
-    "Hello World": "Hello World !"
+  "search": "Search",
+  "submit": "Submit",
+  "name": "Name",
+  "description": "Description",
+  "genericError": "An error occurred. Try again in a few minutes.",
+  "error": "Error",
+  "success": "{{item}} has been updated.",
+  "wrongFormat": "This field is invalid."
 }
