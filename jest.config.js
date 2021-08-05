@@ -15,12 +15,15 @@ module.exports = {
     verbose: true,
     testTimeout: 5000,
     testURL: "http://localhost/",
+    setupFiles: ["./node_modules/react-native-gesture-handler/jestSetup.js"],
     transform: {
         ...tsjPreset.transform,
-        "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
     },
+    transformIgnorePatterns: [
+        "node_modules/(?!(react-native|@react-native|my-project|react-native-button|nodejs-mobile-react-native|react-navigation|react-native-iphone-x-helper)/)",
+    ],
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-    testPathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/", "<rootDir>/android/", "<rootDir>/android/"],
+    testPathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/", "<rootDir>/android/", "<rootDir>/ios/"],
     moduleDirectories: ["node_modules", "testConfiguration"],
     moduleNameMapper: {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
