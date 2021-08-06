@@ -1,4 +1,3 @@
-/* eslint-disable */
 const { defaults: tsjPreset } = require("ts-jest/presets");
 
 module.exports = {
@@ -15,12 +14,12 @@ module.exports = {
     verbose: true,
     testTimeout: 5000,
     testURL: "http://localhost/",
-    setupFiles: ["./node_modules/react-native-gesture-handler/jestSetup.js"],
+    setupFiles: ["./node_modules/react-native-gesture-handler/jestSetup.js", "./testConfiguration/jestSetup.ts"],
     transform: {
         ...tsjPreset.transform,
     },
     transformIgnorePatterns: [
-        "node_modules/(?!(react-native|@react-native|my-project|react-native-button|nodejs-mobile-react-native|react-navigation|react-native-iphone-x-helper)/)",
+        "node_modules/(?!(react-native|@react-native|react-native-button|nodejs-mobile-react-native|react-navigation|react-native-iphone-x-helper)/)",
     ],
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
     testPathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/", "<rootDir>/android/", "<rootDir>/ios/"],

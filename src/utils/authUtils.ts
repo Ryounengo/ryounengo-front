@@ -1,3 +1,23 @@
-export const getToken = () => {
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGUiOnsicHJpdmF0ZURlY2tzIjpbXSwicmV2aWV3ZWREZWNrcyI6W10sInVzZXJuYW1lIjoidGVzdCJ9LCJlbWFpbCI6InVzZXIudGVzdEB0ZXN0LmNvbSJ9LCJpYXQiOjE2MjcxMzk4ODUsImV4cCI6MTYyNzE0MzQ4NX0.MU1a-voNe2mAEemQHuDNfTidfDwwCIGkzpi1wOJIjao";
+import { IToken } from "../common";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { responseToState } from "../mappers/postLoginMapper";
+
+const TOKEN = "token";
+
+export const setToken = async (token: IToken) => {
+    try {
+        const jsonToken = JSON.stringify(token);
+        await AsyncStorage.setItem(TOKEN, jsonToken);
+        // eslint-disable-next-line no-empty
+    } catch (err) {}
+};
+
+export const getToken = async () => {
+    try {
+        const jsonValue = await AsyncStorage.getItem(TOKEN);
+
+        return jsonValue != null ? responseToState(JSON.parse(jsonValue)) : null;
+    } catch (err) {
+        return null;
+    }
 };

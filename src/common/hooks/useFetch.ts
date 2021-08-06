@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getToken } from "../../utils/authUtils";
 import { useTranslation } from "react-i18next";
+import { getToken } from "../../utils/authUtils";
 
 export interface IError {
     message: string;
@@ -73,14 +73,14 @@ const handleResponse = async (response: Response, genericErrorMessage: string): 
     throw parsedResponse;
 };
 
-const httpRequestInit = (options: specialRequestInitCaller, isSecured: boolean): RequestInit => {
+const httpRequestInit = (options: specialRequestInitCaller, token?: string) => {
     const payload: RequestInit = options;
     payload.headers = new Headers(options.headers);
 
-    if (isSecured) {
-        const token = getToken();
+    if (token) {
         payload.headers.append("Authorization", `Bearer ${token}`);
     }
+
     if (options.body) {
         if (!payload.headers.get(CONTENT_TYPE_HEADER_PARAM)) {
             payload.headers.append(CONTENT_TYPE_HEADER_PARAM, "application/json");
@@ -124,8 +124,16 @@ export const useFetch = () => {
                 setState({ error: undefined, isLoading: true });
 
                 try {
-                    const headers = httpRequestInit(options, isSecured);
+                    let token;
+
+                    if (isSecured) {
+                        token = await getToken();
+                    }
+
+                    const headers = httpRequestInit(options, token?.accessToken);
+
                     const response = await fetch(url, headers);
+
                     const parsedResponse = (await handleResponse(response, genericErrorMessage)) as T;
 
                     if (!didCancel.current) {
@@ -136,8 +144,8 @@ export const useFetch = () => {
                 } catch (err) {
                     if (!didCancel.current) {
                         const error: IError = {
-                            message: err.error.message ?? genericErrorMessage,
-                            status: err.error.status || 500,
+                            message: err.message ?? genericErrorMessage,
+                            status: err.status || 500,
                         };
                         setState({ error, isLoading: false });
 

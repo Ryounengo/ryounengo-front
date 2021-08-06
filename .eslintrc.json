@@ -101,6 +101,12 @@
       "rules": {
         "react/jsx-props-no-spreading": ["off"]
       }
+    },
+    {
+      "files": ["*.config.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": ["off"]
+      }
     }
   ],
   "settings": {

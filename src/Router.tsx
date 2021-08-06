@@ -1,15 +1,23 @@
-import { useTranslation } from "react-i18next";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { SearchRoute } from "./screens/Search/Search";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Login } from "./screens/Authentication/Login/Login";
+import { Home } from "./screens/Home/Home";
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
-const Drawer = createDrawerNavigator();
+type TRouterStackParams = {
+    home: undefined;
+    login: undefined;
+};
+
+const Stack = createStackNavigator<TRouterStackParams>();
 
 export const Router = () => {
-    const { t } = useTranslation();
+    const { user } = useContext(UserContext);
 
     return (
-        <Drawer.Navigator drawerType="slide" initialRouteName="search">
-            <Drawer.Screen component={SearchRoute} name="search" options={{ title: t("search") }} />
-        </Drawer.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {user && <Stack.Screen component={Home} name="home" />}
+            {!user && <Stack.Screen component={Login} name="login" />}
+        </Stack.Navigator>
     );
 };

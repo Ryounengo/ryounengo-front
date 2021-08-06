@@ -1,8 +1,9 @@
 import { FormControl, Input } from "native-base";
 import { Controller, FieldError, FieldValues, UseControllerProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ComponentProps } from "react";
 
-interface IParams<T> {
+interface IParams<T> extends ComponentProps<typeof Input> {
     name: string;
     error: FieldError | undefined;
     placeholder?: string;
@@ -13,7 +14,7 @@ interface IParams<T> {
 }
 
 export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
-    const { name, error, placeholder, control, label, rules, isRequired } = props;
+    const { name, error, placeholder, control, label, rules, isRequired, ...inputProps } = props;
     const { t } = useTranslation("validation");
 
     return (
@@ -29,9 +30,9 @@ export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
                         isRequired={isRequired}
                         placeholder={placeholder}
                         value={renderProps.field.value}
-                        variant="outline"
                         onBlur={renderProps.field.onBlur}
                         onChangeText={(val) => renderProps.field.onChange(val)}
+                        {...inputProps}
                     />
                 )}
                 rules={{
