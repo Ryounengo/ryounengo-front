@@ -22,7 +22,7 @@ export const useLogin = () => {
     const { setUser } = useContext(UserContext);
 
     const submit = (formData: ILoginForm) =>
-        post<ITokenResponse>(LOGIN_ROUTE, { body: stateToResponse(formData), forwardError: true })
+        post<ITokenResponse>(LOGIN_ROUTE, { body: stateToResponse(formData), forwardError: true, isSecured: false })
             .then(async (response) => {
                 if (response) {
                     const user = await login(responseToState(response));

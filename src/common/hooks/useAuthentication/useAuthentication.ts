@@ -30,15 +30,17 @@ export const useAuthentication = () => {
                 if (token && !isBefore(token.refreshTokenExpiresAt, new Date())) {
                     const payload = { token: token.refreshToken };
 
-                    return post<ITokenResponse>(REFRESH_TOKEN_ROUTE, { body: payload }).then(async (response) => {
-                        if (response) {
-                            await setToken(responseToState(response));
+                    return post<ITokenResponse>(REFRESH_TOKEN_ROUTE, { body: payload, isSecured: false }).then(
+                        async (response) => {
+                            if (response) {
+                                await setToken(responseToState(response));
 
-                            return getUser(token);
+                                return getUser(token);
+                            }
+
+                            return undefined;
                         }
-
-                        return undefined;
-                    });
+                    );
                 }
 
                 return undefined;
