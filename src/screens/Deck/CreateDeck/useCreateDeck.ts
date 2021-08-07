@@ -20,9 +20,15 @@ export const useCreateDeck = (deckType: EDeckType) => {
     const { t } = useTranslation(["common", "deck"]);
     formMethods.register("tags");
 
-    const submit = (formData: ICreateDeckForm) =>
+    const submit = (formData: ICreateDeckForm) => {
         post(DECK_ROUTE, { body: stateToResponse(formData, deckType), forwardError: true })
-            .then(() => toast.show({ status: "success", description: t("common:success", { item: t("deck:deck") }) }))
+            .then(() =>
+                toast.show({
+                    status: "success",
+                    description: t("common:success", { item: t("deck:deck") }),
+                    accessibilityLabel: t("common:success", { item: t("deck:deck") }),
+                })
+            )
             .catch((error: IError) =>
                 toast.show({
                     accessibilityLabel: t("common:error"),
@@ -31,6 +37,7 @@ export const useCreateDeck = (deckType: EDeckType) => {
                     description: error.message,
                 })
             );
+    };
 
     return {
         formMethods,
