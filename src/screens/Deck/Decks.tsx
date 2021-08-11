@@ -1,12 +1,12 @@
 import { Button, ScrollView, VStack } from "native-base";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
-import { DeckList } from "../../Deck/DeckList/DeckList";
 import { RefreshControl } from "react-native";
-import { useDeckList } from "../../Deck/DeckList/useDeckList";
-import { ErrorAndLoading } from "../../../common";
+import { ErrorAndLoading } from "../../common";
+import { DeckList } from "./DeckList/DeckList";
+import { useDeckList } from "./DeckList/useDeckList";
 
-export const SearchDeck = () => {
+export const Decks = () => {
     const { navigate } = useNavigation();
     const { t } = useTranslation("deck");
     const { deckList, getDeckListState, onRefresh, isRefreshing } = useDeckList();
@@ -17,7 +17,7 @@ export const SearchDeck = () => {
                 <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
                     {deckList && <DeckList deckList={deckList} />}
                 </ErrorAndLoading>
-                <Button onPress={() => navigate("createDeck")}>{t("createDeck")}</Button>
+                <Button onPress={() => navigate("deckType")}>{t("createDeck")}</Button>
             </VStack>
         </ScrollView>
     );

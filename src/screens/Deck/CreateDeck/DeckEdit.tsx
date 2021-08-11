@@ -1,13 +1,13 @@
 import { Button, VStack } from "native-base";
-import { TCreateDeckStackParams } from "./ICreateDeck";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateDeck } from "./useCreateDeck";
 import { useTranslation } from "react-i18next";
 import { TextInput } from "../../../common";
 import { CheckboxField } from "../../../common/form/CheckboxField";
 import { tagsRegex } from "../../../utils/regex";
+import { TStackNavigation } from "../../../navigation/INavigation";
 
-type TParams = StackScreenProps<TCreateDeckStackParams, "deckEdit">;
+type TParams = StackScreenProps<TStackNavigation, "deckEdit">;
 
 export const DeckEdit = (props: TParams) => {
     const { route } = props;
