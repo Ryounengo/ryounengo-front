@@ -1,6 +1,7 @@
-import { Checkbox, FormControl, Text } from "native-base";
+import { FormControl, Select } from "native-base";
 import { Controller, FieldError, FieldValues, UseControllerProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ReactNode } from "react";
 
 interface IParams<T> {
     name: string;
@@ -8,27 +9,29 @@ interface IParams<T> {
     control: UseControllerProps<T>["control"];
     label: string;
     isRequired?: boolean;
+    children: ReactNode[];
 }
 
-export const CheckboxField = <T extends FieldValues>(props: IParams<T>) => {
-    const { name, error, control, label, isRequired } = props;
+export const SelectInput = <T extends FieldValues>(props: IParams<T>) => {
+    const { name, error, control, label, isRequired, children } = props;
     const { t } = useTranslation("validation");
 
     return (
-        <FormControl isInvalid={Boolean(error)} isRequired>
+        <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+            <FormControl.Label>{label}</FormControl.Label>
             <Controller
                 control={control}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 name={name}
                 render={(renderProps) => (
-                    <Checkbox
-                        isInvalid={Boolean(error)}
-                        value={renderProps.field.value}
-                        onChange={(isSelected) => renderProps.field.onChange(isSelected)}
+                    <Select
+                        placeholder={label}
+                        selectedValue={renderProps.field.value}
+                        onValueChange={(value) => renderProps.field.onChange(value)}
                     >
-                        <Text>{label}</Text>
-                    </Checkbox>
+                        {children}
+                    </Select>
                 )}
                 rules={{
                     required: { value: Boolean(isRequired), message: t("required") },

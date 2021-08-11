@@ -1,6 +1,6 @@
 export enum EDeckType {
     BASIC = "BASIC",
-    HIRAGANA = "HIRAGANA",
+    KANJI = "KANJI",
     FREE = "FREE",
 }
 

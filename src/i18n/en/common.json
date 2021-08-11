@@ -1,5 +1,10 @@
 {
   "home": "Home",
+  "clearAll": "Clear all",
+  "yes": "Yes",
+  "noResults": "No results",
+  "no": "No",
+  "all": "All",
   "search": "Search",
   "submit": "Submit",
   "name": "Name",

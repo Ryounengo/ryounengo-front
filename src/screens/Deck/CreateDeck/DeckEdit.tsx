@@ -2,8 +2,7 @@ import { Button, VStack } from "native-base";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateDeck } from "./useCreateDeck";
 import { useTranslation } from "react-i18next";
-import { TextInput } from "../../../common";
-import { CheckboxField } from "../../../common/form/CheckboxField";
+import { TextInput, CheckboxInput } from "../../../common";
 import { tagsRegex } from "../../../utils/regex";
 import { TStackNavigation } from "../../../navigation/INavigation";
 
@@ -51,7 +50,7 @@ export const DeckEdit = (props: TParams) => {
                     pattern: { value: tagsRegex, message: t("common:wrongFormat") },
                 }}
             />
-            <CheckboxField control={control} error={errors.isPrivate} label={t("deck:isPrivate")} name="isPrivate" />
+            <CheckboxInput control={control} error={errors.isPrivate} label={t("deck:isPrivate")} name="isPrivate" />
             <Button isLoading={postCreateDeckState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
                 {t("submit")}
             </Button>

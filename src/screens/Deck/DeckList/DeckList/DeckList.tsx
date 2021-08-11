@@ -1,12 +1,14 @@
-import { Pressable, VStack } from "native-base";
+import { Pressable, Text, VStack } from "native-base";
 import { DeckSummary } from "./DeckSummary";
-import { IDeck } from "../IDeck";
+import { IDeck } from "../../IDeck";
+import { useTranslation } from "react-i18next";
 
 interface IParams {
     deckList: IDeck[];
 }
 
 export const DeckList = (props: IParams) => {
+    const { t } = useTranslation("common");
     const { deckList } = props;
 
     return (
@@ -17,6 +19,7 @@ export const DeckList = (props: IParams) => {
                     <DeckSummary deck={deck} />
                 </Pressable>
             ))}
+            {deckList?.length === 0 && <Text>{t("noResults")}</Text>}
         </VStack>
     );
 };

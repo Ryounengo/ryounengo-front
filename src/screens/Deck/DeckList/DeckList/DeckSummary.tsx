@@ -1,5 +1,5 @@
 import { Box, Text } from "native-base";
-import { IDeck } from "../IDeck";
+import { IDeck } from "../../IDeck";
 
 interface IParams {
     deck: IDeck;
