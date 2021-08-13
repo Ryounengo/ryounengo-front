@@ -2,9 +2,9 @@ import { IToken, IUser } from "./IAuthentication";
 import jwt_decode from "jwt-decode";
 import { isBefore } from "date-fns";
 import { useFetch } from "../useFetch";
-import { REFRESH_TOKEN_ROUTE } from "../../../route";
+import { REFRESH_TOKEN_ROUTE } from "../../../routes";
 import { ITokenResponse, responseToState } from "../../../mappers/postLoginMapper";
-import { getToken, setToken } from "../../../utils/authUtils";
+import { getToken, removeToken, setToken } from "../../../utils/authUtils";
 import { useCallback } from "react";
 
 export const useAuthentication = () => {
@@ -23,6 +23,8 @@ export const useAuthentication = () => {
 
         return getUser(token);
     };
+
+    const logout = () => removeToken();
 
     const refreshToken = useCallback(
         () =>
@@ -53,5 +55,6 @@ export const useAuthentication = () => {
         login,
         refreshToken,
         postRefreshTokenState,
+        logout,
     };
 };

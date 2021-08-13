@@ -1,21 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { Button, VStack } from "native-base";
 import { TextInput } from "../../../common";
-import { useLogin } from "./useLogin";
-import { emailRegex } from "../../../utils/regex";
+import { emailRegex, textRegex } from "../../../utils/regex";
+import { useRegister } from "./useRegister";
 import { StackScreenProps } from "@react-navigation/stack";
 import { TRootNavigation } from "../../../navigation/INavigation";
 
-type TParams = StackScreenProps<TRootNavigation, "login">;
+type TParams = StackScreenProps<TRootNavigation, "register">;
 
-export const Login = (props: TParams) => {
+export const Register = (props: TParams) => {
     const { navigation } = props;
     const { t } = useTranslation(["user", "common", "validation"]);
-    const { postLoginState, submit, formMethods } = useLogin();
+    const { postRegisterState, submit, formMethods } = useRegister();
     const { control, formState, handleSubmit } = formMethods;
     const { errors } = formState;
 
-    const goToRegister = () => navigation.navigate("register");
+    const goToLogin = () => navigation.navigate("login");
 
     return (
         <VStack alignItems="center" backgroundColor="grey" space={4}>
@@ -32,6 +32,18 @@ export const Login = (props: TParams) => {
             />
             <TextInput
                 control={control}
+                error={errors.username}
+                isRequired
+                label={t("user:username")}
+                name="username"
+                placeholder={t("user:username")}
+                rules={{
+                    maxLength: { value: 50, message: t("validation:maxLength", { count: 50 }) },
+                    pattern: { value: textRegex, message: "validation:textError" },
+                }}
+            />
+            <TextInput
+                control={control}
                 error={errors.password}
                 isRequired
                 label={t("user:password")}
@@ -41,11 +53,11 @@ export const Login = (props: TParams) => {
                     minLength: { value: 6, message: t("validation:minLength", { count: 6 }) },
                 }}
             />
-            <Button isLoading={postLoginState.isLoading} variant="solid" onPress={handleSubmit(submit)}>
+            <Button isLoading={postRegisterState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
-            <Button variant="link" onPress={goToRegister}>
-                {t("user:register")}
+            <Button variant="link" onPress={goToLogin}>
+                {t("user:login")}
             </Button>
         </VStack>
     );

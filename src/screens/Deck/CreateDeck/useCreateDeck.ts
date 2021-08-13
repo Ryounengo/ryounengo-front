@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { EDeckType, ICreateDeckForm } from "./ICreateDeck";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
-import { DECK_ROUTE } from "../../../route";
-import { stateToResponse } from "../../../mappers/postDeckMapper";
+import { getDeckRoute } from "../../../routes";
+import { stateToRequest } from "../../../mappers/postDeckMapper";
 import { IError, useFetch } from "../../../common";
 
 export const useCreateDeck = (deckType: EDeckType) => {
@@ -21,8 +21,10 @@ export const useCreateDeck = (deckType: EDeckType) => {
     formMethods.register("tags");
 
     const submit = (formData: ICreateDeckForm) =>
-        post(DECK_ROUTE, { body: stateToResponse(formData, deckType), forwardError: true })
-            .then(() => toast.show({ status: "success", description: t("common:success", { item: t("deck:deck") }) }))
+        post(getDeckRoute(), { body: stateToRequest(formData, deckType), forwardError: true })
+            .then(() =>
+                toast.show({ status: "success", description: t("common:successCreation", { item: formData.name }) })
+            )
             .catch((error: IError) =>
                 toast.show({
                     accessibilityLabel: t("common:error"),

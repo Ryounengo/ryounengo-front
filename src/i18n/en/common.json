@@ -11,6 +11,7 @@
   "description": "Description",
   "genericError": "An error occurred. Try again in a few minutes.",
   "error": "Error",
-  "success": "{{item}} has been updated.",
-  "wrongFormat": "This field is invalid."
+  "successCreation": "{{item}} has been created.",
+  "wrongFormat": "This field is invalid.",
+  "settings": "Settings"
 }

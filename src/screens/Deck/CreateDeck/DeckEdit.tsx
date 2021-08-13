@@ -3,7 +3,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateDeck } from "./useCreateDeck";
 import { useTranslation } from "react-i18next";
 import { TextInput, CheckboxInput } from "../../../common";
-import { tagsRegex } from "../../../utils/regex";
+import { tagsRegex, textRegex } from "../../../utils/regex";
 import { TStackNavigation } from "../../../navigation/INavigation";
 
 type TParams = StackScreenProps<TStackNavigation, "deckEdit">;
@@ -27,6 +27,7 @@ export const DeckEdit = (props: TParams) => {
                 rules={{
                     minLength: { value: 3, message: t("validation:minLength", { count: 3 }) },
                     maxLength: { value: 50, message: t("validation:maxLength", { count: 50 }) },
+                    pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
             <TextInput
@@ -38,6 +39,7 @@ export const DeckEdit = (props: TParams) => {
                 rules={{
                     minLength: { value: 3, message: t("validation:minLength", { count: 3 }) },
                     maxLength: { value: 150, message: t("validation:maxLength", { count: 150 }) },
+                    pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
             <TextInput

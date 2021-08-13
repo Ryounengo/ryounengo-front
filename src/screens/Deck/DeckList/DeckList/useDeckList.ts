@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { IDeck, IDeckFilter } from "../../IDeck";
 import { useFetch } from "../../../../common";
-import { getDeckRoute } from "../../../../route";
+import { getDeckRoute } from "../../../../routes";
 import { IDeckResponse, responseToState } from "../../../../mappers/getDeckMapper";
 import { objectToQuery } from "../../../../utils/fetchUtils";
 

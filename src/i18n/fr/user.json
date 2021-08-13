@@ -1,5 +1,10 @@
 {
     "login": "Se connecter",
+    "register": "Créer un compte",
     "email": "Email",
-    "password": "Mot de passe"
+    "user": "Utilisateur",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "successAccountCreation": "Votre compte a été créé, vous pouvez maintenant vous connecter !",
+    "logout": "Se déconnecter"
 }

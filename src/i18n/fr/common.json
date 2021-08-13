@@ -12,5 +12,7 @@
   "genericError": "Une erreur est apparue. Réessayez dans quelques minutes.",
   "error": "Erreur",
   "success": "{{item}} a été mis à jour.",
-  "wrongFormat": "Ce champ est mal formaté."
+  "wrongFormat": "Ce champ est mal formaté.",
+  "successCreation": "{{item}} a ete créé.",
+  "settings": "Paramètres"
 }

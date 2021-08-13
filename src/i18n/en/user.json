@@ -1,5 +1,10 @@
 {
     "login": "Log in",
+    "register": "Register",
     "email": "Email",
-    "password": "Password"
+    "user": "User",
+    "username": "Username",
+    "password": "Password",
+    "successAccountCreation": "Your account was successfully created, you can now log in !",
+    "logout": "Logout"
 }

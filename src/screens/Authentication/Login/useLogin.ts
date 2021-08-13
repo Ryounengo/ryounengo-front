@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
-import { LOGIN_ROUTE } from "../../../route";
+import { LOGIN_ROUTE } from "../../../routes";
 import { IError, useAuthentication, useFetch } from "../../../common";
 import { ILoginForm } from "./ILogin";
-import { ITokenResponse, responseToState, stateToResponse } from "../../../mappers/postLoginMapper";
+import { ITokenResponse, responseToState, stateToRequest } from "../../../mappers/postLoginMapper";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 
@@ -22,7 +22,7 @@ export const useLogin = () => {
     const { setUser } = useContext(UserContext);
 
     const submit = (formData: ILoginForm) =>
-        post<ITokenResponse>(LOGIN_ROUTE, { body: stateToResponse(formData), forwardError: true, isSecured: false })
+        post<ITokenResponse>(LOGIN_ROUTE, { body: stateToRequest(formData), forwardError: true, isSecured: false })
             .then(async (response) => {
                 if (response) {
                     const user = await login(responseToState(response));

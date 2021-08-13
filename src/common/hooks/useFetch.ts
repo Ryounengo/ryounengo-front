@@ -45,7 +45,7 @@ const handleResponse = async (response: Response, genericErrorMessage: string): 
     try {
         const contentType = response.headers.get(CONTENT_TYPE_HEADER_PARAM);
 
-        if (response.ok && response.status in NO_CONTENT_RESPONSE_STATUS) {
+        if (response.ok && NO_CONTENT_RESPONSE_STATUS.includes(response.status)) {
             return true;
         }
 
