@@ -22,4 +22,8 @@ export type TRootNavigation = {
     main: undefined;
     login: undefined;
     register: undefined;
+    lostPassword: undefined;
+    updatePassword: {
+        email: string;
+    };
 };

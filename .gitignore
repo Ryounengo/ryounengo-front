@@ -2,11 +2,6 @@
 #
 .DS_Store
 
-# Env files
-.env
-.env.development
-.env.production
-
 # Xcode
 #
 build/
@@ -55,3 +50,8 @@ npm-debug.log
 
 # CocoaPods
 /ios/Pods/
+
+# Env files
+.env
+.env.development
+.env.production

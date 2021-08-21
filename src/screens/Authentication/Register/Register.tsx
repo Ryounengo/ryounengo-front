@@ -52,6 +52,7 @@ export const Register = (props: TParams) => {
                 rules={{
                     minLength: { value: 6, message: t("validation:minLength", { count: 6 }) },
                 }}
+                type="password"
             />
             <Button isLoading={postRegisterState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
                 {t("common:submit")}

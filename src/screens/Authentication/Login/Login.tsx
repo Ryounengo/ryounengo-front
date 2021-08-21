@@ -16,6 +16,7 @@ export const Login = (props: TParams) => {
     const { errors } = formState;
 
     const goToRegister = () => navigation.navigate("register");
+    const goToLostPassword = () => navigation.navigate("lostPassword");
 
     return (
         <VStack alignItems="center" backgroundColor="grey" space={4}>
@@ -40,12 +41,16 @@ export const Login = (props: TParams) => {
                 rules={{
                     minLength: { value: 6, message: t("validation:minLength", { count: 6 }) },
                 }}
+                type="password"
             />
             <Button isLoading={postLoginState.isLoading} variant="solid" onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
             <Button variant="link" onPress={goToRegister}>
                 {t("user:register")}
+            </Button>
+            <Button variant="link" onPress={goToLostPassword}>
+                {t("user:lostPassword")}
             </Button>
         </VStack>
     );
