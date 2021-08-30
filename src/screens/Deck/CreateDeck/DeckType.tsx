@@ -1,4 +1,4 @@
-import { Box, Center, HStack, Text } from "native-base";
+import { Box, Center, HStack, Pressable, Text } from "native-base";
 import { useStyle } from "./styles";
 import { EDeckType } from "./ICreateDeck";
 import { useTranslation } from "react-i18next";
@@ -20,16 +20,11 @@ export const DeckType = (props: TParams) => {
     };
 
     const renderDeckType = Object.values(EDeckType).map((value) => (
-        <Box
-            border={deckType === value ? styles.selectedCard : {}}
-            key={value}
-            rounded="lg"
-            shadow={2}
-            style={styles.card}
-            onTouchStart={() => handleTouch(value)}
-        >
-            <Text m="auto">{t(value.toLocaleLowerCase())}</Text>
-        </Box>
+        <Pressable key={value} onPress={() => handleTouch(value)}>
+            <Box border={deckType === value ? styles.selectedCard : {}} rounded="lg" shadow={2} style={styles.card}>
+                <Text m="auto">{t(value.toLocaleLowerCase())}</Text>
+            </Box>
+        </Pressable>
     ));
 
     return (
