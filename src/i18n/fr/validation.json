@@ -3,5 +3,6 @@
   "minLength": "Ce champ doit comporter au moins {{count}} caractère",
   "minLength_plural": "Ce champ doit comporter au moins {{count}} caractères",
   "maxLength": "Ce champ ne peut pas comporter plus de {{count}} caractère",
-  "maxLength_plural": "Ce champ ne peut pas comporter plus de {{count}} caractères"
+  "maxLength_plural": "Ce champ ne peut pas comporter plus de {{count}} caractères",
+  "emailError": "Ce champ doit être un email valide"
 }

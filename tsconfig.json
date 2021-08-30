@@ -22,7 +22,7 @@
     "moduleResolution": "node",
     "baseUrl" : "./",
     "paths": {
-      "rtl-config": ["./testConfiguration/rtl-config"]
+      "rtl-config": ["./testConfiguration/rtl-config"],
     },
     "typeRoots": ["./src/types", "node_modules/@types"]
   },
