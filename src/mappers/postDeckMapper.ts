@@ -8,7 +8,7 @@ interface ICreateDeckRequest {
     isPrivate: boolean;
 }
 
-export const stateToResponse = (deckForm: ICreateDeckForm, deckType: EDeckType): ICreateDeckRequest => ({
+export const stateToRequest = (deckForm: ICreateDeckForm, deckType: EDeckType): ICreateDeckRequest => ({
     description: deckForm.description,
     name: deckForm.name,
     tags: deckForm.tags.split(","),

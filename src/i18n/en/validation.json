@@ -1,8 +1,10 @@
 {
-  "required": "This field is required",
-  "minLength": "This field requires at least {{count}} character",
-  "minLength_plural": "This field requires at least {{count}} characters",
-  "maxLength": "This field cannot be longer than {{count}} character",
-  "maxLength_plural": "This field cannot be longer than {{count}} characters",
-  "emailError": "This field should be a valid email"
+  "required": "This field is required.",
+  "minLength": "This field requires at least {{count}} character.",
+  "minLength_plural": "This field requires at least {{count}} characters.",
+  "maxLength": "This field cannot be longer than {{count}} character.",
+  "maxLength_plural": "This field cannot be longer than {{count}} characters.",
+  "emailError": "This field should be a valid email.",
+  "samePasswordError": "The 2 passwords should be the same.",
+  "exactNumberLengthError": "The field should be {{count}} number long."
 }

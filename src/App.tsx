@@ -1,9 +1,9 @@
 import { UserContext } from "./context/UserContext";
-import { Router } from "./Router";
 import { IUser, useAuthentication } from "./common";
 import { useEffect, useState } from "react";
 import { Box, Spinner, Text } from "native-base";
 import { useTranslation } from "react-i18next";
+import { RootNavigation } from "./navigation/RootNavigation";
 
 const App = () => {
     const { refreshToken, postRefreshTokenState } = useAuthentication();
@@ -29,7 +29,7 @@ const App = () => {
             );
         }
 
-        return <Router />;
+        return <RootNavigation />;
     };
 
     return (

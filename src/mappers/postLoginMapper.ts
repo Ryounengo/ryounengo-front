@@ -13,7 +13,7 @@ export interface ITokenResponse {
     refreshTokenExpiresAt: string;
 }
 
-export const stateToResponse = (loginForm: ILoginForm): ILoginRequest => ({
+export const stateToRequest = (loginForm: ILoginForm): ILoginRequest => ({
     email: loginForm.email,
     password: loginForm.password,
 });

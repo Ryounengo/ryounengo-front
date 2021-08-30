@@ -1,5 +1,15 @@
 {
     "login": "Log in",
+    "register": "Register",
     "email": "Email",
-    "password": "Password"
+    "user": "User",
+    "code": "Code",
+    "username": "Username",
+    "password": "Password",
+    "confirmationPassword": "Confirm password",
+    "successAccountCreation": "Your account was successfully created, you can now log in !",
+    "logout": "Logout",
+    "lostPassword": "Lost password",
+    "emailSent": "An email has been sent to {{email}}.",
+    "updatePasswordExplanation": "Enter the code you received by email. You can then choose a new password."
 }

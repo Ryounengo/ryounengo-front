@@ -21,3 +21,10 @@ export const getToken = async () => {
         return null;
     }
 };
+
+export const removeToken = async () => {
+    try {
+        await AsyncStorage.removeItem(TOKEN);
+        // eslint-disable-next-line no-empty
+    } catch (err) {}
+};

@@ -1,4 +1,10 @@
 {
+  "clearAll": "Tout effacer",
+  "no": "Non",
+  "yes": "Oui",
+  "all": "Tous",
+  "noResults": "Aucuns résultat",
+  "home": "Accueil",
   "search": "Rechercher",
   "name": "Nom",
   "submit": "Valider",
@@ -6,5 +12,7 @@
   "genericError": "Une erreur est apparue. Réessayez dans quelques minutes.",
   "error": "Erreur",
   "success": "{{item}} a été mis à jour.",
-  "wrongFormat": "Ce champ est mal formaté."
+  "wrongFormat": "Ce champ est mal formaté.",
+  "successCreation": "{{item}} a ete créé.",
+  "settings": "Paramètres"
 }

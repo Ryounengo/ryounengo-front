@@ -1,5 +1,15 @@
 {
     "login": "Se connecter",
+    "register": "Créer un compte",
     "email": "Email",
-    "password": "Mot de passe"
+    "code": "Code",
+    "user": "Utilisateur",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "confirmationPassword": "Confirmer le mot de passe",
+    "successAccountCreation": "Votre compte a été créé, vous pouvez maintenant vous connecter !",
+    "logout": "Se déconnecter",
+    "lostPassword": "Mot de passe oublié",
+    "emailSent": "Un email a été envoyé à {{email}}.",
+    "updatePasswordExplanation": "Rentrez le code reçu par mail. Vous pouvez ensuite choisir un nouveau mot de passe."
 }

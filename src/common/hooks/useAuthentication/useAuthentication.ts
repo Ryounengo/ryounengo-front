@@ -2,9 +2,9 @@ import { IToken, IUser } from "./IAuthentication";
 import jwt_decode from "jwt-decode";
 import { isBefore } from "date-fns";
 import { useFetch } from "../useFetch";
-import { REFRESH_TOKEN_ROUTE } from "../../../route";
+import { REFRESH_TOKEN_ROUTE } from "../../../routes";
 import { ITokenResponse, responseToState } from "../../../mappers/postLoginMapper";
-import { getToken, setToken } from "../../../utils/authUtils";
+import { getToken, removeToken, setToken } from "../../../utils/authUtils";
 import { useCallback } from "react";
 
 export const useAuthentication = () => {
@@ -24,21 +24,25 @@ export const useAuthentication = () => {
         return getUser(token);
     };
 
+    const logout = () => removeToken();
+
     const refreshToken = useCallback(
         () =>
             getToken().then((token) => {
                 if (token && !isBefore(token.refreshTokenExpiresAt, new Date())) {
                     const payload = { token: token.refreshToken };
 
-                    return post<ITokenResponse>(REFRESH_TOKEN_ROUTE, { body: payload }).then(async (response) => {
-                        if (response) {
-                            await setToken(responseToState(response));
+                    return post<ITokenResponse>(REFRESH_TOKEN_ROUTE, { body: payload, isSecured: false }).then(
+                        async (response) => {
+                            if (response) {
+                                await setToken(responseToState(response));
 
-                            return getUser(token);
+                                return getUser(token);
+                            }
+
+                            return undefined;
                         }
-
-                        return undefined;
-                    });
+                    );
                 }
 
                 return undefined;
@@ -51,5 +55,6 @@ export const useAuthentication = () => {
         login,
         refreshToken,
         postRefreshTokenState,
+        logout,
     };
 };

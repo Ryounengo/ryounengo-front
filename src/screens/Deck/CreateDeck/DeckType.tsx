@@ -1,11 +1,12 @@
 import { Box, Center, HStack, Pressable, Text } from "native-base";
 import { useStyle } from "./styles";
-import { EDeckType, TCreateDeckStackParams } from "./ICreateDeck";
+import { EDeckType } from "./ICreateDeck";
 import { useTranslation } from "react-i18next";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useState } from "react";
+import { TStackNavigation } from "../../../navigation/INavigation";
 
-type TParams = StackScreenProps<TCreateDeckStackParams, "deckType">;
+type TParams = StackScreenProps<TStackNavigation, "deckType">;
 
 export const DeckType = (props: TParams) => {
     const { navigation } = props;

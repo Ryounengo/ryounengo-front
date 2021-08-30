@@ -3,12 +3,20 @@ import { Button, VStack } from "native-base";
 import { TextInput } from "../../../common";
 import { useLogin } from "./useLogin";
 import { emailRegex } from "../../../utils/regex";
+import { StackScreenProps } from "@react-navigation/stack";
+import { TRootNavigation } from "../../../navigation/INavigation";
 
-export const Login = () => {
-    const { t } = useTranslation(["user", "common"]);
+type TParams = StackScreenProps<TRootNavigation, "login">;
+
+export const Login = (props: TParams) => {
+    const { navigation } = props;
+    const { t } = useTranslation(["user", "common", "validation"]);
     const { postLoginState, submit, formMethods } = useLogin();
     const { control, formState, handleSubmit } = formMethods;
     const { errors } = formState;
+
+    const goToRegister = () => navigation.navigate("register");
+    const goToLostPassword = () => navigation.navigate("lostPassword");
 
     return (
         <VStack alignItems="center" backgroundColor="grey" space={4}>
@@ -33,9 +41,16 @@ export const Login = () => {
                 rules={{
                     minLength: { value: 6, message: t("validation:minLength", { count: 6 }) },
                 }}
+                type="password"
             />
-            <Button isLoading={postLoginState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
+            <Button isLoading={postLoginState.isLoading} variant="solid" onPress={handleSubmit(submit)}>
                 {t("common:submit")}
+            </Button>
+            <Button variant="link" onPress={goToRegister}>
+                {t("user:register")}
+            </Button>
+            <Button variant="link" onPress={goToLostPassword}>
+                {t("user:lostPassword")}
             </Button>
         </VStack>
     );
