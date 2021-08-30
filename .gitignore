@@ -55,3 +55,8 @@ npm-debug.log
 
 # CocoaPods
 /ios/Pods/
+
+# Env files
+.env
+.env.development
+.env.production
