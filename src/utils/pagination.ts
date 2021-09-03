@@ -1,4 +1,4 @@
-import { IPagination } from "../common";
+import { IPagination } from "@typings/interfaces/IPagination";
 
 export const defaultPagination: IPagination = {
     limit: 10,

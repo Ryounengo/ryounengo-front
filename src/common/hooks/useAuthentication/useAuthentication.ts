@@ -1,10 +1,10 @@
-import { IToken, IUser } from "./IAuthentication";
+import { IToken, IUser } from "@typings/interfaces/IAuthentication";
 import jwt_decode from "jwt-decode";
 import { isBefore } from "date-fns";
 import { useFetch } from "../useFetch";
 import { REFRESH_TOKEN_ROUTE } from "../../../routes";
-import { ITokenResponse, responseToState } from "../../../mappers/postLoginMapper";
-import { getToken, removeToken, setToken } from "../../../utils/authUtils";
+import { ITokenResponse, responseToState } from "@mappers/postLoginMapper";
+import { getToken, removeToken, setToken } from "@utils/authUtils";
 import { useCallback } from "react";
 
 export const useAuthentication = () => {

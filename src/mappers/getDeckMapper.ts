@@ -1,5 +1,5 @@
-import { IDeck, IDeckResponse } from "../types/interfaces";
 import { responseToState as cardResponseToState } from "./getCardListMapper";
+import { IDeck, IDeckResponse } from "@typings/interfaces";
 
 export const responseToState = (deck: IDeckResponse): IDeck => ({
     id: deck.id,

@@ -1,6 +1,6 @@
-import { IDeck } from "../../../types/interfaces";
-import { DeckEditForm } from "../../../common/Deck/DeckEditForm";
+import { DeckEditForm } from "@common";
 import { useDeckEdit } from "./useDeckEdit";
+import { IDeck } from "@typings/interfaces";
 
 interface IParams {
     deck: IDeck;

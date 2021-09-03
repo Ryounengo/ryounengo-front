@@ -2,12 +2,12 @@ import { useForm } from "react-hook-form";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
 import { REGISTER_ROUTE } from "../../../routes";
-import { IError, useFetch } from "../../../common";
+import { IError, useFetch } from "@common";
 import { IRegisterForm } from "./IRegister";
-import { stateToRequest } from "../../../mappers/postRegisterMapper";
+import { stateToRequest } from "@mappers/postRegisterMapper";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TRootNavigation } from "../../../navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "register">;
 

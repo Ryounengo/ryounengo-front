@@ -1,4 +1,4 @@
-import { IRegisterForm } from "../screens/Authentication/Register/IRegister";
+import { IRegisterForm } from "@screens/Authentication/Register/IRegister";
 
 interface IRegisterRequest {
     email: string;

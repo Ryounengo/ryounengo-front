@@ -1,4 +1,4 @@
-import { IUpdatePasswordForm } from "../screens/Authentication/LostPassword/IILostPassword";
+import { IUpdatePasswordForm } from "@screens/Authentication/LostPassword/IILostPassword";
 
 interface IUpdatePasswordRequest {
     code: number;

@@ -1,5 +1,5 @@
-import { EDeckType } from "../types/enums";
-import { IDeckEditForm } from "../types/interfaces";
+import { EDeckType } from "@typings/enums";
+import { IDeckEditForm } from "@typings/interfaces";
 
 interface ICreateDeckRequest {
     modelType: EDeckType;

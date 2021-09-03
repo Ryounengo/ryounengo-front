@@ -1,9 +1,10 @@
 import { UserContext } from "./context/UserContext";
-import { IUser, useAuthentication } from "./common";
+import { useAuthentication } from "@common";
 import { useEffect, useState } from "react";
 import { Box, Spinner, Text } from "native-base";
 import { useTranslation } from "react-i18next";
-import { RootNavigation } from "./navigation/RootNavigation";
+import { RootNavigation } from "@navigation/RootNavigation";
+import { IUser } from "@typings/interfaces/IAuthentication";
 
 const App = () => {
     const { refreshToken, postRefreshTokenState } = useAuthentication();

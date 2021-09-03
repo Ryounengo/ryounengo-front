@@ -2,9 +2,9 @@ import { Pressable, Text, VStack } from "native-base";
 import { DeckSummary } from "./DeckSummary";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
-import { TStackNavigation } from "../../../../navigation/INavigation";
+import { TStackNavigation } from "@navigation/INavigation";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { IDeckSummary } from "../../../../types/interfaces";
+import { IDeckSummary } from "@typings/interfaces";
 
 type NavigationProps = NativeStackNavigationProp<TStackNavigation, "decks">;
 

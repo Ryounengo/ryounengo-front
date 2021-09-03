@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
 import { LOGIN_ROUTE } from "../../../routes";
-import { IError, useAuthentication, useFetch } from "../../../common";
+import { IError, useAuthentication, useFetch } from "@common";
 import { ILoginForm } from "./ILogin";
-import { ITokenResponse, responseToState, stateToRequest } from "../../../mappers/postLoginMapper";
+import { ITokenResponse, responseToState, stateToRequest } from "@mappers/postLoginMapper";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 

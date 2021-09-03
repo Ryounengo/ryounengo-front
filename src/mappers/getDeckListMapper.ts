@@ -1,4 +1,4 @@
-import { IDeckSummaryResponse, IDeckSummary } from "../types/interfaces";
+import { IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 
 export const responseToState = (deckResponse: IDeckSummaryResponse[]): IDeckSummary[] =>
     deckResponse.map((deck) => ({

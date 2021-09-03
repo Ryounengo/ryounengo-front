@@ -1,7 +1,7 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateDeck } from "./useCreateDeck";
-import { TStackNavigation } from "../../../navigation/INavigation";
-import { DeckEditForm } from "../../../common/Deck/DeckEditForm";
+import { TStackNavigation } from "@navigation/INavigation";
+import { DeckEditForm } from "@common";
 
 type TParams = StackScreenProps<TStackNavigation, "deckEdit">;
 

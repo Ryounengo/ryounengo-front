@@ -22,9 +22,17 @@
     "moduleResolution": "node",
     "baseUrl" : "./",
     "paths": {
-      "rtl-config": ["./testConfiguration/rtl-config"],
+      "rtl-config": ["testConfiguration/rtl-config"],
+      "@navigation/*": ["src/navigation/*"],
+      "@typings/*": ["src/typings/*"],
+      "@common": ["src/common/index.ts"],
+      "@static/*": ["src/static/*"],
+      "@routes/*": ["src/routes/*"],
+      "@mappers/*": ["src/mappers/*"],
+      "@utils/*": ["src/utils/*"],
+      "@screens/*": ["src/screens/*"]
     },
-    "typeRoots": ["./src/types", "node_modules/@types"]
+    "typeRoots": ["./src/typings", "node_modules/@types"]
   },
   "include": [
     "./src/**/*.tsx",
@@ -32,5 +40,5 @@
     "./index.tsx",
     "./testConfiguration/**/*",
     "./*.js"
-  ]
+  ],
 }

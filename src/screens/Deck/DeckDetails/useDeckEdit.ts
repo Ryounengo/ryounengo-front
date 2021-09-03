@@ -1,10 +1,10 @@
-import { IError, useFetch } from "../../../common";
-import { getDeckRoute } from "../../../routes";
-import { IDeck, IDeckEditForm } from "../../../types/interfaces";
+import { IError, useFetch } from "@common";
+import { getDeckRoute } from "@routes/deck";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { stateToRequest } from "../../../mappers/postDeckMapper";
+import { stateToRequest } from "@mappers/postDeckMapper";
 import { useToast } from "native-base";
+import { IDeck, IDeckEditForm } from "@typings/interfaces";
 
 export const useDeckEdit = (deck: IDeck, getDeckDetails: () => void, setIsEditMode: (isEditMode: boolean) => void) => {
     const toast = useToast();

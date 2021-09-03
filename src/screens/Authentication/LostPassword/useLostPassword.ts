@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { ILostPasswordForm } from "./IILostPassword";
 import { useNavigation } from "@react-navigation/native";
-import { useOTP, EOtpReason, IError } from "../../../common";
+import { useOTP, EOtpReason, IError } from "@common";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TRootNavigation } from "../../../navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "lostPassword">;
 

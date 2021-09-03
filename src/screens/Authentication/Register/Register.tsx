@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Button, VStack } from "native-base";
-import { TextInput } from "../../../common";
-import { emailRegex, textRegex } from "../../../utils/regex";
+import { TextInput } from "@common";
+import { emailRegex, textRegex } from "@utils/regex";
 import { useRegister } from "./useRegister";
 import { StackScreenProps } from "@react-navigation/stack";
-import { TRootNavigation } from "../../../navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
 type TParams = StackScreenProps<TRootNavigation, "register">;
 

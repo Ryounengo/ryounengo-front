@@ -1,9 +1,9 @@
-import { IDeckFilter } from "../../IDeck";
 import { useForm } from "react-hook-form";
 import { IFilterForm } from "./IDeckFilter";
-import { defaultPagination } from "../../../../utils/pagination";
+import { defaultPagination } from "@utils/pagination";
 import { ALL_OPTIONS, YES_OPTION } from "../../../../constants";
-import { EDeckType } from "../../../../types/enums";
+import { EDeckType } from "@typings/enums";
+import { IDeckFilter } from "@screens/Deck/IDeck";
 
 const defaultValues: IFilterForm = {
     isPrivate: ALL_OPTIONS,
