@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { TStackNavigation } from "./INavigation";
 import { Decks } from "../screens/Deck/Decks";
 import { UserSettings } from "../screens/Settings/UserSettings";
+import { DeckDetails } from "../screens/Deck/DeckDetails/DeckDetails";
 
 const Stack = createStackNavigator<TStackNavigation>();
 
@@ -17,6 +18,7 @@ export const StackNavigation = () => {
             <Stack.Screen component={DeckType} name="deckType" options={{ title: t("deck:chooseDeckType") }} />
             <Stack.Screen component={DeckEdit} name="deckEdit" options={{ title: t("deck:createDeck") }} />
             <Stack.Screen component={UserSettings} name="settings" options={{ title: t("deck:createDeck") }} />
+            <Stack.Screen component={DeckDetails} name="deckDetails" options={{ title: t("deck:deckDetails") }} />
         </Stack.Navigator>
     );
 };

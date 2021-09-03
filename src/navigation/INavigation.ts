@@ -1,9 +1,12 @@
-import { EDeckType } from "../screens/Deck/CreateDeck/ICreateDeck";
+import { EDeckType } from "../types/enums";
 
 export type TStackNavigation = {
     decks: undefined;
     deckType: undefined;
     settings: undefined;
+    deckDetails: {
+        deckId: string;
+    };
     deckEdit: {
         deckType: EDeckType;
     };

@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
-import { EDeckType, ICreateDeckForm } from "./ICreateDeck";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
-import { getDeckRoute } from "../../../routes";
+import { getDecksRoute } from "../../../routes";
 import { stateToRequest } from "../../../mappers/postDeckMapper";
 import { IError, useFetch } from "../../../common";
+import { EDeckType } from "../../../types/enums";
+import { IDeckEditForm } from "../../../types/interfaces";
 
 export const useCreateDeck = (deckType: EDeckType) => {
-    const formMethods = useForm<ICreateDeckForm>({
+    const formMethods = useForm<IDeckEditForm>({
         defaultValues: {
             name: "",
             description: "",
@@ -20,8 +21,8 @@ export const useCreateDeck = (deckType: EDeckType) => {
     const { t } = useTranslation(["common", "deck"]);
     formMethods.register("tags");
 
-    const submit = (formData: ICreateDeckForm) =>
-        post(getDeckRoute(), { body: stateToRequest(formData, deckType), forwardError: true })
+    const submit = (formData: IDeckEditForm) =>
+        post(getDecksRoute(), { body: stateToRequest(formData, deckType), forwardError: true })
             .then(() =>
                 toast.show({ status: "success", description: t("common:successCreation", { item: formData.name }) })
             )

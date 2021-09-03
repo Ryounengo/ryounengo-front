@@ -6,6 +6,10 @@ import { IError, useFetch } from "../../../common";
 import { IRegisterForm } from "./IRegister";
 import { stateToRequest } from "../../../mappers/postRegisterMapper";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "react-native-screens/native-stack";
+import { TRootNavigation } from "../../../navigation/INavigation";
+
+type NavigationProps = NativeStackNavigationProp<TRootNavigation, "register">;
 
 export const useRegister = () => {
     const formMethods = useForm<IRegisterForm>({
@@ -15,7 +19,7 @@ export const useRegister = () => {
             password: "",
         },
     });
-    const { navigate } = useNavigation();
+    const { navigate } = useNavigation<NavigationProps>();
     const [postRegisterState, { post }] = useFetch();
     const toast = useToast();
     const { t } = useTranslation("user");

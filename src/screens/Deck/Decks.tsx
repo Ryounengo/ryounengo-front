@@ -8,9 +8,13 @@ import { useDeckList } from "./DeckList/DeckList/useDeckList";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
 import { useState } from "react";
 import { IDeckFilter } from "./IDeck";
+import { NativeStackNavigationProp } from "react-native-screens/native-stack";
+import { TStackNavigation } from "../../navigation/INavigation";
+
+type NavigationProps = NativeStackNavigationProp<TStackNavigation, "decks">;
 
 export const Decks = () => {
-    const { navigate } = useNavigation();
+    const { push } = useNavigation<NavigationProps>();
     const { t } = useTranslation("deck");
     const [deckFilter, setDeckFilter] = useState<IDeckFilter>();
     const { deckList, getDeckListState, onRefresh, isRefreshing } = useDeckList(deckFilter);
@@ -22,7 +26,7 @@ export const Decks = () => {
                 <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
                     {deckList && <DeckList deckList={deckList} />}
                 </ErrorAndLoading>
-                <Button onPress={() => navigate("deckType")}>{t("createDeck")}</Button>
+                <Button onPress={() => push("deckType")}>{t("createDeck")}</Button>
             </VStack>
         </ScrollView>
     );

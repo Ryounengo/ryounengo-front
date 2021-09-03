@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
-import { IDeck, IDeckFilter } from "../../IDeck";
+import { IDeckFilter } from "../../IDeck";
 import { useFetch } from "../../../../common";
-import { getDeckRoute } from "../../../../routes";
-import { IDeckResponse, responseToState } from "../../../../mappers/getDeckMapper";
+import { getDecksRoute } from "../../../../routes";
+import { responseToState } from "../../../../mappers/getDeckListMapper";
 import { objectToQuery } from "../../../../utils/fetchUtils";
+import { IDeckSummaryResponse, IDeckSummary } from "../../../../types/interfaces";
 
 export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
-    const [deckList, setDeckList] = useState<IDeck[]>();
+    const [deckList, setDeckList] = useState<IDeckSummary[]>();
     const [getDeckListState, { get }] = useFetch();
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     const getDeckList = useCallback(() => {
         const query = deckFilter ? `?${objectToQuery({ ...deckFilter })}` : "";
 
-        return get<IDeckResponse[]>(getDeckRoute(query)).then((response) => {
+        return get<IDeckSummaryResponse[]>(getDecksRoute(query)).then((response) => {
             if (response) {
                 setDeckList(responseToState(response));
             }
