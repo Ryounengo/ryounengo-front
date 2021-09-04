@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getToken } from "../../utils/authUtils";
+import { getToken } from "@utils/authUtils";
 
 export interface IError {
     message: string;

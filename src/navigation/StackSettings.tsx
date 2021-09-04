@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TStackSettings } from "./INavigation";
-import { UserSettings } from "../screens/Settings/UserSettings";
+import { UserSettings } from "@screens/Settings/UserSettings";
 
 const Stack = createStackNavigator<TStackSettings>();
 

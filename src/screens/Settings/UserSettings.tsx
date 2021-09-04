@@ -1,6 +1,6 @@
 import { Button, View } from "native-base";
 import { useTranslation } from "react-i18next";
-import { useAuthentication } from "../../common";
+import { useAuthentication } from "@common";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 

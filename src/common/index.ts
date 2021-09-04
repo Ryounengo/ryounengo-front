@@ -2,6 +2,6 @@ export * from "./form";
 
 export * from "./hooks";
 
-export * from "./HandleErrorAndLoading/ErrorAndLoading";
+export * from "./Deck/DeckEditForm";
 
-export * from "./Pagination";
+export * from "./ErrorAndLoading/ErrorAndLoading";

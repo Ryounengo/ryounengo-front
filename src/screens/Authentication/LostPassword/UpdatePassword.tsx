@@ -1,10 +1,10 @@
 import { Button, VStack, Text } from "native-base";
 import { useTranslation } from "react-i18next";
-import { TextInput } from "../../../common";
+import { TextInput } from "@common";
 import { useUpdatePassword } from "./useLUpdatePassword";
 import { StackScreenProps } from "@react-navigation/stack";
-import { TRootNavigation } from "../../../navigation/INavigation";
-import { otpCodeRegex } from "../../../utils/regex";
+import { TRootNavigation } from "@navigation/INavigation";
+import { otpCodeRegex } from "@utils/regex";
 type TParams = StackScreenProps<TRootNavigation, "updatePassword">;
 
 export const UpdatePassword = (props: TParams) => {

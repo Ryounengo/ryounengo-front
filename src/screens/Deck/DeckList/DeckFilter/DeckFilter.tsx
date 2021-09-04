@@ -1,12 +1,12 @@
 import { Button, Select, Stack } from "native-base";
-import { TextInput } from "../../../../common";
+import { TextInput } from "@common";
 import { IDeckFilter } from "../../IDeck";
 import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
 import { SelectInput } from "../../../../common/form/SelectInput";
 import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
-import { tagsRegex } from "../../../../utils/regex";
-import { EDeckType } from "../../../../types/enums";
+import { tagsRegex } from "@utils/regex";
+import { EDeckType } from "@typings/enums";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;

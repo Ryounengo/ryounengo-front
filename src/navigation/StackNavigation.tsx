@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { DeckType } from "../screens/Deck/CreateDeck/DeckType";
-import { DeckEdit } from "../screens/Deck/CreateDeck/DeckEdit";
+import { DeckType } from "@screens/Deck/CreateDeck/DeckType";
+import { DeckEdit } from "@screens/Deck/CreateDeck/DeckEdit";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TStackNavigation } from "./INavigation";
-import { Decks } from "../screens/Deck/Decks";
-import { UserSettings } from "../screens/Settings/UserSettings";
-import { DeckDetails } from "../screens/Deck/DeckDetails/DeckDetails";
+import { Decks } from "@screens/Deck/Decks";
+import { UserSettings } from "@screens/Settings/UserSettings";
+import { DeckDetails } from "@screens/Deck/DeckDetails/DeckDetails";
 
 const Stack = createStackNavigator<TStackNavigation>();
 

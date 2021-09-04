@@ -9,6 +9,7 @@
   "plugins": [
     "react",
     "react-native",
+    "import",
     "react-hooks",
     "@typescript-eslint"
   ],
@@ -115,6 +116,8 @@
       "version": "detect"
     },
     "import/resolver": {
+      "typescript": {
+      },
       "node": {
         "extensions": [".ts", ".tsx", ".js", ".json", ".android.js", ".ios.js"]
       },

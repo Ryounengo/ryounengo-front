@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useToast } from "native-base";
 import { useTranslation } from "react-i18next";
-import { getDecksRoute } from "../../../routes";
-import { stateToRequest } from "../../../mappers/postDeckMapper";
-import { IError, useFetch } from "../../../common";
-import { EDeckType } from "../../../types/enums";
-import { IDeckEditForm } from "../../../types/interfaces";
+import { getDecksRoute } from "@routes/deck";
+import { stateToRequest } from "@mappers/postDeckMapper";
+import { IError, useFetch } from "@common";
+import { EDeckType } from "@typings/enums";
+import { IDeckEditForm } from "@typings/interfaces";
 
 export const useCreateDeck = (deckType: EDeckType) => {
     const formMethods = useForm<IDeckEditForm>({

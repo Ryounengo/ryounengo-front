@@ -1,9 +1,9 @@
 import { Button, VStack } from "native-base";
 import { CheckboxInput, TextInput } from "../form";
-import { tagsRegex, textRegex } from "../../utils/regex";
+import { tagsRegex, textRegex } from "@utils/regex";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { IDeckEditForm } from "../../types/interfaces";
+import { IDeckEditForm } from "@typings/interfaces";
 
 interface IParams {
     formMethods: UseFormReturn<IDeckEditForm>;

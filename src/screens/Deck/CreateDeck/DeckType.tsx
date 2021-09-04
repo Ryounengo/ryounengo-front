@@ -3,8 +3,8 @@ import { useStyle } from "./styles";
 import { useTranslation } from "react-i18next";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useState } from "react";
-import { TStackNavigation } from "../../../navigation/INavigation";
-import { EDeckType } from "../../../types/enums";
+import { TStackNavigation } from "@navigation/INavigation";
+import { EDeckType } from "@typings/enums";
 
 type TParams = StackScreenProps<TStackNavigation, "deckType">;
 

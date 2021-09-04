@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { IUser } from "../common";
+import { IUser } from "@common";
 
 interface IUserContext {
     user?: IUser;

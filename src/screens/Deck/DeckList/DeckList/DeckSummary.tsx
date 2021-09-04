@@ -1,5 +1,5 @@
 import { Box, Text } from "native-base";
-import { IDeckSummary } from "../../../../types/interfaces";
+import { IDeckSummary } from "@typings/interfaces";
 
 interface IParams {
     deck: IDeckSummary;

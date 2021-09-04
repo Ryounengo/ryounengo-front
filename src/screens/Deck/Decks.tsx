@@ -2,14 +2,14 @@ import { Button, ScrollView, VStack } from "native-base";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 import { RefreshControl } from "react-native";
-import { ErrorAndLoading } from "../../common";
+import { ErrorAndLoading } from "@common";
 import { DeckList } from "./DeckList/DeckList/DeckList";
 import { useDeckList } from "./DeckList/DeckList/useDeckList";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
 import { useState } from "react";
 import { IDeckFilter } from "./IDeck";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TStackNavigation } from "../../navigation/INavigation";
+import { TStackNavigation } from "@navigation/INavigation";
 
 type NavigationProps = NativeStackNavigationProp<TStackNavigation, "decks">;
 

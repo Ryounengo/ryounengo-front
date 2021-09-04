@@ -1,5 +1,5 @@
-import { ILoginForm } from "../screens/Authentication/Login/ILogin";
-import { IToken } from "../common";
+import { ILoginForm } from "@screens/Authentication/Login/ILogin";
+import { IToken } from "@typings/interfaces/IAuthentication";
 
 interface ILoginRequest {
     email: string;

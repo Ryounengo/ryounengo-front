@@ -1,5 +1,5 @@
-import { IPagination } from "../../common";
-import { EDeckType } from "../../types/enums";
+import { EDeckType } from "@typings/enums";
+import { IPagination } from "@typings/interfaces/IPagination";
 
 export interface IDeckFilter extends IPagination {
     name: string;

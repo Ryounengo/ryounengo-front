@@ -1,6 +1,6 @@
-import { IToken } from "../common";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { responseToState } from "../mappers/postLoginMapper";
+import { responseToState } from "@mappers/postLoginMapper";
+import { IToken } from "@typings/interfaces/IAuthentication";
 
 const TOKEN = "token";
 

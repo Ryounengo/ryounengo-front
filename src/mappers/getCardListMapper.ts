@@ -1,4 +1,4 @@
-import { ICardResponse, ICardSummary } from "../types/interfaces";
+import { ICardResponse, ICardSummary } from "@typings/interfaces";
 
 export const responseToState = (cardList: ICardResponse[]): ICardSummary[] =>
     cardList.map((card) => ({

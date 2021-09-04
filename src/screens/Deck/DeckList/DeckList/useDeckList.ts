@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { IDeckFilter } from "../../IDeck";
-import { useFetch } from "../../../../common";
-import { getDecksRoute } from "../../../../routes";
-import { responseToState } from "../../../../mappers/getDeckListMapper";
-import { objectToQuery } from "../../../../utils/fetchUtils";
-import { IDeckSummaryResponse, IDeckSummary } from "../../../../types/interfaces";
+import { useFetch } from "@common";
+import { getDecksRoute } from "@routes/deck";
+import { responseToState } from "@mappers/getDeckListMapper";
+import { objectToQuery } from "@utils/fetchUtils";
+import { IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 
 export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();

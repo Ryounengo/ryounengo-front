@@ -1,4 +1,4 @@
-import { EDeckType } from "../../../../types/enums";
+import { EDeckType } from "@typings/enums";
 
 export interface IFilterForm {
     name: string;

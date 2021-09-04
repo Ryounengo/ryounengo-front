@@ -1,5 +1,5 @@
 import { Box, Center, Heading, Text } from "native-base";
-import { ICardSummary } from "../../../types/interfaces";
+import { ICardSummary } from "@typings/interfaces";
 
 interface IParams {
     card: ICardSummary;

@@ -1,6 +1,6 @@
 import { Heading, ScrollView, Text, VStack } from "native-base";
 import { CardSummary } from "./CardSummary";
-import { IDeck } from "../../../types/interfaces";
+import { IDeck } from "@typings/interfaces";
 
 interface IParams {
     deck: IDeck;
