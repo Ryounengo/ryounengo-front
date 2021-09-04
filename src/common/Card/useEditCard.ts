@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ECardType } from "@typings/enums/ECard";
-import { ICard, ICardEdit } from "@typings/interfaces";
+import { ICardSummary, ICardEdit } from "@typings/interfaces";
 import { ECreateCard } from "@screens/Card/CreateCard/ICreateCard";
 import { ICardEditRectoForm, ICardEditVersoForm } from "./ICardEdit";
 
-export const useEditCard = (submit: (card: ICardEdit) => void, card?: ICard) => {
+export const useEditCard = (submit: (card: ICardEdit) => void, card?: ICardSummary) => {
     const [cardType, setCardType] = useState<ECardType>(ECardType.TEXT);
     const [step, setStep] = useState<ECreateCard>(ECreateCard.SELECT_TYPE);
     const [newCard, setNewCard] = useState<ICardEdit>({

@@ -3,21 +3,21 @@ import { getDeckAddCardRoute } from "@routes";
 import { ICardEdit } from "@typings/interfaces";
 import { stateToRequest } from "@mappers/postCardMapper";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TStackNavigation } from "@navigation/INavigation";
 import { useNavigation } from "@react-navigation/native";
+import { TDeckNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TStackNavigation, "createCard">;
+type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "createCard">;
 
 export const useCreateCard = (deckId: string) => {
     const [postCreateCardState, { post }] = useFetch();
-    const { navigate } = useNavigation<NavigationProps>();
+    const { replace } = useNavigation<NavigationProps>();
     const { toastSuccessCreation, toastError } = useCustomToast();
 
     const submit = (formData: ICardEdit) => {
         post(getDeckAddCardRoute(deckId), { body: stateToRequest(formData), forwardError: true })
             .then(() => {
                 toastSuccessCreation(formData.front[0]);
-                navigate("deckDetails", { deckId });
+                replace("createCard", { deckId: deckId });
             })
             .catch((error: IError) => toastError(error.message));
     };

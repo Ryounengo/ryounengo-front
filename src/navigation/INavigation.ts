@@ -1,13 +1,16 @@
-export type TStackNavigation = {
+export type TDeckNavigation = {
     decks: undefined;
-    settings: undefined;
+    createDeck: undefined;
     createCard: {
         deckId: string;
     };
     deckDetails: {
         deckId: string;
     };
-    createDeck: undefined;
+};
+
+export type TCardNavigation = {
+    cards: undefined;
 };
 
 export type TStackSettings = {
@@ -16,6 +19,8 @@ export type TStackSettings = {
 
 export type TBottomTabNavigation = {
     home: undefined;
+    deck: undefined;
+    card: undefined;
     settings: undefined;
 };
 

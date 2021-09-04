@@ -3,12 +3,12 @@ import { Box } from "native-base";
 import { ECreateCard } from "@screens/Card/CreateCard/ICreateCard";
 import { CardEditRectoForm } from "./CardEditRectoForm";
 import { useEditCard } from "./useEditCard";
-import { ICard, ICardEdit } from "@typings/interfaces";
+import { ICardEdit, ICardSummary } from "@typings/interfaces";
 import { CardEditVersoForm } from "./CardEditVersoForm";
 
 interface IParams {
     submit(formData: ICardEdit): void;
-    card?: ICard;
+    card?: ICardSummary;
     isLoading: boolean;
     isEdit?: boolean;
 }

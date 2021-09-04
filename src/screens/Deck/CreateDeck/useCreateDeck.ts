@@ -2,12 +2,12 @@ import { useForm } from "react-hook-form";
 import { DECK_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postDeckMapper";
 import { IError, useCustomToast, useFetch } from "@common";
-import { IDeckEditForm } from "@typings/interfaces";
+import { IDeckEditForm, IDeckSummaryResponse } from "@typings/interfaces";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TStackNavigation } from "@navigation/INavigation";
+import { TDeckNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TStackNavigation, "createDeck">;
+type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "createDeck">;
 
 export const useCreateDeck = () => {
     const { navigate } = useNavigation<NavigationProps>();
@@ -24,10 +24,12 @@ export const useCreateDeck = () => {
     formMethods.register("tags");
 
     const submit = (formData: IDeckEditForm) =>
-        post(DECK_ROUTE, { body: stateToRequest(formData), forwardError: true })
-            .then(() => {
+        post<IDeckSummaryResponse>(DECK_ROUTE, { body: stateToRequest(formData), forwardError: true })
+            .then((response) => {
                 toastSuccessCreation(formData.name);
-                navigate("decks");
+                if (response) {
+                    navigate("deckDetails", { deckId: response.id });
+                }
             })
             .catch((error: IError) => toastError(error.message));
 

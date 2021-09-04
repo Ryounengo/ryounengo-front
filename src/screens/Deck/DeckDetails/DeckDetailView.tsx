@@ -1,12 +1,12 @@
 import { Button, Heading, ScrollView, Text, VStack } from "native-base";
-import { CardSummary } from "../../Card/CardSummary";
+import { CardSummary } from "../../Card/CardList/CardList/CardSummary";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
-import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TStackNavigation } from "@navigation/INavigation";
 import { IDeck } from "@typings/interfaces";
+import { NativeStackNavigationProp } from "react-native-screens/native-stack";
+import { TDeckNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TStackNavigation, "deckDetails">;
+type NavigationProps = NativeStackNavigationProp<TDeckNavigation>;
 
 interface IParams {
     deck: IDeck;

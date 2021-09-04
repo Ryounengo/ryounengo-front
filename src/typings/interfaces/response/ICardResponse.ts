@@ -1,5 +1,15 @@
 import { ECardType } from "@typings/enums/ECard";
 
+export interface ICardSummaryResponse {
+    deck: string;
+    front: string[];
+    back: string[];
+    example: string;
+    id: string;
+    type: ECardType;
+    referenceCard: string;
+}
+
 export interface ICardResponse {
     deck: string;
     front: string[];
@@ -8,6 +18,7 @@ export interface ICardResponse {
     id: string;
     type: ECardType;
     referenceCard: string;
+    toReview: boolean;
 }
 
 export interface ICardEditResponse {
