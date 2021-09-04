@@ -1,10 +1,10 @@
 import { Box, Center, HStack, Pressable, Text } from "native-base";
 import { useStyle } from "./styles";
-import { EDeckType } from "./ICreateDeck";
 import { useTranslation } from "react-i18next";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useState } from "react";
 import { TStackNavigation } from "../../../navigation/INavigation";
+import { EDeckType } from "../../../types/enums";
 
 type TParams = StackScreenProps<TStackNavigation, "deckType">;
 

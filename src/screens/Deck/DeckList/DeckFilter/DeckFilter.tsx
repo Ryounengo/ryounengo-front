@@ -5,8 +5,8 @@ import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
 import { SelectInput } from "../../../../common/form/SelectInput";
 import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
-import { EDeckType } from "../../CreateDeck/ICreateDeck";
 import { tagsRegex } from "../../../../utils/regex";
+import { EDeckType } from "../../../../types/enums";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;

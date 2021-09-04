@@ -1,4 +1,5 @@
-import { EDeckType, ICreateDeckForm } from "../screens/Deck/CreateDeck/ICreateDeck";
+import { EDeckType } from "../types/enums";
+import { IDeckEditForm } from "../types/interfaces";
 
 interface ICreateDeckRequest {
     modelType: EDeckType;
@@ -8,7 +9,7 @@ interface ICreateDeckRequest {
     isPrivate: boolean;
 }
 
-export const stateToRequest = (deckForm: ICreateDeckForm, deckType: EDeckType): ICreateDeckRequest => ({
+export const stateToRequest = (deckForm: IDeckEditForm, deckType: EDeckType): ICreateDeckRequest => ({
     description: deckForm.description,
     name: deckForm.name,
     tags: deckForm.tags.split(","),

@@ -12,6 +12,7 @@
   "genericError": "An error occurred. Try again in a few minutes.",
   "error": "Error",
   "successCreation": "{{item}} has been created.",
+  "successUpdate": "{{item}} has been updated.",
   "wrongFormat": "This field is invalid.",
   "settings": "Settings"
 }

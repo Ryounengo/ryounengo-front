@@ -1,8 +1,8 @@
 import { Box, Text } from "native-base";
-import { IDeck } from "../../IDeck";
+import { IDeckSummary } from "../../../../types/interfaces";
 
 interface IParams {
-    deck: IDeck;
+    deck: IDeckSummary;
 }
 
 export const DeckSummary = (props: IParams) => {
