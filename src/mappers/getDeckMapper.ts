@@ -8,5 +8,4 @@ export const responseToState = (deck: IDeckResponse): IDeck => ({
     tags: deck.tags,
     isPrivate: deck.isPrivate,
     cards: cardResponseToState(deck.cards),
-    modelType: deck.modelType,
 });

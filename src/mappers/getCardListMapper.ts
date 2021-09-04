@@ -8,4 +8,5 @@ export const responseToState = (cardList: ICardResponse[]): ICardSummary[] =>
         deck: card.deck,
         example: card.example,
         referenceCard: card.referenceCard,
+        type: card.type,
     }));

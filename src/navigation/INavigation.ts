@@ -1,15 +1,13 @@
-import { EDeckType } from "@typings/enums";
-
 export type TStackNavigation = {
     decks: undefined;
-    deckType: undefined;
     settings: undefined;
+    createCard: {
+        deckId: string;
+    };
     deckDetails: {
         deckId: string;
     };
-    deckEdit: {
-        deckType: EDeckType;
-    };
+    createDeck: undefined;
 };
 
 export type TStackSettings = {

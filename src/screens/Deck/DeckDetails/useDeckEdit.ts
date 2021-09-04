@@ -1,16 +1,13 @@
-import { IError, useFetch } from "@common";
-import { getDeckRoute } from "@routes/deck";
+import { IError, useCustomToast, useFetch } from "@common";
+import { getDeckRoute } from "@routes";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { stateToRequest } from "@mappers/postDeckMapper";
-import { useToast } from "native-base";
 import { IDeck, IDeckEditForm } from "@typings/interfaces";
 
 export const useDeckEdit = (deck: IDeck, getDeckDetails: () => void, setIsEditMode: (isEditMode: boolean) => void) => {
-    const toast = useToast();
-    const { t } = useTranslation("common");
+    const { toastSuccessUpdate, toastError } = useCustomToast();
     const [postCreateDeckState, { put }] = useFetch();
-    const { isPrivate, modelType, id, tags, description, name } = deck;
+    const { isPrivate, id, tags, description, name } = deck;
     const formMethods = useForm<IDeckEditForm>({
         defaultValues: {
             name,
@@ -22,20 +19,13 @@ export const useDeckEdit = (deck: IDeck, getDeckDetails: () => void, setIsEditMo
     formMethods.register("tags");
 
     const submit = (formData: IDeckEditForm) =>
-        put(getDeckRoute(id), { body: stateToRequest(formData, modelType), forwardError: true })
+        put(getDeckRoute(id), { body: stateToRequest(formData), forwardError: true })
             .then(() => {
-                toast.show({ status: "success", description: t("successUpdate", { item: formData.name }) });
+                toastSuccessUpdate(formData.name);
                 getDeckDetails();
                 setIsEditMode(false);
             })
-            .catch((error: IError) =>
-                toast.show({
-                    accessibilityLabel: t("error"),
-                    title: t("error"),
-                    status: "error",
-                    description: error.message,
-                })
-            );
+            .catch((error: IError) => toastError(error.message));
 
     return {
         formMethods,

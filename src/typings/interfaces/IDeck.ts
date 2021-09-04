@@ -1,9 +1,7 @@
-import { EDeckType } from "../enums";
 import { ICardSummary } from "./ICard";
 
 export interface IDeckSummary {
     id: string;
-    modelType: EDeckType;
     description: string;
     tags: string[];
     cards: string[];
@@ -13,7 +11,6 @@ export interface IDeckSummary {
 
 export interface IDeck {
     id: string;
-    modelType: EDeckType;
     description: string;
     tags: string[];
     cards: ICardSummary[];

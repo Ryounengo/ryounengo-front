@@ -1,6 +1,6 @@
 import { useFetch } from "../useFetch";
 import { EOtpReason, IOtpPayload } from "./IOTPReason";
-import { OTP_ROUTE } from "../../../routes";
+import { OTP_ROUTE } from "@routes";
 
 export const useOTP = () => {
     const [postSendOtpState, { post }] = useFetch();

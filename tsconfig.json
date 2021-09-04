@@ -27,7 +27,7 @@
       "@typings/*": ["src/typings/*"],
       "@common": ["src/common/index.ts"],
       "@static/*": ["src/static/*"],
-      "@routes/*": ["src/routes/*"],
+      "@routes": ["src/routes/index.ts"],
       "@mappers/*": ["src/mappers/*"],
       "@utils/*": ["src/utils/*"],
       "@screens/*": ["src/screens/*"]
