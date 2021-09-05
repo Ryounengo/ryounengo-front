@@ -34,10 +34,6 @@ export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
         getDeckList().then(() => setIsRefreshing(false));
     }, [getDeckList]);
 
-    useEffect(() => {
-        getDeckList();
-    }, [getDeckList]);
-
     return {
         deckList,
         getDeckListState,

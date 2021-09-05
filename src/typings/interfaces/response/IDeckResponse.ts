@@ -1,10 +1,10 @@
-import { ICardResponse } from "./ICardResponse";
+import { ICardSummaryResponse } from "./ICardResponse";
 
 export interface IDeckResponse {
     id: string;
     description: string;
     tags: string[];
-    cards: ICardResponse[];
+    cards: ICardSummaryResponse[];
     isPrivate: boolean;
     name: string;
 }

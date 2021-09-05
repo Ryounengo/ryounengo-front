@@ -1,6 +1,6 @@
-import { ICardSummary, ICardSummaryResponse } from "@typings/interfaces";
+import { ICardResponse, ICard } from "@typings/interfaces";
 
-export const responseToState = (cardList: ICardSummaryResponse[]): ICardSummary[] =>
+export const responseToState = (cardList: ICardResponse[]): ICard[] =>
     cardList.map((card) => ({
         id: card.id,
         front: card.front,
@@ -9,4 +9,5 @@ export const responseToState = (cardList: ICardSummaryResponse[]): ICardSummary[
         example: card.example,
         referenceCard: card.referenceCard,
         type: card.type,
+        toReview: card.toReview,
     }));

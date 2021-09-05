@@ -3,12 +3,12 @@ import { TextInput } from "../form";
 import { textRegex } from "@utils/regex";
 import { useTranslation } from "react-i18next";
 import { ICardEditRectoForm } from "./ICardEdit";
-import { ICard } from "@typings/interfaces";
+import { ICardSummary } from "@typings/interfaces";
 import { useForm } from "react-hook-form";
 
 interface IParams {
     submitRecto(formData: ICardEditRectoForm): void;
-    card?: ICard;
+    card?: ICardSummary;
 }
 
 export const CardEditRectoForm = (props: IParams) => {

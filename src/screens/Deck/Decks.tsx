@@ -9,9 +9,9 @@ import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
 import { useState } from "react";
 import { IDeckFilter } from "./IDeck";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TStackNavigation } from "@navigation/INavigation";
+import { TDeckNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TStackNavigation, "decks">;
+type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "decks">;
 
 export const Decks = () => {
     const { push } = useNavigation<NavigationProps>();
