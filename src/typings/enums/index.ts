@@ -1,1 +1,1 @@
-export * from "./EDeck";
+export * from "./ECard";

@@ -2,12 +2,10 @@
     "basic": "Basic",
     "free": "Free",
     "kanji": "Kanji",
-    "deckType": "Deck type",
     "createDeck": "Create a deck",
     "deck": "Deck",
     "decks": "Decks",
     "deckDetails": "Deck details",
-    "chooseDeckType": "Choose a Deck Type",
     "isPrivate": "This deck is private",
     "tagsExamples": "nature,flower",
     "tags": "tags"

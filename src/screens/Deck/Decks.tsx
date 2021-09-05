@@ -23,10 +23,10 @@ export const Decks = () => {
         <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
             <VStack space={4}>
                 <DeckFilter isLoading={getDeckListState.isLoading} setFilter={setDeckFilter} />
+                <Button onPress={() => push("createDeck")}>{t("createDeck")}</Button>
                 <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
                     {deckList && <DeckList deckList={deckList} />}
                 </ErrorAndLoading>
-                <Button onPress={() => push("deckType")}>{t("createDeck")}</Button>
             </VStack>
         </ScrollView>
     );

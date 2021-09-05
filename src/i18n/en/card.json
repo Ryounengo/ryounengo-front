@@ -1,0 +1,9 @@
+{
+    "card": "Card",
+    "createCard": "Create card",
+    "textCard": "Text card",
+    "mainText": "Main text",
+    "secondaryText": "Secondary text",
+    "optionalText": "Optional text",
+    "example": "Example"
+}

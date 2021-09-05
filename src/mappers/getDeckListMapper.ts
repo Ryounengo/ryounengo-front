@@ -8,5 +8,4 @@ export const responseToState = (deckResponse: IDeckSummaryResponse[]): IDeckSumm
         tags: deck.tags,
         isPrivate: deck.isPrivate,
         cards: deck.cards,
-        modelType: deck.modelType,
     }));

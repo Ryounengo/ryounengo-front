@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { IDeckFilter } from "../../IDeck";
 import { useFetch } from "@common";
-import { getDecksRoute } from "@routes/deck";
+import { getDecksRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
 import { IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
+import { useIsFocused } from "@react-navigation/native";
 
 export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();
     const [getDeckListState, { get }] = useFetch();
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const isScreenFocused = useIsFocused();
 
     const getDeckList = useCallback(() => {
         const query = deckFilter ? `?${objectToQuery({ ...deckFilter })}` : "";
@@ -22,8 +24,10 @@ export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
     }, [deckFilter, get]);
 
     useEffect(() => {
-        getDeckList();
-    }, [getDeckList]);
+        if (isScreenFocused) {
+            getDeckList();
+        }
+    }, [isScreenFocused, getDeckList]);
 
     const onRefresh = useCallback(() => {
         setIsRefreshing(true);

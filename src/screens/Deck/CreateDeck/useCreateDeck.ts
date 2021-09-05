@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
-import { useToast } from "native-base";
-import { useTranslation } from "react-i18next";
-import { getDecksRoute } from "@routes/deck";
+import { DECK_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postDeckMapper";
-import { IError, useFetch } from "@common";
-import { EDeckType } from "@typings/enums";
+import { IError, useCustomToast, useFetch } from "@common";
 import { IDeckEditForm } from "@typings/interfaces";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "react-native-screens/native-stack";
+import { TStackNavigation } from "@navigation/INavigation";
 
-export const useCreateDeck = (deckType: EDeckType) => {
+type NavigationProps = NativeStackNavigationProp<TStackNavigation, "createDeck">;
+
+export const useCreateDeck = () => {
+    const { navigate } = useNavigation<NavigationProps>();
     const formMethods = useForm<IDeckEditForm>({
         defaultValues: {
             name: "",
@@ -17,23 +20,16 @@ export const useCreateDeck = (deckType: EDeckType) => {
         },
     });
     const [postCreateDeckState, { post }] = useFetch();
-    const toast = useToast();
-    const { t } = useTranslation(["common", "deck"]);
+    const { toastError, toastSuccessCreation } = useCustomToast();
     formMethods.register("tags");
 
     const submit = (formData: IDeckEditForm) =>
-        post(getDecksRoute(), { body: stateToRequest(formData, deckType), forwardError: true })
-            .then(() =>
-                toast.show({ status: "success", description: t("common:successCreation", { item: formData.name }) })
-            )
-            .catch((error: IError) =>
-                toast.show({
-                    accessibilityLabel: t("common:error"),
-                    title: t("common:error"),
-                    status: "error",
-                    description: error.message,
-                })
-            );
+        post(DECK_ROUTE, { body: stateToRequest(formData), forwardError: true })
+            .then(() => {
+                toastSuccessCreation(formData.name);
+                navigate("decks");
+            })
+            .catch((error: IError) => toastError(error.message));
 
     return {
         formMethods,

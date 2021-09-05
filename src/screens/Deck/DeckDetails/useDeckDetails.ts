@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { useFetch } from "@common";
-import { getDeckDetailsRoute } from "@routes/deck";
+import { getDeckDetailsRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckMapper";
 import { IDeck, IDeckResponse } from "@typings/interfaces";
+import { useIsFocused } from "@react-navigation/native";
 
 export const useDeckDetails = (deckId: string) => {
     const [deckDetails, setDeckDetails] = useState<IDeck>();
     const [getDeckDetailsState, { get }] = useFetch();
+    const isScreenFocused = useIsFocused();
 
     const getDeckDetails = useCallback(
         () =>
@@ -19,8 +21,10 @@ export const useDeckDetails = (deckId: string) => {
     );
 
     useEffect(() => {
-        getDeckDetails();
-    }, [getDeckDetails]);
+        if (isScreenFocused) {
+            getDeckDetails();
+        }
+    }, [isScreenFocused, getDeckDetails]);
 
     return {
         deckDetails,

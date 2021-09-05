@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ILostPasswordForm } from "./IILostPassword";
 import { useNavigation } from "@react-navigation/native";
-import { useOTP, EOtpReason, IError } from "@common";
-import { useToast } from "native-base";
-import { useTranslation } from "react-i18next";
+import { useOTP, EOtpReason, IError, useCustomToast } from "@common";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TRootNavigation } from "@navigation/INavigation";
 
@@ -11,8 +9,7 @@ type NavigationProps = NativeStackNavigationProp<TRootNavigation, "lostPassword"
 
 export const useLostPassword = () => {
     const { navigate } = useNavigation<NavigationProps>();
-    const toast = useToast();
-    const { t } = useTranslation();
+    const { toastError } = useCustomToast();
     const { sendOTP, postSendOtpState } = useOTP();
     const formMethods = useForm<ILostPasswordForm>({
         defaultValues: {
@@ -25,14 +22,7 @@ export const useLostPassword = () => {
             .then(() => {
                 navigate("updatePassword", { email: formData.email });
             })
-            .catch((error: IError) =>
-                toast.show({
-                    accessibilityLabel: t("error"),
-                    title: t("error"),
-                    status: "error",
-                    description: error.message,
-                })
-            );
+            .catch((error: IError) => toastError(error.message));
     };
 
     return {

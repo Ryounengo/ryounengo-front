@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useToast } from "native-base";
-import { useTranslation } from "react-i18next";
-import { LOGIN_ROUTE } from "../../../routes";
-import { IError, useAuthentication, useFetch } from "@common";
+import { LOGIN_ROUTE } from "@routes";
+import { IError, useAuthentication, useCustomToast, useFetch } from "@common";
 import { ILoginForm } from "./ILogin";
 import { ITokenResponse, responseToState, stateToRequest } from "@mappers/postLoginMapper";
 import { useContext } from "react";
@@ -17,8 +15,7 @@ export const useLogin = () => {
     });
     const { login } = useAuthentication();
     const [postLoginState, { post }] = useFetch();
-    const toast = useToast();
-    const { t } = useTranslation("common");
+    const { toastError } = useCustomToast();
     const { setUser } = useContext(UserContext);
 
     const submit = (formData: ILoginForm) =>
@@ -29,14 +26,7 @@ export const useLogin = () => {
                     setUser(user);
                 }
             })
-            .catch((error: IError) =>
-                toast.show({
-                    accessibilityLabel: t("error"),
-                    title: t("error"),
-                    status: "error",
-                    description: error.message,
-                })
-            );
+            .catch((error: IError) => toastError(error.message));
 
     return {
         formMethods,

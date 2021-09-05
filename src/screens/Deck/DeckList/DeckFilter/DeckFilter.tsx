@@ -1,12 +1,10 @@
 import { Button, Select, Stack } from "native-base";
-import { TextInput } from "@common";
+import { TextInput, SelectInput } from "@common";
 import { IDeckFilter } from "../../IDeck";
 import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
-import { SelectInput } from "../../../../common/form/SelectInput";
 import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
 import { tagsRegex } from "@utils/regex";
-import { EDeckType } from "@typings/enums";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;
@@ -19,13 +17,6 @@ export const DeckFilter = (props: IParams) => {
     const { formMethods, submit, clearForm } = useFilter(setFilter);
     const { control, handleSubmit, formState } = formMethods;
     const { errors } = formState;
-
-    const deckTypeOptionList = [
-        { label: t("deck:kanji"), value: EDeckType.KANJI },
-        { label: t("deck:free"), value: EDeckType.FREE },
-        { label: t("deck:basic"), value: EDeckType.BASIC },
-        { label: t("all"), value: ALL_OPTIONS },
-    ];
 
     const privacyOptionList = [
         { label: t("yes"), value: YES_OPTION },
@@ -46,11 +37,6 @@ export const DeckFilter = (props: IParams) => {
                     maxLength: { value: 50, message: t("validation:maxLength", { count: 50 }) },
                 }}
             />
-            <SelectInput control={control} error={errors.modelType} label={t("deck:deckType")} name="modelType">
-                {deckTypeOptionList.map((option) => (
-                    <Select.Item key={option.value} label={option.label} value={option.value} />
-                ))}
-            </SelectInput>
             <SelectInput control={control} error={errors.isPrivate} label={t("deck:isPrivate")} name="isPrivate">
                 {privacyOptionList.map((option) => (
                     <Select.Item key={option.value.toString()} label={option.label} value={option.value.toString()} />
