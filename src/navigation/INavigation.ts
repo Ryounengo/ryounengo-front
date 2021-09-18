@@ -1,5 +1,9 @@
+import { IDeckFilter } from "@typings/interfaces";
+
 export type TDeckNavigation = {
-    decks: undefined;
+    decks: {
+        deckQuery?: IDeckFilter;
+    };
     createDeck: undefined;
     createCard: {
         deckId: string;

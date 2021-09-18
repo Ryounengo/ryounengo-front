@@ -14,5 +14,7 @@
   "successCreation": "{{item}} has been created.",
   "successUpdate": "{{item}} has been updated.",
   "wrongFormat": "This field is invalid.",
-  "settings": "Settings"
+  "settings": "Settings",
+  "moreFilters": "+ More filters",
+  "seeMore": "See more"
 }

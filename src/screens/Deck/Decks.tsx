@@ -1,31 +1,35 @@
-import { Button, ScrollView, VStack } from "native-base";
-import { useTranslation } from "react-i18next";
-import { useNavigation } from "@react-navigation/native";
+import { ScrollView, VStack } from "native-base";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RefreshControl } from "react-native";
-import { ErrorAndLoading } from "@common";
-import { DeckList } from "./DeckList/DeckList/DeckList";
-import { useDeckList } from "./DeckList/DeckList/useDeckList";
+import { ErrorAndLoading, DeckList, useDeckList } from "@common";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
-import { useState } from "react";
-import { IDeckFilter } from "./IDeck";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TDeckNavigation } from "@navigation/INavigation";
+import { CreateDeckButton } from "@screens/Deck/CreateDeck/CreateDeckButton";
 
 type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "decks">;
+type StackProps = RouteProp<TDeckNavigation, "decks">;
 
 export const Decks = () => {
-    const { push } = useNavigation<NavigationProps>();
-    const { t } = useTranslation("deck");
-    const [deckFilter, setDeckFilter] = useState<IDeckFilter>();
-    const { deckList, getDeckListState, onRefresh, isRefreshing } = useDeckList(deckFilter);
+    const { push, navigate } = useNavigation<NavigationProps>();
+    const { params } = useRoute<StackProps>();
+
+    const goToCreateDeck = () => push("createDeck");
+    const goToDeckDetails = (deckId: string) => navigate("deckDetails", { deckId: deckId });
+
+    const { deckList, getDeckListState, onRefresh, isRefreshing, setDeckFilter } = useDeckList(params.deckQuery);
 
     return (
         <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
             <VStack space={4}>
-                <DeckFilter isLoading={getDeckListState.isLoading} setFilter={setDeckFilter} />
-                <Button onPress={() => push("createDeck")}>{t("createDeck")}</Button>
+                <DeckFilter
+                    defaultValues={params.deckQuery}
+                    isLoading={getDeckListState.isLoading}
+                    setFilter={setDeckFilter}
+                />
+                <CreateDeckButton onPress={goToCreateDeck} />
                 <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
-                    {deckList && <DeckList deckList={deckList} />}
+                    {deckList && <DeckList deckList={deckList} goToDetails={goToDeckDetails} />}
                 </ErrorAndLoading>
             </VStack>
         </ScrollView>

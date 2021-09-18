@@ -1,26 +1,23 @@
 import { Pressable, Text, VStack } from "native-base";
 import { DeckSummary } from "./DeckSummary";
 import { useTranslation } from "react-i18next";
-import { useNavigation } from "@react-navigation/native";
-import { TDeckNavigation } from "@navigation/INavigation";
-import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { IDeckSummary } from "@typings/interfaces";
-
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "decks">;
+import { useStyle } from "./styles";
 
 interface IParams {
     deckList: IDeckSummary[];
+    goToDetails(deckId: string): void;
 }
 
 export const DeckList = (props: IParams) => {
+    const { deckList, goToDetails } = props;
     const { t } = useTranslation("common");
-    const { navigate } = useNavigation<NavigationProps>();
-    const { deckList } = props;
+    const style = useStyle();
 
     return (
-        <VStack space={4}>
+        <VStack space={4} style={style.deckList}>
             {deckList?.map((deck) => (
-                <Pressable key={deck.id} onPress={() => navigate("deckDetails", { deckId: deck.id })}>
+                <Pressable key={deck.id} onPress={() => goToDetails(deck.id)}>
                     <DeckSummary deck={deck} />
                 </Pressable>
             ))}

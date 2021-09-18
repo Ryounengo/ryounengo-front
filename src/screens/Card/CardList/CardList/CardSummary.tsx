@@ -1,5 +1,6 @@
-import { Box, Center, Heading, Text } from "native-base";
+import { Box, Center, Heading } from "native-base";
 import { ICardSummary } from "@typings/interfaces";
+import { useStyle } from "@screens/Card/CardList/CardList/styles";
 
 interface IParams {
     card: ICardSummary;
@@ -7,16 +8,14 @@ interface IParams {
 
 export const CardSummary = (props: IParams) => {
     const { card } = props;
+    const style = useStyle();
 
     return (
-        <Box backgroundColor="lightgrey">
+        <Box style={style.card}>
             <Center>
                 <Heading bold>{card.front[0]}</Heading>
                 <Heading fontSize="xl">{card.back[0]}</Heading>
             </Center>
-            <Text fontSize="md" marginTop={2}>
-                example: {card.example}
-            </Text>
         </Box>
     );
 };

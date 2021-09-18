@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import { IDeckFilter } from "../../IDeck";
 import { useFetch } from "@common";
 import { getDecksRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
-import { IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
+import { IDeckFilter, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 import { useIsFocused } from "@react-navigation/native";
 
-export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
+export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();
+    const [deckFilter, setDeckFilter] = useState<IDeckFilter | undefined>(publicDecksQuery);
     const [getDeckListState, { get }] = useFetch();
     const [isRefreshing, setIsRefreshing] = useState(false);
     const isScreenFocused = useIsFocused();
@@ -36,6 +36,8 @@ export const useDeckList = (deckFilter: IDeckFilter | undefined) => {
 
     return {
         deckList,
+        deckFilter,
+        setDeckFilter,
         getDeckListState,
         onRefresh,
         isRefreshing,

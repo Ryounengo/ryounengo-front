@@ -28,3 +28,8 @@ export interface ICardEditResponse {
     type: ECardType;
     isReversed?: boolean;
 }
+
+export interface IVirtualDeckResponse {
+    tags: string[];
+    cards: string[];
+}

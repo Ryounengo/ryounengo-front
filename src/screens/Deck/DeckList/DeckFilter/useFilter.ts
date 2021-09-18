@@ -1,19 +1,22 @@
 import { useForm } from "react-hook-form";
 import { IFilterForm } from "./IDeckFilter";
 import { defaultPagination } from "@utils/pagination";
-import { ALL_OPTIONS, YES_OPTION } from "../../../../constants";
-import { IDeckFilter } from "@screens/Deck/IDeck";
+import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
+import { IDeckFilter } from "@typings/interfaces";
 
-const defaultValues: IFilterForm = {
-    isPrivate: ALL_OPTIONS,
-    name: "",
-    tags: "",
-};
+export const useFilter = (setFilter: (filter: IDeckFilter) => void, filter?: IDeckFilter) => {
+    let isPrivateDefaultValue = ALL_OPTIONS;
 
-export const useFilter = (setFilter: (filter: IDeckFilter) => void) => {
+    if (filter?.isPrivate !== undefined) {
+        isPrivateDefaultValue = filter.isPrivate ? YES_OPTION : NO_OPTION;
+    }
+
+    const defaultValues: IFilterForm = {
+        isPrivate: isPrivateDefaultValue,
+        name: filter?.name ?? "",
+        tags: filter?.tags?.join(",") ?? "",
+    };
     const formMethods = useForm<IFilterForm>({ defaultValues });
-    const { reset } = formMethods;
-    const clearForm = () => reset(defaultValues);
 
     const filterToState = (filterForm: IFilterForm): IDeckFilter => ({
         ...defaultPagination,
@@ -28,7 +31,6 @@ export const useFilter = (setFilter: (filter: IDeckFilter) => void) => {
 
     return {
         formMethods,
-        clearForm,
         submit,
     };
 };

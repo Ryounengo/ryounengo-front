@@ -1,9 +1,9 @@
 import { FormControl, Select } from "native-base";
 import { Controller, FieldError, FieldValues, UseControllerProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 
-interface IParams<T> {
+interface IParams<T> extends ComponentProps<typeof Select> {
     name: string;
     error: FieldError | undefined;
     control: UseControllerProps<T>["control"];

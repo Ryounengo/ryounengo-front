@@ -8,5 +8,6 @@
     "deckDetails": "Deck details",
     "isPrivate": "This deck is private",
     "tagsExamples": "nature,flower",
-    "tags": "tags"
+    "tags": "tags",
+    "searchDeck": "Search a deck"
 }

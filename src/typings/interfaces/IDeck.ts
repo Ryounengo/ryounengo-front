@@ -1,4 +1,11 @@
 import { ICardSummary } from "./ICard";
+import { IPagination } from "@typings/interfaces/IPagination";
+
+export interface IDeckFilter extends IPagination {
+    name?: string;
+    tags?: string[];
+    isPrivate?: boolean;
+}
 
 export interface IDeckSummary {
     id: string;
@@ -7,6 +14,11 @@ export interface IDeckSummary {
     cards: string[];
     isPrivate: boolean;
     name: string;
+}
+
+export interface IVirtualDeck {
+    tags: string[];
+    cards: string[];
 }
 
 export interface IDeck {

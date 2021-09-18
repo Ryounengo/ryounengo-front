@@ -15,5 +15,7 @@
   "wrongFormat": "Ce champ est mal formaté.",
   "successCreation": "{{item}} a ete créé.",
   "successUpdate": "{{item}} a été modifié.",
-  "settings": "Paramètres"
+  "settings": "Paramètres",
+  "moreFilters": "+ Plus de filtres",
+  "seeMore": "En voir plus"
 }

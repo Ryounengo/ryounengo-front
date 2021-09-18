@@ -8,5 +8,6 @@
     "deckDetails": "Details du deck",
     "isPrivate": "Ce deck est privé",
     "tagsExamples": "nature,fleurs",
-    "tags": "Mots clés"
+    "tags": "Mots clés",
+    "searchDeck": "Rechercher un deck"
 }
