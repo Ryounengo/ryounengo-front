@@ -17,5 +17,7 @@
   "successUpdate": "{{item}} a été modifié.",
   "settings": "Paramètres",
   "moreFilters": "+ Plus de filtres",
-  "seeMore": "En voir plus"
+  "seeMore": "En voir plus",
+  "cancel": "Annuler",
+  "edit": "Modifier"
 }

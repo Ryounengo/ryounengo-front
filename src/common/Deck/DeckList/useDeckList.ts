@@ -8,7 +8,7 @@ import { useIsFocused } from "@react-navigation/native";
 
 export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();
-    const [deckFilter, setDeckFilter] = useState<IDeckFilter | undefined>(publicDecksQuery);
+    const [deckFilter, setDeckFilter] = useState(publicDecksQuery);
     const [getDeckListState, { get }] = useFetch();
     const [isRefreshing, setIsRefreshing] = useState(false);
     const isScreenFocused = useIsFocused();

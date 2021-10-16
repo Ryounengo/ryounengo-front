@@ -1,15 +1,9 @@
 import { IDeckFilter } from "@typings/interfaces";
+import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type TDeckNavigation = {
     decks: {
         deckQuery?: IDeckFilter;
-    };
-    createDeck: undefined;
-    createCard: {
-        deckId: string;
-    };
-    deckDetails: {
-        deckId: string;
     };
 };
 
@@ -23,12 +17,19 @@ export type TStackSettings = {
 
 export type TBottomTabNavigation = {
     home: undefined;
-    deck: undefined;
-    card: undefined;
+    deck: NavigatorScreenParams<TDeckNavigation>;
+    card: NavigatorScreenParams<TCardNavigation>;
     settings: undefined;
 };
 
 export type TRootNavigation = {
+    createDeck: undefined;
+    createCard: {
+        deckId: string;
+    };
+    deckDetails: {
+        deckId: string;
+    };
     main: undefined;
     login: undefined;
     register: undefined;

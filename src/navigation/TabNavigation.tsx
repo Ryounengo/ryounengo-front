@@ -18,12 +18,17 @@ export const BottomTabNavigation = () => {
     return (
         <Tab.Navigator
             initialRouteName="home"
-            tabBarOptions={{ showLabel: false, activeBackgroundColor: colors.warmGray[200] }}
+            screenListeners={({ navigation }) => ({
+                blur: () => navigation.setParams({ screen: undefined, params: undefined }),
+            })}
+            screenOptions={{ tabBarActiveTintColor: colors.warmGray[200], unmountOnBlur: true, headerShown: false }}
         >
-            <Tab.Screen component={Home} name="home" options={{ tabBarIcon: renderHomeIcon }} />
-            <Tab.Screen component={DeckNavigation} name="deck" options={{ tabBarIcon: renderDeckIcon }} />
-            <Tab.Screen component={CardNavigation} name="card" options={{ tabBarIcon: renderCardIcon }} />
-            <Tab.Screen component={StackSettings} name="settings" options={{ tabBarIcon: renderSettingsIcon }} />
+            <Tab.Group>
+                <Tab.Screen component={Home} name="home" options={{ tabBarIcon: renderHomeIcon }} />
+                <Tab.Screen component={StackSettings} name="settings" options={{ tabBarIcon: renderSettingsIcon }} />
+                <Tab.Screen component={DeckNavigation} name="deck" options={{ tabBarIcon: renderDeckIcon }} />
+                <Tab.Screen component={CardNavigation} name="card" options={{ tabBarIcon: renderCardIcon }} />
+            </Tab.Group>
         </Tab.Navigator>
     );
 };

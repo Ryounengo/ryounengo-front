@@ -16,5 +16,7 @@
   "wrongFormat": "This field is invalid.",
   "settings": "Settings",
   "moreFilters": "+ More filters",
-  "seeMore": "See more"
+  "seeMore": "See more",
+  "cancel": "Cancel",
+  "edit": "Edit"
 }
