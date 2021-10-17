@@ -11,6 +11,7 @@ import { CreateDeck } from "@screens/Deck/CreateDeck/CreateDeck";
 import { CreateCard } from "@screens/Card/CreateCard/CreateCard";
 import { DeckDetails } from "@screens/Deck/DeckDetails/DeckDetails";
 import { useTranslation } from "react-i18next";
+import { Review } from "@screens/Card/Review/Review";
 
 const Stack = createStackNavigator<TRootNavigation>();
 
@@ -45,6 +46,11 @@ export const RootNavigation = () => {
                             component={DeckDetails}
                             name="deckDetails"
                             options={{ title: t("deck:deckDetails") }}
+                        />
+                        <Stack.Screen
+                            component={Review}
+                            name="reviewCards"
+                            options={{ title: t("card:reviewCards") }}
                         />
                     </Stack.Group>
                 </Fragment>

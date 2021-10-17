@@ -1,15 +1,18 @@
 import { Box, Heading, AddIcon, IconButton, Text, MoonIcon } from "native-base";
 import { IDeckSummary } from "@typings/interfaces";
 import { useStyle } from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TDeckNavigation } from "@navigation/INavigation";
+import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
 
 interface IParams {
     deck: IDeckSummary;
 }
 
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "decks">;
+type NavigationProps = CompositeNavigationProp<
+    NativeStackNavigationProp<TDeckNavigation, "decks">,
+    NativeStackNavigationProp<TRootNavigation>
+>;
 
 export const DeckSummary = (props: IParams) => {
     const { deck } = props;
