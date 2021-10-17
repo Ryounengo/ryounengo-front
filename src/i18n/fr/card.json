@@ -1,11 +1,11 @@
 {
     "card": "Carte",
     "cards": "Cartes",
-    "createCard": "Créer une card",
+    "createCard": "Créer une carte",
     "textCard": "Carte à texte",
     "mainText": "Texte principal",
     "secondaryText": "Texte secondaire",
     "optionalText": "Texte optionnel",
-    "example": "Exemple",
+    "exampleText": "Exemple",
     "searchCard": "Rechercher un Carte"
 }

@@ -1,13 +1,17 @@
 import { ScrollView, VStack } from "native-base";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { CompositeNavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RefreshControl } from "react-native";
 import { ErrorAndLoading, DeckList, useDeckList } from "@common";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TDeckNavigation } from "@navigation/INavigation";
+import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
 import { CreateDeckButton } from "@screens/Deck/CreateDeck/CreateDeckButton";
 
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "decks">;
+type NavigationProps = CompositeNavigationProp<
+    NativeStackNavigationProp<TDeckNavigation, "decks">,
+    NativeStackNavigationProp<TRootNavigation>
+>;
+
 type StackProps = RouteProp<TDeckNavigation, "decks">;
 
 export const Decks = () => {
@@ -17,13 +21,13 @@ export const Decks = () => {
     const goToCreateDeck = () => push("createDeck");
     const goToDeckDetails = (deckId: string) => navigate("deckDetails", { deckId: deckId });
 
-    const { deckList, getDeckListState, onRefresh, isRefreshing, setDeckFilter } = useDeckList(params.deckQuery);
+    const { deckList, getDeckListState, onRefresh, isRefreshing, setDeckFilter } = useDeckList(params?.deckQuery);
 
     return (
         <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
             <VStack space={4}>
                 <DeckFilter
-                    defaultValues={params.deckQuery}
+                    defaultValues={params?.deckQuery}
                     isLoading={getDeckListState.isLoading}
                     setFilter={setDeckFilter}
                 />
