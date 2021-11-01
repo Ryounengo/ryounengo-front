@@ -4,9 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 import { IDeck } from "@typings/interfaces";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TDeckNavigation } from "@navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation>;
+type NavigationProps = NativeStackNavigationProp<TRootNavigation, "deckDetails">;
 
 interface IParams {
     deck: IDeck;

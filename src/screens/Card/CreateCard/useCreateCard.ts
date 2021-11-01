@@ -4,9 +4,9 @@ import { ICardEdit } from "@typings/interfaces";
 import { stateToRequest } from "@mappers/postCardMapper";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { TDeckNavigation } from "@navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "createCard">;
+type NavigationProps = NativeStackNavigationProp<TRootNavigation, "createCard">;
 
 export const useCreateCard = (deckId: string) => {
     const [postCreateCardState, { post }] = useFetch();

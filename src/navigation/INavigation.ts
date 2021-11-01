@@ -31,6 +31,7 @@ export type TRootNavigation = {
         deckId: string;
     };
     main: undefined;
+    reviewCards: undefined;
     login: undefined;
     register: undefined;
     lostPassword: undefined;

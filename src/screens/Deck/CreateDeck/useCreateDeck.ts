@@ -5,9 +5,9 @@ import { IError, useCustomToast, useFetch } from "@common";
 import { IDeckEditForm, IDeckSummaryResponse } from "@typings/interfaces";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TDeckNavigation } from "@navigation/INavigation";
+import { TRootNavigation } from "@navigation/INavigation";
 
-type NavigationProps = NativeStackNavigationProp<TDeckNavigation, "createDeck">;
+type NavigationProps = NativeStackNavigationProp<TRootNavigation, "createDeck">;
 
 export const useCreateDeck = () => {
     const { navigate } = useNavigation<NavigationProps>();

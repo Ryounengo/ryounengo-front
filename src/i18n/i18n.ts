@@ -31,7 +31,7 @@ const resources = {
 
 const i18nOptions: InitOptions = {
     fallbackLng: "fr",
-    ns: ["common"],
+    ns: ["common", "deck", "card"],
     fallbackNS: "common",
     react: {
         useSuspense: true,
