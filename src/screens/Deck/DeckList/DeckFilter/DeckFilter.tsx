@@ -14,7 +14,7 @@ interface IParams {
 }
 
 export const DeckFilter = (props: IParams) => {
-    const { setFilter, isLoading, defaultValues } = props;
+    const { setFilter, defaultValues } = props;
     const { t } = useTranslation(["deck", "validation"]);
     const { formMethods, submit } = useFilter(setFilter, defaultValues);
     const style = useStyle();
@@ -35,9 +35,7 @@ export const DeckFilter = (props: IParams) => {
                 error={errors.name}
                 name="name"
                 placeholder={t("deck:searchDeck")}
-                prependedComponent={
-                    <IconButton disabled={isLoading} icon={<SearchIcon />} onPress={handleSubmit(submit)} />
-                }
+                prependedComponent={<IconButton icon={<SearchIcon />} onPress={handleSubmit(submit)} />}
                 rules={{
                     minLength: { value: 3, message: t("validation:minLength", { count: 3 }) },
                     maxLength: { value: 50, message: t("validation:maxLength", { count: 50 }) },

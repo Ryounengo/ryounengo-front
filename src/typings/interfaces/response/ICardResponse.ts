@@ -26,10 +26,5 @@ export interface ICardEditResponse {
     back: string[];
     example: string;
     type: ECardType;
-    isReversed?: boolean;
-}
-
-export interface IVirtualDeckResponse {
-    tags: string[];
-    cards: string[];
+    reverseCard: boolean;
 }

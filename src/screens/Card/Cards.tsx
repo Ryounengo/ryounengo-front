@@ -9,13 +9,13 @@ import { CardList } from "@screens/Card/CardList/CardList/CardList";
 
 export const Cards = () => {
     const [cardFilter, setCardFilter] = useState<ICardFilter>();
-    const { cardList, getCardListState, onRefresh, isRefreshing } = useCardList(cardFilter);
+    const { cardList, error, refresh, isRefreshLoading } = useCardList(cardFilter);
 
     return (
-        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
+        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
             <VStack space={4}>
-                <CardFilter isLoading={getCardListState.isLoading} setFilter={setCardFilter} />
-                <ErrorAndLoading error={getCardListState.error} isLoading={getCardListState.isLoading}>
+                <CardFilter setFilter={setCardFilter} />
+                <ErrorAndLoading error={error} isLoading={!cardList}>
                     {cardList && <CardList cardList={cardList} />}
                 </ErrorAndLoading>
             </VStack>

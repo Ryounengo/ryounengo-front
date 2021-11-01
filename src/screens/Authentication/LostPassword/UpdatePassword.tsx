@@ -10,7 +10,7 @@ type TParams = StackScreenProps<TRootNavigation, "updatePassword">;
 export const UpdatePassword = (props: TParams) => {
     const { route } = props;
     const { email } = route.params;
-    const { formMethods, submit, postUpdatePasswordState } = useUpdatePassword();
+    const { formMethods, submit, isLoading } = useUpdatePassword();
     const { handleSubmit, formState, control, watch } = formMethods;
     const { errors } = formState;
     const password = watch("password");
@@ -55,7 +55,7 @@ export const UpdatePassword = (props: TParams) => {
                 }}
                 type="password"
             />
-            <Button isLoading={postUpdatePasswordState.isLoading} onPress={handleSubmit(submit)}>
+            <Button isLoading={isLoading} onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
         </VStack>

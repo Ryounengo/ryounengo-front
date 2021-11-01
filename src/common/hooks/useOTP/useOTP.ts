@@ -1,18 +1,18 @@
-import { useFetch } from "../useFetch";
 import { EOtpReason, IOtpPayload } from "./IOTPReason";
 import { OTP_ROUTE } from "@routes";
+import { usePostApi } from "../api";
 
 export const useOTP = () => {
-    const [postSendOtpState, { post }] = useFetch();
+    const { isLoading, update } = usePostApi();
 
     const sendOTP = (email: string, reason: EOtpReason) => {
         const payload: IOtpPayload = { email, reason };
 
-        return post(OTP_ROUTE, { body: payload, forwardError: true });
+        return update(OTP_ROUTE, payload);
     };
 
     return {
         sendOTP,
-        postSendOtpState,
+        isLoading,
     };
 };

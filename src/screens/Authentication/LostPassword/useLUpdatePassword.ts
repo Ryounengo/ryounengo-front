@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { IUpdatePasswordForm } from "./IILostPassword";
-import { IError, useCustomToast, useFetch } from "@common";
+import { useCustomToast, usePostApi } from "@common";
 import { useNavigation } from "@react-navigation/native";
 import { UPDATE_PASSWORD_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postUpdatePasswordMapper";
@@ -11,7 +11,7 @@ type NavigationProps = NativeStackNavigationProp<TRootNavigation, "updatePasswor
 
 export const useUpdatePassword = () => {
     const { navigate } = useNavigation<NavigationProps>();
-    const [postUpdatePasswordState, { post }] = useFetch();
+    const { isLoading, update } = usePostApi();
     const { toastError } = useCustomToast();
     const formMethods = useForm<IUpdatePasswordForm>({
         defaultValues: {
@@ -23,16 +23,16 @@ export const useUpdatePassword = () => {
 
     const submit = (formData: IUpdatePasswordForm) => {
         const payload = stateToRequest(formData);
-        post(UPDATE_PASSWORD_ROUTE, { body: payload, forwardError: true })
+        update(UPDATE_PASSWORD_ROUTE, payload)
             .then(() => {
                 navigate("login");
             })
-            .catch((error: IError) => toastError(error.message));
+            .catch((error) => toastError(error.message));
     };
 
     return {
         formMethods,
         submit,
-        postUpdatePasswordState,
+        isLoading,
     };
 };

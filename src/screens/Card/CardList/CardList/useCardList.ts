@@ -1,43 +1,34 @@
-import { useCallback, useEffect, useState } from "react";
-import { useFetch } from "@common";
+import { useEffect, useState } from "react";
 import { objectToQuery } from "@utils/fetchUtils";
 import { ICardSummary, ICardSummaryResponse } from "@typings/interfaces";
-import { useIsFocused } from "@react-navigation/native";
 import { ICardFilter } from "@screens/Card/CardList/CardFilter/ICardFilter";
 import { responseToState } from "@mappers/getCardListMapper";
 import { getCardsRoute } from "@routes";
+import { useGetApi } from "../../../../common/hooks/api/useGetApi";
 
 export const useCardList = (cardFilter: ICardFilter | undefined) => {
     const [cardList, setCardList] = useState<ICardSummary[]>();
-    const [getCardListState, { get }] = useFetch();
-    const [isRefreshing, setIsRefreshing] = useState(false);
-    const isScreenFocused = useIsFocused();
+    const query = cardFilter ? `?${objectToQuery({ name: cardFilter.search })}` : "";
 
-    const getCardList = useCallback(() => {
-        const query = cardFilter ? `?${objectToQuery({ name: cardFilter.search })}` : "";
-
-        return get<ICardSummaryResponse[]>(getCardsRoute(query)).then((response) => {
-            if (response) {
-                setCardList(responseToState(response));
-            }
-        });
-    }, [cardFilter, get]);
+    const {
+        data: cardResponse,
+        error,
+        isValidating,
+        refresh,
+        isRefreshLoading,
+    } = useGetApi<ICardSummaryResponse[]>(getCardsRoute(query));
 
     useEffect(() => {
-        if (isScreenFocused) {
-            getCardList();
+        if (cardResponse) {
+            setCardList(responseToState(cardResponse));
         }
-    }, [isScreenFocused, getCardList]);
-
-    const onRefresh = useCallback(() => {
-        setIsRefreshing(true);
-        getCardList().then(() => setIsRefreshing(false));
-    }, [getCardList]);
+    }, [cardResponse]);
 
     return {
         cardList,
-        getCardListState,
-        onRefresh,
-        isRefreshing,
+        isValidating,
+        error,
+        refresh,
+        isRefreshLoading,
     };
 };

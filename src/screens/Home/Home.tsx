@@ -11,16 +11,16 @@ export const Home = () => {
         limit: 5,
         isPrivate: false,
     };
-    const { deckList, getDeckListState } = useDeckList(publicDecksQuery);
-    const { getReviewCardListState, reviewCardList } = useCardReviewList();
+    const { reviewCardList, error: reviewCardListError } = useCardReviewList();
+    const { deckList, error: deckListError } = useDeckList(publicDecksQuery);
 
     return (
         <ScrollView>
             <VStack>
-                <ErrorAndLoading error={getReviewCardListState.error} isLoading={getReviewCardListState.isLoading}>
+                <ErrorAndLoading error={reviewCardListError} isLoading={!reviewCardList}>
                     {reviewCardList && <ReviewSection cardReviewList={reviewCardList} />}
                 </ErrorAndLoading>
-                <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
+                <ErrorAndLoading error={deckListError} isLoading={!deckList}>
                     {deckList && <DiscoverSection deckList={deckList} />}
                 </ErrorAndLoading>
             </VStack>

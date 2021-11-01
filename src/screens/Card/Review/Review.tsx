@@ -6,13 +6,12 @@ import { useReviewCard } from "@screens/Card/Review/useReviewCard";
 import { ECardReviewName } from "@screens/Card/Review/IReviewPayload";
 
 export const Review = () => {
-    const { reviewCardList, getReviewCardListState } = useCardReviewList();
+    const { reviewCardList, error } = useCardReviewList();
     const { reviewCard, currentCard } = useReviewCard({ reviewCardList });
-    const { isLoading, error } = getReviewCardListState;
 
     return (
         <View>
-            <ErrorAndLoading error={error} isLoading={isLoading}>
+            <ErrorAndLoading error={error} isLoading={!reviewCardList}>
                 {currentCard && (
                     <Fragment>
                         <ReviewCard card={currentCard} />

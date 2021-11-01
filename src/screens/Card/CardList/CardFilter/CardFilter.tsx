@@ -7,11 +7,11 @@ import { useStyle } from "@screens/Card/CardList/CardFilter/styles";
 
 interface IParams {
     setFilter(filter: ICardFilter): void;
-    isLoading: boolean;
+    isLoading?: boolean;
 }
 
 export const CardFilter = (props: IParams) => {
-    const { setFilter, isLoading } = props;
+    const { setFilter } = props;
     const { t } = useTranslation(["common", "validation"]);
     const style = useStyle();
     const { formMethods, submit } = useFilter(setFilter);
@@ -26,9 +26,7 @@ export const CardFilter = (props: IParams) => {
                 error={errors.search}
                 name="search"
                 placeholder={t("card:searchCard")}
-                prependedComponent={
-                    <IconButton disabled={isLoading} icon={<SearchIcon />} onPress={handleSubmit(submit)} />
-                }
+                prependedComponent={<IconButton icon={<SearchIcon />} onPress={handleSubmit(submit)} />}
                 setValue={setValue}
             />
         </Stack>

@@ -23,7 +23,7 @@ export const CardTypeForm = (props: IParams) => {
                     <Text>{t("makeCardReversed")}</Text>
                 </Checkbox>
             )}
-            <Pressable onPress={() => submitType(ECardType.TEXT)}>
+            <Pressable onPress={() => submitType(ECardType.TEXT, isReversed)}>
                 <Text border={cardType === ECardType.TEXT ? styles.selectedCard : {}} textAlign="center">
                     {t("textCard")}
                 </Text>

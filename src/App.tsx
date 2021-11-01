@@ -1,26 +1,27 @@
 import { UserContext } from "./context/UserContext";
-import { useAuthentication } from "@common";
-import { useEffect, useState } from "react";
 import { Box, Spinner, Text } from "native-base";
 import { useTranslation } from "react-i18next";
 import { RootNavigation } from "@navigation/RootNavigation";
 import { IUser } from "@typings/interfaces/IAuthentication";
+import { getUser, refreshToken } from "@utils/authUtils";
+import { useEffect, useState } from "react";
 
 const App = () => {
-    const { refreshToken, postRefreshTokenState } = useAuthentication();
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState<IUser>();
+    const [error, setError] = useState<unknown>();
     const { t } = useTranslation("common");
 
     useEffect(() => {
         refreshToken()
-            .then((userData) => setUser(userData))
+            .then((token) => {
+                setUser(token ? getUser(token) : undefined);
+            })
+            .catch((err) => setError(err))
             .finally(() => setIsLoading(false));
-    }, [refreshToken]);
+    }, []);
 
     const renderApp = () => {
-        const { error } = postRefreshTokenState;
-
         if (error || isLoading) {
             return (
                 <Box>

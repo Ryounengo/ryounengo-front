@@ -1,34 +1,30 @@
-import { useCallback, useEffect, useState } from "react";
-import { useFetch } from "@common";
+import { useEffect, useState } from "react";
 import { getDeckDetailsRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckMapper";
-import { IDeck, IDeckResponse } from "@typings/interfaces";
-import { useIsFocused } from "@react-navigation/native";
+import { useGetApi } from "../../../common/hooks/api/useGetApi";
+import { IDeck } from "@typings/interfaces";
 
 export const useDeckDetails = (deckId: string) => {
     const [deckDetails, setDeckDetails] = useState<IDeck>();
-    const [getDeckDetailsState, { get }] = useFetch();
-    const isScreenFocused = useIsFocused();
-
-    const getDeckDetails = useCallback(
-        () =>
-            get<IDeckResponse>(getDeckDetailsRoute(deckId, 0)).then((response) => {
-                if (response) {
-                    setDeckDetails(responseToState(response));
-                }
-            }),
-        [deckId, get]
-    );
+    const {
+        data: deckResponse,
+        error,
+        isValidating,
+        refresh,
+        isRefreshLoading,
+    } = useGetApi<IDeck>(getDeckDetailsRoute(deckId, 0));
 
     useEffect(() => {
-        if (isScreenFocused) {
-            getDeckDetails();
+        if (deckResponse) {
+            setDeckDetails(responseToState(deckResponse));
         }
-    }, [isScreenFocused, getDeckDetails]);
+    }, [deckResponse]);
 
     return {
         deckDetails,
-        getDeckDetails,
-        getDeckDetailsState,
+        error,
+        isValidating,
+        refresh,
+        isRefreshLoading,
     };
 };

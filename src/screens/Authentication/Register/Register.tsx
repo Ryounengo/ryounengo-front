@@ -11,7 +11,7 @@ type TParams = StackScreenProps<TRootNavigation, "register">;
 export const Register = (props: TParams) => {
     const { navigation } = props;
     const { t } = useTranslation(["user", "common", "validation"]);
-    const { postRegisterState, submit, formMethods } = useRegister();
+    const { isLoading, submit, formMethods } = useRegister();
     const { control, formState, handleSubmit } = formMethods;
     const { errors } = formState;
 
@@ -54,7 +54,7 @@ export const Register = (props: TParams) => {
                 }}
                 type="password"
             />
-            <Button isLoading={postRegisterState.isLoading} variant="outline" onPress={handleSubmit(submit)}>
+            <Button isLoading={isLoading} variant="outline" onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
             <Button variant="link" onPress={goToLogin}>

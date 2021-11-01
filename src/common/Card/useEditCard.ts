@@ -11,6 +11,7 @@ export const useEditCard = (submit: (card: ICardEdit) => void, card?: ICardSumma
         front: card?.front ?? [],
         back: card?.back ?? [],
         example: card?.example ?? "",
+        reverseCard: Boolean(card?.referenceCard),
         type: card?.type ?? cardType,
     });
 
@@ -29,8 +30,8 @@ export const useEditCard = (submit: (card: ICardEdit) => void, card?: ICardSumma
         submit({ ...newCard, back: newVerso });
     };
 
-    const submitType = (selectedCardType: ECardType, reverseCard?: boolean) => {
-        setNewCard((prevState) => prevState && { ...prevState, reverseCard: reverseCard, type: selectedCardType });
+    const submitType = (selectedCardType: ECardType, reverseCard: boolean) => {
+        setNewCard((prevState) => prevState && { ...prevState, reverseCard, type: selectedCardType });
         goToNextStep();
     };
 

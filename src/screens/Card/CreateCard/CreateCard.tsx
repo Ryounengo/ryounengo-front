@@ -7,7 +7,7 @@ type NavigationProps = StackScreenProps<TRootNavigation, "createCard">;
 
 export const CreateCard = (props: NavigationProps) => {
     const { route } = props;
-    const { submit, postCreateCardState } = useCreateCard(route.params.deckId);
+    const { submit, isLoading } = useCreateCard(route.params.deckId);
 
-    return <CardEdit isEdit isLoading={postCreateCardState.isLoading} submit={submit} />;
+    return <CardEdit isEdit isLoading={isLoading} submit={submit} />;
 };

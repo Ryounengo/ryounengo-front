@@ -1,36 +1,26 @@
-import { useFetch } from "@common";
-import { useCallback, useEffect, useState } from "react";
-import { useIsFocused } from "@react-navigation/native";
+import { useEffect, useState } from "react";
 import { ICard, ICardResponse } from "@typings/interfaces";
 import { getCardsRoute } from "@routes";
 import { objectToQuery } from "@utils/fetchUtils";
 import { responseToState } from "@mappers/getCardMapper";
+import { useGetApi } from "../api/useGetApi";
 
 export const useCardReviewList = () => {
     const [reviewCardList, setReviewCardList] = useState<ICard[]>();
-    const [getReviewCardListState, { get }] = useFetch();
-    const isFocused = useIsFocused();
+    const query = `?${objectToQuery({
+        toReview: true,
+    })}`;
 
-    const getReviewCards = useCallback(() => {
-        const query = `?${objectToQuery({
-            toReview: true,
-        })}`;
-
-        get<ICardResponse[]>(getCardsRoute(query)).then((response) => {
-            if (response) {
-                setReviewCardList(responseToState(response));
-            }
-        });
-    }, [get]);
+    const { data: reviewCardResponse, error } = useGetApi<ICardResponse[]>(getCardsRoute(query));
 
     useEffect(() => {
-        if (isFocused) {
-            getReviewCards();
+        if (reviewCardResponse) {
+            setReviewCardList(responseToState(reviewCardResponse));
         }
-    }, [getReviewCards, isFocused]);
+    }, [reviewCardResponse]);
 
     return {
         reviewCardList,
-        getReviewCardListState,
+        error,
     };
 };

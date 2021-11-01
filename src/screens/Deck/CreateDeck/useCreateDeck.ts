@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { DECK_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postDeckMapper";
-import { IError, useCustomToast, useFetch } from "@common";
+import { useCustomToast, usePostApi } from "@common";
 import { IDeckEditForm, IDeckSummaryResponse } from "@typings/interfaces";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
@@ -19,23 +19,23 @@ export const useCreateDeck = () => {
             isPrivate: false,
         },
     });
-    const [postCreateDeckState, { post }] = useFetch();
+    const { update, isLoading } = usePostApi<IDeckSummaryResponse>();
     const { toastError, toastSuccessCreation } = useCustomToast();
     formMethods.register("tags");
 
     const submit = (formData: IDeckEditForm) =>
-        post<IDeckSummaryResponse>(DECK_ROUTE, { body: stateToRequest(formData), forwardError: true })
+        update(DECK_ROUTE, stateToRequest(formData))
             .then((response) => {
                 toastSuccessCreation(formData.name);
                 if (response) {
                     navigate("deckDetails", { deckId: response.id });
                 }
             })
-            .catch((error: IError) => toastError(error.message));
+            .catch((error) => toastError(error.message));
 
     return {
         formMethods,
         submit,
-        postCreateDeckState,
+        isLoading,
     };
 };
