@@ -5,7 +5,7 @@ import { TextInput } from "@common";
 import { emailRegex } from "@utils/regex";
 
 export const LostPassword = () => {
-    const { formMethods, submit, postSendOtpState } = useLostPassword();
+    const { formMethods, submit, isLoading } = useLostPassword();
     const { handleSubmit, formState, control } = formMethods;
     const { errors } = formState;
     const { t } = useTranslation(["user", "validation"]);
@@ -23,7 +23,7 @@ export const LostPassword = () => {
                     pattern: { value: emailRegex, message: t("validation:emailError") },
                 }}
             />
-            <Button isLoading={postSendOtpState.isLoading} onPress={handleSubmit(submit)}>
+            <Button isLoading={isLoading} onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
         </VStack>

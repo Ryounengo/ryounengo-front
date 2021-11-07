@@ -21,18 +21,14 @@ export const Decks = () => {
     const goToCreateDeck = () => push("createDeck");
     const goToDeckDetails = (deckId: string) => navigate("deckDetails", { deckId: deckId });
 
-    const { deckList, getDeckListState, onRefresh, isRefreshing, setDeckFilter } = useDeckList(params?.deckQuery);
+    const { deckList, refresh, isValidating, error, setDeckFilter, isRefreshLoading } = useDeckList(params?.deckQuery);
 
     return (
-        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
+        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
             <VStack space={4}>
-                <DeckFilter
-                    defaultValues={params?.deckQuery}
-                    isLoading={getDeckListState.isLoading}
-                    setFilter={setDeckFilter}
-                />
+                <DeckFilter defaultValues={params?.deckQuery} isLoading={isValidating} setFilter={setDeckFilter} />
                 <CreateDeckButton onPress={goToCreateDeck} />
-                <ErrorAndLoading error={getDeckListState.error} isLoading={getDeckListState.isLoading}>
+                <ErrorAndLoading error={error} isLoading={!deckList}>
                     {deckList && <DeckList deckList={deckList} goToDetails={goToDeckDetails} />}
                 </ErrorAndLoading>
             </VStack>

@@ -25,5 +25,5 @@ export interface ICardEdit {
     back: string[];
     example: string;
     type: ECardType;
-    reverseCard?: boolean;
+    reverseCard: boolean;
 }

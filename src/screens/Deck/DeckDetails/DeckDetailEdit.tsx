@@ -10,7 +10,7 @@ interface IParams {
 
 export const DeckDetailsEdit = (props: IParams) => {
     const { deck, getDeckDetails, setIsEditMode } = props;
-    const { formMethods, submit, postCreateDeckState } = useDeckEdit(deck, getDeckDetails, setIsEditMode);
+    const { formMethods, submit, isLoading } = useDeckEdit(deck, getDeckDetails, setIsEditMode);
 
-    return <DeckEditForm formMethods={formMethods} isLoading={postCreateDeckState.isLoading} submit={submit} />;
+    return <DeckEditForm formMethods={formMethods} isLoading={isLoading} submit={submit} />;
 };

@@ -1,45 +1,36 @@
-import { useCallback, useEffect, useState } from "react";
-import { useFetch } from "@common";
+import { useEffect, useState } from "react";
 import { getDecksRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
 import { IDeckFilter, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
-import { useIsFocused } from "@react-navigation/native";
+import { useGetApi } from "../../hooks/api/useGetApi";
 
 export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();
     const [deckFilter, setDeckFilter] = useState(publicDecksQuery);
-    const [getDeckListState, { get }] = useFetch();
-    const [isRefreshing, setIsRefreshing] = useState(false);
-    const isScreenFocused = useIsFocused();
 
-    const getDeckList = useCallback(() => {
-        const query = deckFilter ? `?${objectToQuery({ ...deckFilter })}` : "";
-
-        return get<IDeckSummaryResponse[]>(getDecksRoute(query)).then((response) => {
-            if (response) {
-                setDeckList(responseToState(response));
-            }
-        });
-    }, [deckFilter, get]);
+    const query = deckFilter ? `?${objectToQuery({ ...deckFilter })}` : "";
+    const {
+        data: deckResponse,
+        error,
+        isValidating,
+        refresh,
+        isRefreshLoading,
+    } = useGetApi<IDeckSummaryResponse[]>(getDecksRoute(query));
 
     useEffect(() => {
-        if (isScreenFocused) {
-            getDeckList();
+        if (deckResponse) {
+            setDeckList(responseToState(deckResponse));
         }
-    }, [isScreenFocused, getDeckList]);
-
-    const onRefresh = useCallback(() => {
-        setIsRefreshing(true);
-        getDeckList().then(() => setIsRefreshing(false));
-    }, [getDeckList]);
+    }, [deckResponse]);
 
     return {
         deckList,
         deckFilter,
         setDeckFilter,
-        getDeckListState,
-        onRefresh,
-        isRefreshing,
+        isValidating,
+        error,
+        refresh,
+        isRefreshLoading,
     };
 };

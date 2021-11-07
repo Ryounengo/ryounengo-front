@@ -5,5 +5,5 @@ export const stateToRequest = (card: ICardEdit): ICardEditResponse => ({
     front: card.front.filter((text) => text),
     example: card.example,
     type: card.type,
-    isReversed: card.reverseCard,
+    reverseCard: card.reverseCard,
 });

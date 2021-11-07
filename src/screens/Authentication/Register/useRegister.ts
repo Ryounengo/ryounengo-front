@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { IError, useCustomToast, useFetch } from "@common";
+import { useCustomToast, usePostApi } from "@common";
 import { IRegisterForm } from "./IRegister";
 import { stateToRequest } from "@mappers/postRegisterMapper";
 import { useNavigation } from "@react-navigation/native";
@@ -19,21 +19,21 @@ export const useRegister = () => {
         },
     });
     const { navigate } = useNavigation<NavigationProps>();
-    const [postRegisterState, { post }] = useFetch();
+    const { isLoading, update } = usePostApi();
     const { toast, toastError } = useCustomToast();
     const { t } = useTranslation("user");
 
     const submit = (formData: IRegisterForm) =>
-        post(REGISTER_ROUTE, { body: stateToRequest(formData), forwardError: true, isSecured: false })
+        update(REGISTER_ROUTE, stateToRequest(formData))
             .then(() => {
                 toast.show({ status: "success", description: t("user:successAccountCreation") });
                 navigate("login");
             })
-            .catch((error: IError) => toastError(error.message));
+            .catch((error) => toastError(error.message));
 
     return {
         formMethods,
         submit,
-        postRegisterState,
+        isLoading,
     };
 };

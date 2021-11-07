@@ -11,7 +11,7 @@ type TParams = StackScreenProps<TRootNavigation, "login">;
 export const Login = (props: TParams) => {
     const { navigation } = props;
     const { t } = useTranslation(["user", "common", "validation"]);
-    const { postLoginState, submit, formMethods } = useLogin();
+    const { isLoading, submit, formMethods } = useLogin();
     const { control, formState, handleSubmit } = formMethods;
     const { errors } = formState;
 
@@ -41,9 +41,9 @@ export const Login = (props: TParams) => {
                 rules={{
                     minLength: { value: 6, message: t("validation:minLength", { count: 6 }) },
                 }}
-                type="password"
+                type="text"
             />
-            <Button isLoading={postLoginState.isLoading} variant="solid" onPress={handleSubmit(submit)}>
+            <Button isLoading={isLoading} variant="solid" onPress={handleSubmit(submit)}>
                 {t("common:submit")}
             </Button>
             <Button variant="link" onPress={goToRegister}>

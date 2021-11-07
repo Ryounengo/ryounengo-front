@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from "react";
-import { IError } from "..";
 import { Spinner, Text } from "native-base";
+import { IError } from "@typings/interfaces";
 
 interface IParams {
     children: ReactNode;

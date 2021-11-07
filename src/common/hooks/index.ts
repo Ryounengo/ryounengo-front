@@ -1,6 +1,4 @@
-export * from "./useFetch";
-
-export * from "./useAuthentication";
+export * from "./api";
 
 export * from "./useCustomToast";
 

@@ -2,7 +2,6 @@ import { DeckList } from "@common";
 import { IDeckFilter, IDeckSummary } from "@typings/interfaces";
 import { Fragment } from "react";
 import { Heading, Text } from "native-base";
-import { TagList } from "@screens/Home/DiscoverSection/TagList";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 import { defaultPagination } from "@utils/pagination";
@@ -34,13 +33,10 @@ export const DiscoverSection = (props: IParams) => {
     return (
         <Fragment>
             <Heading marginTop={2}>Discover</Heading>
-            <Heading marginTop={2}>Most popular</Heading>
             <DeckList deckList={deckList} goToDetails={goToDetails} />
             <Text textAlign="center" underline onPress={goToDeckList}>
                 {t("seeMore")}
             </Text>
-            <Heading marginTop={2}>By theme</Heading>
-            <TagList tagList={["test1", "test2"]} />
         </Fragment>
     );
 };
