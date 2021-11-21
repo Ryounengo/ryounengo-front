@@ -3,5 +3,5 @@ module.exports = {
         ios: {},
         android: {},
     },
-    assets: ["./src/static/fonts"],
+    assets: ["./src/static"],
 };

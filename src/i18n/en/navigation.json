@@ -1,5 +1,7 @@
 {
+  "deck": "Deck",
   "decks": "Decks",
+  "card": "Card",
   "cards": "Cards",
   "profile": "Profile"
 }

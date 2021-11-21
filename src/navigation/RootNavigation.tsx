@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { BottomTabNavigation } from "./TabNavigation";
+import { BottomTabNavigation } from "./TabNavigation/TabNavigation";
 import { Fragment, useContext } from "react";
 import { UserContext } from "@context";
 import { Login } from "@screens/Authentication/Login/Login";

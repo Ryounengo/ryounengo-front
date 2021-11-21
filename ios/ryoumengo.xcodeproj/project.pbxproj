@@ -17,6 +17,8 @@
 		82B1EB0D40584509BDA322FB /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 388C5C554925493584FAAB21 /* Rubik-Light.ttf */; };
 		59EAC17B51C342639A941146 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4968FA4FEC9A480D8D5066F3 /* Rubik-Medium.ttf */; };
 		E21F00E9A34F4C639F0A37B7 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BD240905E804B219F575145 /* Rubik-Regular.ttf */; };
+		53D1AEB2B4FA44D6B90E56DA /* deckNav.svg in Resources */ = {isa = PBXBuildFile; fileRef = E8A3533CC7614C65966F296F /* deckNav.svg */; };
+		F918903458024AF2BCFD767A /* icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = F343A84D3CE7487AAF419018 /* icon.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		388C5C554925493584FAAB21 /* Rubik-Light.ttf */ = {isa = PBXFileReference; name = "Rubik-Light.ttf"; path = "../src/static/fonts/Rubik/Rubik-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4968FA4FEC9A480D8D5066F3 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; name = "Rubik-Medium.ttf"; path = "../src/static/fonts/Rubik/Rubik-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7BD240905E804B219F575145 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; name = "Rubik-Regular.ttf"; path = "../src/static/fonts/Rubik/Rubik-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E8A3533CC7614C65966F296F /* deckNav.svg */ = {isa = PBXFileReference; name = "deckNav.svg"; path = "../src/static/images/deckNav.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F343A84D3CE7487AAF419018 /* icon.svg */ = {isa = PBXFileReference; name = "icon.svg"; path = "../src/static/images/icon.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				388C5C554925493584FAAB21 /* Rubik-Light.ttf */,
 				4968FA4FEC9A480D8D5066F3 /* Rubik-Medium.ttf */,
 				7BD240905E804B219F575145 /* Rubik-Regular.ttf */,
+				E8A3533CC7614C65966F296F /* deckNav.svg */,
+				F343A84D3CE7487AAF419018 /* icon.svg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 				82B1EB0D40584509BDA322FB /* Rubik-Light.ttf in Resources */,
 				59EAC17B51C342639A941146 /* Rubik-Medium.ttf in Resources */,
 				E21F00E9A34F4C639F0A37B7 /* Rubik-Regular.ttf in Resources */,
+				53D1AEB2B4FA44D6B90E56DA /* deckNav.svg in Resources */,
+				F918903458024AF2BCFD767A /* icon.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
