@@ -1,11 +1,11 @@
-import { Accordion, IconButton, SearchIcon, Select, Stack, Text } from "native-base";
+import { Accordion, Select, Stack, Text } from "native-base";
 import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
 import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
 import { tagsRegex } from "@utils/regex";
 import { useStyle } from "@screens/Deck/DeckList/DeckFilter/styles";
 import { IDeckFilter } from "@typings/interfaces";
-import { SelectInput, TextInput } from "@common/form";
+import { SelectInput, TextInput, SearchBar } from "@common/form";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;
@@ -29,18 +29,17 @@ export const DeckFilter = (props: IParams) => {
 
     return (
         <Stack space={4} style={style.filters}>
-            <TextInput
-                clearError={clearErrors}
+            <SearchBar
+                clearErrors={clearErrors}
                 control={control}
                 error={errors.name}
                 name="name"
-                placeholder={t("deck:searchDeck")}
-                prependedComponent={<IconButton icon={<SearchIcon />} onPress={handleSubmit(submit)} />}
                 rules={{
                     minLength: { value: 3, message: t("validation:minLength", { count: 3 }) },
                     maxLength: { value: 50, message: t("validation:maxLength", { count: 50 }) },
                 }}
                 setValue={setValue}
+                submit={handleSubmit(submit)}
             />
             <Accordion>
                 <Accordion.Item>

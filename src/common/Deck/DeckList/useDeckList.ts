@@ -4,18 +4,21 @@ import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
 import { IDeckFilter, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 import { useGetApi } from "@hooks/api";
+import { defaultPagination } from "@utils/pagination";
 
 export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();
     const [deckFilter, setDeckFilter] = useState(publicDecksQuery);
 
-    const query = deckFilter ? `?${objectToQuery({ ...deckFilter })}` : "";
+    const query = `?${objectToQuery(deckFilter ? { ...deckFilter } : { ...defaultPagination })}`;
+
     const {
         data: deckResponse,
         error,
         isValidating,
         refresh,
         isRefreshLoading,
+        mutate,
     } = useGetApi<IDeckSummaryResponse[]>(getDecksRoute(query));
 
     useEffect(() => {
@@ -32,5 +35,6 @@ export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
         error,
         refresh,
         isRefreshLoading,
+        mutate,
     };
 };

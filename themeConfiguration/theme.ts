@@ -42,6 +42,20 @@ export const theme = extendTheme({
                 normal: "Rubik-Bold",
             },
         },
+        CatCafe: {
+            300: {
+                normal: "CatCafe",
+            },
+            400: {
+                normal: "CatCafe",
+            },
+            500: {
+                normal: "CatCafe",
+            },
+            700: {
+                normal: "CatCafe",
+            },
+        },
     },
     fonts: {
         body: "Rubik",
@@ -51,6 +65,16 @@ export const theme = extendTheme({
         Button: {
             baseStyle: {
                 rounded: "md",
+            },
+        },
+        FAB: {
+            baseStyle: {
+                borderRadius: 10,
+                backgroundColor: "#6500e6",
+            },
+            defaultProps: {
+                placement: "bottom-right",
+                renderInPortal: false,
             },
         },
     },
