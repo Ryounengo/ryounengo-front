@@ -3,7 +3,7 @@ import { ICard, ICardResponse } from "@typings/interfaces";
 import { getCardsRoute } from "@routes";
 import { objectToQuery } from "@utils/fetchUtils";
 import { responseToState } from "@mappers/getCardMapper";
-import { useGetApi } from "../api/useGetApi";
+import { useGetApi } from "@hooks/api";
 
 export const useCardReviewList = () => {
     const [reviewCardList, setReviewCardList] = useState<ICard[]>();

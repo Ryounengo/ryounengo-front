@@ -1,11 +1,11 @@
 import { ScrollView, VStack } from "native-base";
 import { RefreshControl } from "react-native";
-import { ErrorAndLoading } from "@common";
 import { useState } from "react";
 import { ICardFilter } from "@screens/Card/CardList/CardFilter/ICardFilter";
 import { useCardList } from "@screens/Card/CardList/CardList/useCardList";
 import { CardFilter } from "@screens/Card/CardList/CardFilter/CardFilter";
 import { CardList } from "@screens/Card/CardList/CardList/CardList";
+import { ErrorAndLoading } from "@common/ErrorAndLoading";
 
 export const Cards = () => {
     const [cardFilter, setCardFilter] = useState<ICardFilter>();

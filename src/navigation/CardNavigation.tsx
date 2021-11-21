@@ -9,7 +9,7 @@ export const CardNavigation = () => {
     const { t } = useTranslation(["common", "card"]);
 
     return (
-        <Stack.Navigator initialRouteName="cards">
+        <Stack.Navigator initialRouteName="cards" screenOptions={{ headerShown: false }}>
             <Stack.Screen component={Cards} name="cards" options={{ title: t("card:cards") }} />
         </Stack.Navigator>
     );

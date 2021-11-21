@@ -3,7 +3,7 @@ import { useTheme } from "native-base";
 
 export const useStyle = () => {
     const theme = useTheme();
-    const { colors, shadows, radii } = theme;
+    const { colors, radii } = theme;
 
     return StyleSheet.create({
         card: {
@@ -13,7 +13,6 @@ export const useStyle = () => {
             backgroundColor: colors.white,
             padding: 10,
             borderRadius: radii.lg,
-            ...shadows()[1],
         },
         cardList: {
             marginHorizontal: 20,

@@ -3,6 +3,7 @@ import deckEN from "./deck.json";
 import cardEN from "./card.json";
 import validationEN from "./validation.json";
 import userEN from "./user.json";
+import navigationEN from "./navigation.json";
 
 export const commonEn = commonEN;
 
@@ -13,3 +14,5 @@ export const cardEn = cardEN;
 export const validationEn = validationEN;
 
 export const userEn = userEN;
+
+export const navigationEn = navigationEN;

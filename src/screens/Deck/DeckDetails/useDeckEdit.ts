@@ -1,8 +1,9 @@
-import { useCustomToast, usePutApi } from "@common";
 import { getDeckRoute } from "@routes";
 import { useForm } from "react-hook-form";
 import { stateToRequest } from "@mappers/postDeckMapper";
 import { IDeck, IDeckEditForm } from "@typings/interfaces";
+import { usePutApi } from "@hooks/api";
+import { useCustomToast } from "@hooks/useCustomToast";
 
 export const useDeckEdit = (deck: IDeck, getDeckDetails: () => void, setIsEditMode: (isEditMode: boolean) => void) => {
     const { toastSuccessUpdate, toastError } = useCustomToast();

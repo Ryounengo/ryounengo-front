@@ -5,9 +5,9 @@ import { DeckDetailsView } from "./DeckDetailView";
 import { Fragment, useState } from "react";
 import { Button, ScrollView } from "native-base";
 import { DeckDetailsEdit } from "./DeckDetailEdit";
-import { ErrorAndLoading } from "@common";
 import { useTranslation } from "react-i18next";
 import { RefreshControl } from "react-native";
+import { ErrorAndLoading } from "@common/ErrorAndLoading";
 
 type Params = StackScreenProps<TRootNavigation, "deckDetails">;
 

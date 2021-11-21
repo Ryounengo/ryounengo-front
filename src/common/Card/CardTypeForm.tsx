@@ -11,7 +11,7 @@ interface IParams {
 }
 
 export const CardTypeForm = (props: IParams) => {
-    const { cardType, submitType, isEdit } = props;
+    const { submitType, isEdit } = props;
     const [isReversed, setIsReversed] = useState(true);
     const { t } = useTranslation("card");
     const styles = useStyle();
@@ -24,7 +24,7 @@ export const CardTypeForm = (props: IParams) => {
                 </Checkbox>
             )}
             <Pressable onPress={() => submitType(ECardType.TEXT, isReversed)}>
-                <Text border={cardType === ECardType.TEXT ? styles.selectedCard : {}} textAlign="center">
+                <Text style={styles.selectedCard} textAlign="center">
                     {t("textCard")}
                 </Text>
             </Pressable>

@@ -25,7 +25,9 @@
       "rtl-config": ["testConfiguration/rtl-config"],
       "@navigation/*": ["src/navigation/*"],
       "@typings/*": ["src/typings/*"],
-      "@common": ["src/common/index.ts"],
+      "@common/*": ["src/common/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@context": ["src/context/index.ts"],
       "@static/*": ["src/static/*"],
       "@routes": ["src/routes/index.ts"],
       "@mappers/*": ["src/mappers/*"],
@@ -38,6 +40,7 @@
     "./src/**/*.tsx",
     "./src/**/*.ts",
     "./index.tsx",
+    "./theme/**/*.ts",
     "./testConfiguration/**/*",
     "./*.js"
   ],

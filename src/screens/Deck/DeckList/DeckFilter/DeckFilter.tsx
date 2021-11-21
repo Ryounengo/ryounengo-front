@@ -1,11 +1,11 @@
 import { Accordion, IconButton, SearchIcon, Select, Stack, Text } from "native-base";
-import { TextInput, SelectInput } from "@common";
 import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
 import { ALL_OPTIONS, NO_OPTION, YES_OPTION } from "../../../../constants";
 import { tagsRegex } from "@utils/regex";
 import { useStyle } from "@screens/Deck/DeckList/DeckFilter/styles";
 import { IDeckFilter } from "@typings/interfaces";
+import { SelectInput, TextInput } from "@common/form";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;

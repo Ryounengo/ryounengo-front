@@ -36,6 +36,8 @@ module.exports = {
                     "@typings": "./src/typings",
                     "@common": "./src/common",
                     "@static": "./src/static",
+                    "@hooks": "./src/hooks",
+                    "@context": "./src/context",
                     "@routes": "./src/routes",
                     "@mappers": "./src/mappers",
                     "@utils": "./src/utils",

@@ -1,4 +1,3 @@
-import { DeckList } from "@common";
 import { IDeckFilter, IDeckSummary } from "@typings/interfaces";
 import { Fragment } from "react";
 import { Heading, Text } from "native-base";
@@ -7,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { defaultPagination } from "@utils/pagination";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TBottomTabNavigation, TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
+import { DeckList } from "@common/Deck";
 
 interface IParams {
     deckList: IDeckSummary[];

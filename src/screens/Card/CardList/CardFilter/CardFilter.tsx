@@ -1,9 +1,9 @@
 import { IconButton, SearchIcon, Stack } from "native-base";
-import { TextInput } from "@common";
 import { useFilter } from "./useFilter";
 import { useTranslation } from "react-i18next";
 import { ICardFilter } from "./ICardFilter";
 import { useStyle } from "@screens/Card/CardList/CardFilter/styles";
+import { TextInput } from "@common/form";
 
 interface IParams {
     setFilter(filter: ICardFilter): void;

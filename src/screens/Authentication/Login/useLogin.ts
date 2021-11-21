@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { LOGIN_ROUTE } from "@routes";
-import { useCustomToast, usePostApi } from "@common";
 import { ILoginForm } from "./ILogin";
 import { ITokenResponse, responseToState, stateToRequest } from "@mappers/postLoginMapper";
 import { useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
+import { UserContext } from "@context";
 import { getToken, getUser, setToken } from "@utils/authUtils";
+import { usePostApi } from "@hooks/api";
+import { useCustomToast } from "@hooks/useCustomToast";
 
 export const useLogin = () => {
     const formMethods = useForm<ILoginForm>({

@@ -4,7 +4,7 @@ import { ICardSummary, ICardSummaryResponse } from "@typings/interfaces";
 import { ICardFilter } from "@screens/Card/CardList/CardFilter/ICardFilter";
 import { responseToState } from "@mappers/getCardListMapper";
 import { getCardsRoute } from "@routes";
-import { useGetApi } from "../../../../common/hooks/api/useGetApi";
+import { useGetApi } from "@hooks/api";
 
 export const useCardList = (cardFilter: ICardFilter | undefined) => {
     const [cardList, setCardList] = useState<ICardSummary[]>();

@@ -1,7 +1,7 @@
 import { Button, View } from "native-base";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "@context";
 import { logout } from "@utils/authUtils";
 
 export const UserSettings = () => {

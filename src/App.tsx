@@ -1,4 +1,4 @@
-import { UserContext } from "./context/UserContext";
+import { UserContext } from "@context";
 import { Box, Spinner, Text } from "native-base";
 import { useTranslation } from "react-i18next";
 import { RootNavigation } from "@navigation/RootNavigation";

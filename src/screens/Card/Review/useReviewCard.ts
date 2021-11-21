@@ -1,4 +1,3 @@
-import { useCustomToast, usePostApi } from "@common";
 import { ECardReviewName, IReviewPayload } from "@screens/Card/Review/IReviewPayload";
 import { getCardsReviewRoute } from "@routes";
 import { ICard } from "@typings/interfaces";
@@ -6,6 +5,8 @@ import { useEffect, useState } from "react";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TBottomTabNavigation, TRootNavigation } from "@navigation/INavigation";
+import { usePostApi } from "@hooks/api";
+import { useCustomToast } from "@hooks/useCustomToast";
 
 interface IParams {
     reviewCardList?: ICard[];

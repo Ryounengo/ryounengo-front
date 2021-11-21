@@ -7,7 +7,7 @@ export const useStyle = () => {
     return StyleSheet.create({
         reviewCard: {
             height: 150,
-            backgroundColor: colors.darkBlue[300],
+            backgroundColor: colors.red["50"],
         },
     });
 };

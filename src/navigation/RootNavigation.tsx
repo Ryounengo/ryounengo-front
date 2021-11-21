@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { BottomTabNavigation } from "./TabNavigation";
 import { Fragment, useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "@context";
 import { Login } from "@screens/Authentication/Login/Login";
 import { TRootNavigation } from "./INavigation";
 import { Register } from "@screens/Authentication/Register/Register";
@@ -22,8 +22,7 @@ export const RootNavigation = () => {
     return (
         <Stack.Navigator
             screenOptions={{
-                cardStyle: { backgroundColor: "transparent" },
-                cardOverlayEnabled: false,
+                headerStyle: { backgroundColor: "transparent", position: "absolute" },
             }}
         >
             {user && (

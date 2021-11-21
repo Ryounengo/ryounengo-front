@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getDeckDetailsRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckMapper";
-import { useGetApi } from "../../../common/hooks/api/useGetApi";
 import { IDeck } from "@typings/interfaces";
+import { useGetApi } from "@hooks/api";
 
 export const useDeckDetails = (deckId: string) => {
     const [deckDetails, setDeckDetails] = useState<IDeck>();

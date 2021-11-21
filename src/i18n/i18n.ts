@@ -10,6 +10,8 @@ import {
     userFr,
     cardEn,
     cardFr,
+    navigationFr,
+    navigationEn,
 } from "./translations";
 
 const resources = {
@@ -19,6 +21,7 @@ const resources = {
         card: cardEn,
         validation: validationEn,
         user: userEn,
+        navigation: navigationEn,
     },
     fr: {
         common: commonFr,
@@ -26,12 +29,13 @@ const resources = {
         card: cardFr,
         validation: validationFr,
         user: userFr,
+        navigation: navigationFr,
     },
 } as const;
 
 const i18nOptions: InitOptions = {
     fallbackLng: "fr",
-    ns: ["common", "deck", "card"],
+    ns: ["common", "navigation"],
     fallbackNS: "common",
     react: {
         useSuspense: true,

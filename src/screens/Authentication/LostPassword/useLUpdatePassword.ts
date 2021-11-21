@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { IUpdatePasswordForm } from "./IILostPassword";
-import { useCustomToast, usePostApi } from "@common";
 import { useNavigation } from "@react-navigation/native";
 import { UPDATE_PASSWORD_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postUpdatePasswordMapper";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TRootNavigation } from "@navigation/INavigation";
+import { usePostApi } from "@hooks/api";
+import { useCustomToast } from "@hooks/useCustomToast";
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "updatePassword">;
 

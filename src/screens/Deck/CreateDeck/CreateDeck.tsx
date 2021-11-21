@@ -1,5 +1,5 @@
 import { useCreateDeck } from "./useCreateDeck";
-import { DeckEditForm } from "@common";
+import { DeckEditForm } from "@common/Deck";
 
 export const CreateDeck = () => {
     const { formMethods, submit, isLoading } = useCreateDeck();

@@ -1,7 +1,7 @@
 import { TRootNavigation } from "@navigation/INavigation";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useCreateCard } from "@screens/Card/CreateCard/useCreateCard";
-import { CardEdit } from "@common";
+import { CardEdit } from "@common/Card/CardEditForm";
 
 type NavigationProps = StackScreenProps<TRootNavigation, "createCard">;
 

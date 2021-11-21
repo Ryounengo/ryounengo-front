@@ -3,7 +3,7 @@ import { getDecksRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
 import { IDeckFilter, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
-import { useGetApi } from "../../hooks/api/useGetApi";
+import { useGetApi } from "@hooks/api";
 
 export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
     const [deckList, setDeckList] = useState<IDeckSummary[]>();

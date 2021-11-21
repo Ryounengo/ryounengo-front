@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { DECK_ROUTE } from "@routes";
 import { stateToRequest } from "@mappers/postDeckMapper";
-import { useCustomToast, usePostApi } from "@common";
 import { IDeckEditForm, IDeckSummaryResponse } from "@typings/interfaces";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TRootNavigation } from "@navigation/INavigation";
+import { usePostApi } from "@hooks/api";
+import { useCustomToast } from "@hooks/useCustomToast";
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "createDeck">;
 

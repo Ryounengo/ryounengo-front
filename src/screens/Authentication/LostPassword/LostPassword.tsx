@@ -1,8 +1,8 @@
 import { Button, VStack } from "native-base";
 import { useLostPassword } from "./useLostPassword";
 import { useTranslation } from "react-i18next";
-import { TextInput } from "@common";
 import { emailRegex } from "@utils/regex";
+import { TextInput } from "@common/form";
 
 export const LostPassword = () => {
     const { formMethods, submit, isLoading } = useLostPassword();
