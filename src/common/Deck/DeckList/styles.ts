@@ -2,28 +2,22 @@ import { StyleSheet } from "react-native";
 import { useTheme } from "native-base";
 
 export const useStyle = () => {
-    const theme = useTheme();
-    const { colors, radii } = theme;
+    const { space } = useTheme();
 
     return StyleSheet.create({
-        deck: {
-            flexDirection: "row",
-            minHeight: 140,
-            width: "100%",
-            backgroundColor: colors.white,
-            padding: 10,
-            borderRadius: radii.lg,
-            alignItems: "center",
+        container: {
+            margin: space[2],
         },
         deckList: {
-            marginHorizontal: 20,
-            marginBottom: 20,
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
         },
-        actionButton: {
-            margin: "auto",
-            borderStyle: "solid",
-            borderWidth: 1,
-            borderRadius: radii.full,
+        deck: {
+            flexBasis: "50%",
+            height: 250,
+            padding: space[2],
         },
     });
 };
