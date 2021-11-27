@@ -1,6 +1,8 @@
 {
     "card": "Card",
     "cards": "Cards",
+    "cardsCounter": "{{ count }} Card",
+    "cardsCounter_plural": "{{ count }} Cards",
     "createCard": "Create card",
     "textCard": "Text card",
     "mainText": "Main text",

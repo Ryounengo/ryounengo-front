@@ -4,6 +4,8 @@ import { useTheme } from "native-base";
 export const useStyle = () => {
     const { space } = useTheme();
 
+    const cardsNumberPerRow = 3;
+
     return StyleSheet.create({
         container: {
             margin: space[2],
@@ -12,11 +14,10 @@ export const useStyle = () => {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            justifyContent: "space-evenly",
         },
         deck: {
-            flexBasis: "50%",
-            height: 250,
+            flexBasis: `${(1 / cardsNumberPerRow) * 100}%`,
+            height: 200,
             padding: space[2],
         },
     });

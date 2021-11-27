@@ -1,6 +1,8 @@
 {
     "card": "Carte",
     "cards": "Cartes",
+    "cardsCounter": "{{ count }} Carte",
+    "cardsCounter_plural": "{{ count }} Cartes",
     "createCard": "Créer une carte",
     "textCard": "Carte à texte",
     "mainText": "Texte principal",
