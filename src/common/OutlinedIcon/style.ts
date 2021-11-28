@@ -3,8 +3,8 @@ import { useTheme } from "native-base";
 
 interface IParams {
     color: string;
-    size: number;
 }
+
 export const useStyle = ({ color }: IParams) => {
     const { space, radii } = useTheme();
 

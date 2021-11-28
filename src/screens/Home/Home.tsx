@@ -10,7 +10,7 @@ import { useCardReviewList } from "@hooks/Review";
 export const Home = () => {
     const publicDecksQuery: IDeckFilter = {
         ...defaultPagination,
-        limit: 5,
+        limit: 6,
         isPrivate: false,
     };
     const { reviewCardList, error: reviewCardListError } = useCardReviewList();
@@ -19,11 +19,11 @@ export const Home = () => {
     return (
         <ScrollView>
             <VStack>
-                <ErrorAndLoading error={reviewCardListError} isLoading={!reviewCardList}>
-                    {reviewCardList && <ReviewSection cardReviewList={reviewCardList} />}
-                </ErrorAndLoading>
                 <ErrorAndLoading error={deckListError} isLoading={!deckList}>
                     {deckList && <DiscoverSection deckList={deckList} />}
+                </ErrorAndLoading>
+                <ErrorAndLoading error={reviewCardListError} isLoading={!reviewCardList}>
+                    {reviewCardList && <ReviewSection cardReviewList={reviewCardList} />}
                 </ErrorAndLoading>
             </VStack>
         </ScrollView>

@@ -1,4 +1,4 @@
-import { FormControl, IconButton, Input, SmallCloseIcon } from "native-base";
+import { FormControl, Input } from "native-base";
 import { ComponentProps, ReactElement } from "react";
 import {
     Controller,
@@ -25,31 +25,8 @@ interface IParams<T> extends ComponentProps<typeof Input> {
 }
 
 export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
-    const {
-        name,
-        error,
-        placeholder,
-        control,
-        label,
-        clearError,
-        rules,
-        isRequired,
-        setValue,
-        prependedComponent,
-        ...inputProps
-    } = props;
+    const { name, error, placeholder, control, label, rules, isRequired, prependedComponent, ...inputProps } = props;
     const { t } = useTranslation("validation");
-
-    const hasClearField = Boolean(setValue && clearError);
-
-    const clearField = () => {
-        if (setValue && clearError) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setValue(name, "");
-            clearError(name);
-        }
-    };
 
     return (
         <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
@@ -62,9 +39,6 @@ export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
                 render={(renderProps) => (
                     <Input
                         InputLeftElement={prependedComponent}
-                        InputRightElement={
-                            hasClearField ? <IconButton icon={<SmallCloseIcon />} onPress={clearField} /> : undefined
-                        }
                         isRequired={isRequired}
                         placeholder={placeholder}
                         value={renderProps.field.value}

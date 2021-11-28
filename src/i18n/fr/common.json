@@ -3,9 +3,10 @@
   "no": "Non",
   "yes": "Oui",
   "all": "Tous",
-  "noResults": "Aucuns résultat",
+  "noResults": "Aucun résultat",
   "home": "Accueil",
   "search": "Rechercher",
+  "searchPlaceholder": "Rechercher..",
   "name": "Nom",
   "submit": "Valider",
   "description": "Description",
@@ -19,5 +20,7 @@
   "moreFilters": "+ Plus de filtres",
   "seeMore": "En voir plus",
   "cancel": "Annuler",
-  "edit": "Modifier"
+  "edit": "Modifier",
+  "totalResult": "{{ count }} résultat",
+  "totalResult_plural": "{{ count }} résultats"
 }
