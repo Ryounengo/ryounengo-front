@@ -4,4 +4,4 @@ export * from "./CheckboxInput";
 
 export * from "./SelectInput";
 
-export * from "./SearchBar";
+export * from "./SearchBar/SearchBar";

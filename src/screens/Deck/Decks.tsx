@@ -1,4 +1,4 @@
-import { Fab, ScrollView } from "native-base";
+import { Fab, Heading, ScrollView } from "native-base";
 import { CompositeNavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RefreshControl } from "react-native";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
@@ -6,8 +6,9 @@ import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
 import { MainScreenLayout } from "@common/Layout";
 import { ErrorAndLoading } from "@common/ErrorAndLoading/ErrorAndLoading";
-import { DeckList, useDeckList } from "@common/Deck";
 import { useTranslation } from "react-i18next";
+import { useDeckList } from "@hooks/Deck/useDeckList";
+import { DeckList } from "./DeckList/DeckList";
 
 type NavigationProps = CompositeNavigationProp<
     NativeStackNavigationProp<TDeckNavigation, "decks">,
@@ -31,13 +32,18 @@ export const Decks = () => {
         <>
             <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
                 <MainScreenLayout space={4}>
-                    <DeckFilter defaultValues={params?.deckQuery} isLoading={isValidating} setFilter={setDeckFilter} />
                     <ErrorAndLoading error={error} isLoading={!deckList}>
+                        <Heading marginLeft={4}>{t("totalResult", { count: deckList?.length ?? 0 })}</Heading>
+                        <DeckFilter
+                            defaultValues={params?.deckQuery}
+                            isLoading={isValidating}
+                            setFilter={setDeckFilter}
+                        />
                         {deckList && <DeckList deckList={deckList} goToDetails={goToDeckDetails} />}
                     </ErrorAndLoading>
                 </MainScreenLayout>
             </ScrollView>
-            <Fab label={t("createDeck")} onPress={goToCreateDeck} />
+            <Fab label={t("createDeck")} padding={2} w={"30%"} onPress={goToCreateDeck} />
         </>
     );
 };

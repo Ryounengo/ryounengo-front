@@ -59,6 +59,9 @@ export const useStyle = ({ deckId }: IParams) => {
             color: randomColorContrast,
             fontSize: fontSizes.sm,
         },
+        addReview: {
+            marginRight: space[2],
+        },
         r: {
             marginRight: space[2],
             color: randomColorContrast,

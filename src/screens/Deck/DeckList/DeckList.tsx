@@ -1,8 +1,8 @@
-import { Pressable, Text, View } from "native-base";
-import { useTranslation } from "react-i18next";
+import { Pressable, View } from "native-base";
 import { IDeckSummary } from "@typings/interfaces";
 import { useStyle } from "./styles";
 import { DeckSummary } from "@common/Deck/Summary/DeckSummary";
+import { NoResult } from "@common/NoResult/NoResult";
 
 interface IParams {
     deckList: IDeckSummary[];
@@ -11,7 +11,6 @@ interface IParams {
 
 export const DeckList = (props: IParams) => {
     const { deckList, goToDetails } = props;
-    const { t } = useTranslation("common");
     const style = useStyle();
 
     return (
@@ -23,7 +22,7 @@ export const DeckList = (props: IParams) => {
                     </Pressable>
                 ))}
             </View>
-            {deckList?.length === 0 && <Text>{t("noResults")}</Text>}
+            {deckList?.length === 0 && <NoResult />}
         </View>
     );
 };

@@ -6,6 +6,7 @@
   "no": "No",
   "all": "All",
   "search": "Search",
+  "searchPlaceholder": "Search..",
   "submit": "Submit",
   "name": "Name",
   "description": "Description",
@@ -18,5 +19,7 @@
   "moreFilters": "+ More filters",
   "seeMore": "See more",
   "cancel": "Cancel",
-  "edit": "Edit"
+  "edit": "Edit",
+  "totalResult": "{{ count }} result",
+  "totalResult_plural": "{{ count }} results"
 }

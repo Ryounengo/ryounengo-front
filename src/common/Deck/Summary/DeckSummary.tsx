@@ -2,6 +2,7 @@ import { Heading, Text, useTheme, View } from "native-base";
 import { IDeckSummary } from "@typings/interfaces";
 import DeckCirclePattern from "@static/images/circle-card.svg";
 import DeckLinesPattern from "@static/images/lines-card.svg";
+import AddIcon from "@static/images/add.svg";
 import PrivateIcon from "@static/images/private.svg";
 import { useStyle } from "./styles";
 import { useTranslation } from "react-i18next";
@@ -22,6 +23,7 @@ export const DeckSummary = (props: IParams) => {
     return (
         <View style={style.container}>
             <View style={[style.item, style.additionalInfo]}>
+                <OutlinedIcon color={contrastColor ?? colors.white} icon={AddIcon} size={10} style={style.addReview} />
                 <Text style={style.r}>R</Text>
                 {isPrivate && <OutlinedIcon color={contrastColor ?? colors.white} icon={PrivateIcon} size={10} />}
             </View>
