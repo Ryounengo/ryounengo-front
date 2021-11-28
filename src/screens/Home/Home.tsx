@@ -19,6 +19,7 @@ export const Home = () => {
     return (
         <ScrollView>
             <VStack>
+                {/* TODO search Bar Deck + Card (need server route)*/}
                 <ErrorAndLoading error={deckListError} isLoading={!deckList}>
                     {deckList && <DiscoverSection deckList={deckList} />}
                 </ErrorAndLoading>

@@ -59,12 +59,13 @@ export const DiscoverSection = (props: IParams) => {
                         onPress={goToDeckList}
                     >
                         <OutlinedIcon
+                            borderWidth={3}
                             color={style.discoverMore.color}
                             icon={AddIcon}
                             size={40}
                             style={style.discoverMore}
                         />
-                        <Text color={style.discoverMore.color} marginTop={2}>
+                        <Text color={style.discoverMore.color} style={style.discoverMore}>
                             {t("common:seeMore")}
                         </Text>
                     </Pressable>

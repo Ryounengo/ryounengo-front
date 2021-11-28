@@ -7,13 +7,14 @@ import { ViewStyle } from "react-native";
 interface IParams {
     icon: FC<SvgProps>;
     color: string;
+    borderWidth?: ViewStyle["borderWidth"];
     size: ViewStyle["width"];
     style?: ViewStyle;
 }
 
 export const OutlinedIcon = (props: IParams) => {
-    const { icon: Icon, color, size, style: additionalStyle } = props;
-    const style = useStyle({ color });
+    const { icon: Icon, color, size, style: additionalStyle, borderWidth } = props;
+    const style = useStyle({ color, borderWidth });
 
     return (
         <View style={[style.container, additionalStyle]}>

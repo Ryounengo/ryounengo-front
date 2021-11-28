@@ -4,7 +4,7 @@ import { useColorModeValue, useTheme } from "native-base";
 const windowWidth = Dimensions.get("window").width;
 
 export const useStyle = () => {
-    const { space, colors } = useTheme();
+    const { space, colors, fontSizes } = useTheme();
 
     const contrastTextColor = useColorModeValue(colors.dark[500], colors.dark[800]);
 
@@ -24,6 +24,9 @@ export const useStyle = () => {
         discoverMore: {
             display: "flex",
             color: contrastTextColor,
+            marginTop: space[2],
+            fontSize: fontSizes.lg,
+            fontWeight: "bold",
         },
         firstDeck: {
             marginLeft: space[0.5],
