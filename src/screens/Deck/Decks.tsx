@@ -37,7 +37,7 @@ export const Decks = () => {
                     </ErrorAndLoading>
                 </MainScreenLayout>
             </ScrollView>
-            <Fab colorScheme="indigo" label={t("createDeck")} onPress={goToCreateDeck} />
+            <Fab label={t("createDeck")} onPress={goToCreateDeck} />
         </>
     );
 };
