@@ -9,5 +9,7 @@
     "isPrivate": "This deck is private",
     "tagsExamples": "nature,flower",
     "tags": "tags",
-    "searchDeck": "Search a deck"
+    "searchDeck": "Search a deck",
+    "reviewedXTimes": "Reviewed {{count}} time",
+    "reviewedXTimes_plural": "Reviewed {{count}} times"
 }

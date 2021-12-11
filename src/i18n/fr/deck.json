@@ -9,5 +9,6 @@
     "isPrivate": "Ce deck est privé",
     "tagsExamples": "nature,fleurs",
     "tags": "Mots clés",
-    "searchDeck": "Rechercher un deck"
+    "searchDeck": "Rechercher un deck",
+    "reviewedXTimes": "Revu {{ count }} fois"
 }

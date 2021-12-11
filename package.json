@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android --port=8082",
+    "android:prod": "react-native run-android --port=8082 --variant release",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "compile": "tsc --noEmit",

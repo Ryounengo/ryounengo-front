@@ -1,24 +1,27 @@
-import { Text, VStack } from "native-base";
-import { useTranslation } from "react-i18next";
+import { Pressable, View } from "native-base";
 import { ICardSummary } from "@typings/interfaces";
-import { CardSummary } from "@screens/Card/CardList/CardList/CardSummary";
 import { useStyle } from "@screens/Card/CardList/CardList/styles";
+import { CardSummary } from "@common/Card/CardSummary/CardSummary";
+import { NoResult } from "@common/NoResult/NoResult";
 
 interface IParams {
-    cardList: ICardSummary[];
+    cardList?: ICardSummary[];
 }
 
 export const CardList = (props: IParams) => {
-    const { t } = useTranslation("common");
     const { cardList } = props;
     const style = useStyle();
 
     return (
-        <VStack space={4} style={style.cardList}>
-            {cardList?.map((card) => (
-                <CardSummary card={card} key={card.id} />
-            ))}
-            {cardList?.length === 0 && <Text>{t("common:noResults")}</Text>}
-        </VStack>
+        <View style={style.container}>
+            <View style={style.cardList}>
+                {cardList?.map((card) => (
+                    <Pressable key={card.id} style={style.card}>
+                        <CardSummary card={card} />
+                    </Pressable>
+                ))}
+            </View>
+            {cardList?.length === 0 && <NoResult />}
+        </View>
     );
 };

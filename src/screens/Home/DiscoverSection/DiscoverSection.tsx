@@ -25,14 +25,14 @@ export const DiscoverSection = (props: IParams) => {
     const { deckList } = props;
     const style = useStyle();
     const { t } = useTranslation(["common", "discover"]);
-    const { navigate } = useNavigation<NavigationProps>();
+    const { push, navigate } = useNavigation<NavigationProps>();
     const mostPopularDeckQuery: IDeckFilter = {
         ...defaultPagination,
         isPrivate: false,
     };
 
     const goToDeckList = () => navigate("deck", { screen: "decks", params: { deckQuery: mostPopularDeckQuery } });
-    const goToDetails = (deckId: string) => navigate("deckDetails", { deckId });
+    const goToDetails = (deckId: string) => push("deckDetails", { deckId });
 
     return (
         <Fragment>
@@ -59,10 +59,10 @@ export const DiscoverSection = (props: IParams) => {
                         onPress={goToDeckList}
                     >
                         <OutlinedIcon
-                            borderWidth={3}
+                            borderWidth={2}
                             color={style.discoverMore.color}
                             icon={AddIcon}
-                            size={40}
+                            size={30}
                             style={style.discoverMore}
                         />
                         <Text color={style.discoverMore.color} style={style.discoverMore}>

@@ -8,13 +8,13 @@ interface IParams {
     icon: FC<SvgProps>;
     color: string;
     borderWidth?: ViewStyle["borderWidth"];
-    size: ViewStyle["width"];
+    size: number;
     style?: ViewStyle;
 }
 
 export const OutlinedIcon = (props: IParams) => {
     const { icon: Icon, color, size, style: additionalStyle, borderWidth } = props;
-    const style = useStyle({ color, borderWidth });
+    const style = useStyle({ color, borderWidth, size });
 
     return (
         <View style={[style.container, additionalStyle]}>

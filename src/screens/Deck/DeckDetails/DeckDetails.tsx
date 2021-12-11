@@ -1,43 +1,43 @@
 import { useDeckDetails } from "./useDeckDetails";
 import { TRootNavigation } from "@navigation/INavigation";
 import { StackScreenProps } from "@react-navigation/stack";
-import { DeckDetailsView } from "./DeckDetailView";
-import { Fragment, useState } from "react";
-import { Button, ScrollView } from "native-base";
-import { DeckDetailsEdit } from "./DeckDetailEdit";
+import { ScrollView, View, Text, Heading } from "native-base";
 import { useTranslation } from "react-i18next";
-import { RefreshControl } from "react-native";
 import { ErrorAndLoading } from "@common/ErrorAndLoading";
+import { useStyle } from "./style";
+import { CardList } from "@screens/Card/CardList/CardList/CardList";
 
 type Params = StackScreenProps<TRootNavigation, "deckDetails">;
 
 export const DeckDetails = (props: Params) => {
     const { route } = props;
     const { params } = route;
-    const { t } = useTranslation("common");
+    const { t } = useTranslation(["common", "deck"]);
 
-    const { deckDetails, refresh, error, isRefreshLoading } = useDeckDetails(params.deckId);
-    const [isEditMode, setIsEditMode] = useState(false);
+    const { deckDetails, error } = useDeckDetails(params.deckId);
 
-    const setEditMode = () => setIsEditMode((previousState) => !previousState);
+    const style = useStyle({ deckId: deckDetails?.id });
 
     return (
-        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
-            <ErrorAndLoading error={error} isLoading={!deckDetails}>
-                {deckDetails && (
-                    <Fragment>
-                        <Button onPress={setEditMode}>{isEditMode ? t("cancel") : t("edit")}</Button>
-                        {isEditMode && (
-                            <DeckDetailsEdit
-                                deck={deckDetails}
-                                getDeckDetails={refresh}
-                                setIsEditMode={setIsEditMode}
-                            />
-                        )}
-                        {!isEditMode && <DeckDetailsView deck={deckDetails} />}
-                    </Fragment>
-                )}
-            </ErrorAndLoading>
-        </ScrollView>
+        <View>
+            <View style={style.background} />
+            <View style={style.container}>
+                <View style={style.item}>
+                    <Heading style={style.deckName}>{deckDetails?.name}</Heading>
+                    <Text style={style.tags}>{deckDetails?.tags.join(", ")}</Text>
+                </View>
+                <View style={[style.item, style.reviewCountContainer]}>
+                    <Text style={style.reviewCount}>{t("deck:reviewedXTimes", { count: 0 })}</Text>
+                </View>
+            </View>
+            <ScrollView>
+                <ErrorAndLoading error={error} isLoading={!deckDetails}>
+                    <Heading marginLeft={4} marginTop={4}>
+                        {t("totalResult", { count: deckDetails?.cards?.length ?? 0 })}
+                    </Heading>
+                    <CardList cardList={deckDetails?.cards} />
+                </ErrorAndLoading>
+            </ScrollView>
+        </View>
     );
 };

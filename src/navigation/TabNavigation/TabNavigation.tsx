@@ -12,6 +12,7 @@ import CardNav from "@static/images/card-nav.svg";
 import HomeNav from "@static/images/home.svg";
 import { NavIcon } from "@navigation/TabNavigation/NavIcon";
 import { useTranslation } from "react-i18next";
+import { useStyle } from "../style";
 
 const Tab = createBottomTabNavigator<TBottomTabNavigation>();
 
@@ -24,6 +25,7 @@ export const BottomTabNavigation = () => {
     const { space } = useTheme();
     const { t } = useTranslation("navigation");
     const { navigate } = useNavigation<NavigationProps>();
+    const style = useStyle();
 
     const renderTabIcon = (route: string, isFocused: boolean) => {
         let icon;
@@ -56,6 +58,7 @@ export const BottomTabNavigation = () => {
             screenOptions={({ route }) => ({
                 title: t(route.name),
                 unmountOnBlur: true,
+                tabBarStyle: style.navigationTabBar,
                 headerStyle: {
                     elevation: 0, // remove shadow on Android
                     shadowOpacity: 0, // remove shadow on iOS

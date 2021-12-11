@@ -67,6 +67,11 @@ export const theme = extendTheme({
                 rounded: "md",
             },
         },
+        Text: {
+            baseStyle: {
+                fontFamily: "Rubik",
+            },
+        },
         FAB: {
             baseStyle: {
                 borderRadius: 10,

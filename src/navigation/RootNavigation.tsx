@@ -12,12 +12,15 @@ import { CreateCard } from "@screens/Card/CreateCard/CreateCard";
 import { DeckDetails } from "@screens/Deck/DeckDetails/DeckDetails";
 import { useTranslation } from "react-i18next";
 import { Review } from "@screens/Card/Review/Review";
+import { useStyle } from "./style";
+import { ChevronLeftIcon } from "native-base";
 
 const Stack = createStackNavigator<TRootNavigation>();
 
 export const RootNavigation = () => {
     const { user } = useContext(UserContext);
     const { t } = useTranslation(["deck", "card"]);
+    const style = useStyle();
 
     return (
         <Stack.Navigator
@@ -27,10 +30,18 @@ export const RootNavigation = () => {
         >
             {user && (
                 <Fragment>
-                    <Stack.Group screenOptions={{ headerShown: false }}>
+                    <Stack.Group screenOptions={{ headerShown: false, cardStyle: style.navigationCardBackground }}>
                         <Stack.Screen component={BottomTabNavigation} name="main" />
                     </Stack.Group>
-                    <Stack.Group screenOptions={{ presentation: "modal" }}>
+                    <Stack.Group
+                        screenOptions={{
+                            presentation: "modal",
+                            headerTitleStyle: style.navigationTitle,
+                            cardStyle: style.navigationCardBackground,
+                            // eslint-disable-next-line react/display-name
+                            headerBackImage: (_props) => <ChevronLeftIcon style={style.navigationHeaderBackButton} />,
+                        }}
+                    >
                         <Stack.Screen
                             component={CreateDeck}
                             name="createDeck"
@@ -44,7 +55,10 @@ export const RootNavigation = () => {
                         <Stack.Screen
                             component={DeckDetails}
                             name="deckDetails"
-                            options={{ title: t("deck:deckDetails") }}
+                            options={{
+                                title: t("deck:deckDetails"),
+                                headerTransparent: true,
+                            }}
                         />
                         <Stack.Screen
                             component={Review}

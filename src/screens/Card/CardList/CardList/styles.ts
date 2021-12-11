@@ -3,20 +3,23 @@ import { useTheme } from "native-base";
 
 export const useStyle = () => {
     const theme = useTheme();
-    const { colors, radii } = theme;
+    const { space } = theme;
+
+    const cardsNumberPerRow = 3;
 
     return StyleSheet.create({
+        container: {
+            margin: space[2],
+        },
         card: {
-            flexDirection: "row",
-            justifyContent: "center",
-            minHeight: 140,
-            backgroundColor: colors.white,
-            padding: 10,
-            borderRadius: radii.lg,
+            flexBasis: `${(1 / cardsNumberPerRow) * 100}%`,
+            height: 200,
+            padding: space[2],
         },
         cardList: {
-            marginHorizontal: 20,
-            marginBottom: 20,
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
         },
     });
 };
