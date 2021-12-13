@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet } from "react-native";
 import { useTheme } from "native-base";
 import { getRandomThemeColor } from "@utils/styleUtils";
 import { useContrastTextColor } from "@hooks/useContrastTextColor";
+import { addAlpha } from "@utils/color";
 
 const windowHeight = Dimensions.get("window").height;
 
@@ -60,15 +61,7 @@ export const useStyle = ({ deckId }: IParams) => {
             fontSize: fontSizes.md,
         },
         actionButton: {
-            position: "absolute",
-            right: 0,
-            marginTop: 20,
-            marginRight: 20,
-            alignContent: "center",
-            justifyContent: "center",
-            color: deckColorContrast,
-            height: 20,
-            width: 25,
+            backgroundColor: addAlpha(deckColorContrast, 0.2),
         },
     });
 };

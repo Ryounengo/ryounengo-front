@@ -11,7 +11,6 @@ export const useStyle = () => {
             fontFamily: fonts.body,
             fontWeight: "300",
             fontSize: fontSizes.md,
-            color: colors.white,
         },
         navigationCardBackground: {
             backgroundColor,
