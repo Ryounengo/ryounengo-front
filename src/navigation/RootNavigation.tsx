@@ -23,11 +23,7 @@ export const RootNavigation = () => {
     const style = useStyle();
 
     return (
-        <Stack.Navigator
-            screenOptions={{
-                headerStyle: { backgroundColor: "transparent", position: "absolute" },
-            }}
-        >
+        <Stack.Navigator>
             {user && (
                 <Fragment>
                     <Stack.Group screenOptions={{ headerShown: false, cardStyle: style.navigationCardBackground }}>
@@ -69,7 +65,7 @@ export const RootNavigation = () => {
                 </Fragment>
             )}
             {!user && (
-                <Stack.Group>
+                <Stack.Group screenOptions={{ headerShown: false }}>
                     <Stack.Screen component={Login} name="login" />
                     <Stack.Screen component={Register} name="register" />
                     <Stack.Screen component={LostPassword} name="lostPassword" />

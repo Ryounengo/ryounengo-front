@@ -23,5 +23,10 @@ export const useStyle = () => {
         navigationTabBar: {
             backgroundColor,
         },
+        headerBar: {
+            backgroundColor,
+            elevation: 0, // remove shadow on Android
+            shadowOpacity: 0, // remove shadow on iOS
+        },
     });
 };

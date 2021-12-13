@@ -59,5 +59,16 @@ export const useStyle = ({ deckId }: IParams) => {
             color: deckColorContrast,
             fontSize: fontSizes.md,
         },
+        actionButton: {
+            position: "absolute",
+            right: 0,
+            marginTop: 20,
+            marginRight: 20,
+            alignContent: "center",
+            justifyContent: "center",
+            color: deckColorContrast,
+            height: 20,
+            width: 25,
+        },
     });
 };

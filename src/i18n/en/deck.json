@@ -9,6 +9,8 @@
     "isPrivate": "This deck is private",
     "tagsExamples": "nature,flower",
     "tags": "tags",
+    "publish": "Publish",
+    "publishTip": "Publish the deck to make it visible to everyone.",
     "searchDeck": "Search a deck",
     "reviewedXTimes": "Reviewed {{count}} time",
     "reviewedXTimes_plural": "Reviewed {{count}} times"

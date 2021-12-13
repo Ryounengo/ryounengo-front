@@ -20,6 +20,7 @@
   "seeMore": "See more",
   "cancel": "Cancel",
   "edit": "Edit",
+  "remove": "Remove",
   "totalResult": "{{ count }} result",
   "totalResult_plural": "{{ count }} results"
 }

@@ -1,5 +1,5 @@
 import { UserContext } from "@context";
-import { Box, Spinner, Text } from "native-base";
+import { Box, Spinner, Text, useColorMode } from "native-base";
 import { useTranslation } from "react-i18next";
 import { RootNavigation } from "@navigation/RootNavigation";
 import { IUser } from "@typings/interfaces/IAuthentication";
@@ -11,6 +11,8 @@ const App = () => {
     const [user, setUser] = useState<IUser>();
     const [error, setError] = useState<unknown>();
     const { t } = useTranslation("common");
+    const { setColorMode } = useColorMode();
+    setColorMode("dark");
 
     useEffect(() => {
         refreshToken()

@@ -40,7 +40,7 @@ export const useReviewCard = (props: IParams) => {
             .then(() => {
                 if (reviewCardList) {
                     if (currentCardIndex === reviewCardList.length - 1) {
-                        navigate("home");
+                        navigate("home", { screen: "home" });
 
                         return;
                     }

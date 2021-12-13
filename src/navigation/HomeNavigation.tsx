@@ -1,22 +1,22 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Decks } from "@screens/Deck/Decks";
-import { TDeckNavigation } from "@navigation/INavigation";
 import { useStyle } from "./style";
+import { Home } from "@screens/Home/Home";
+import { THomeNavigation } from "@navigation/INavigation";
 
-const Stack = createStackNavigator<TDeckNavigation>();
+const Stack = createStackNavigator<THomeNavigation>();
 
-export const DeckNavigation = () => {
+export const HomeNavigation = () => {
     const style = useStyle();
 
     return (
         <Stack.Navigator
-            initialRouteName="decks"
+            initialRouteName="home"
             screenOptions={{
                 headerShown: false,
                 cardStyle: style.navigationCardBackground,
             }}
         >
-            <Stack.Screen component={Decks} name="decks" />
+            <Stack.Screen component={Home} name="home" />
         </Stack.Navigator>
     );
 };

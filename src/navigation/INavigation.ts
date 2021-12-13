@@ -11,12 +11,16 @@ export type TCardNavigation = {
     cards: undefined;
 };
 
+export type THomeNavigation = {
+    home: undefined;
+};
+
 export type TStackSettings = {
     user: undefined;
 };
 
 export type TBottomTabNavigation = {
-    home: undefined;
+    home: NavigatorScreenParams<THomeNavigation>;
     deck: NavigatorScreenParams<TDeckNavigation>;
     card: NavigatorScreenParams<TCardNavigation>;
     settings: undefined;

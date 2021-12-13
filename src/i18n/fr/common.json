@@ -21,6 +21,7 @@
   "seeMore": "En voir plus",
   "cancel": "Annuler",
   "edit": "Modifier",
+  "remove": "Supprimer",
   "totalResult": "{{ count }} résultat",
   "totalResult_plural": "{{ count }} résultats"
 }

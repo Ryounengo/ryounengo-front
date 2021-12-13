@@ -4,7 +4,7 @@ import { useContrastTextColor } from "@hooks/useContrastTextColor";
 
 export const useStyle = () => {
     const { radii, space, colors, fontSizes } = useTheme();
-    const colorScheme = useColorModeValue(colors.dark[700], colors.dark[800]);
+    const colorScheme = useColorModeValue(colors.dark[700], colors.dark[200]);
     const contrastColor = useContrastTextColor(colorScheme);
 
     return StyleSheet.create({

@@ -2,7 +2,6 @@ import { BottomTabNavigationProp, createBottomTabNavigator } from "@react-naviga
 import { CardNavigation } from "../CardNavigation";
 import { TBottomTabNavigation, TRootNavigation } from "../INavigation";
 import { DeckNavigation } from "@navigation/DeckNavigation";
-import { Home } from "@screens/Home/Home";
 import { useTheme } from "native-base";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { AppIcon } from "@common/AppIcon";
@@ -13,6 +12,7 @@ import HomeNav from "@static/images/home.svg";
 import { NavIcon } from "@navigation/TabNavigation/NavIcon";
 import { useTranslation } from "react-i18next";
 import { useStyle } from "../style";
+import { HomeNavigation } from "@navigation/HomeNavigation";
 
 const Tab = createBottomTabNavigator<TBottomTabNavigation>();
 
@@ -47,7 +47,7 @@ export const BottomTabNavigation = () => {
         return <NavIcon icon={icon} isFocused={isFocused} />;
     };
 
-    const goToHome = () => navigate("home");
+    const goToHome = () => navigate("home", { screen: "home" });
 
     return (
         <Tab.Navigator
@@ -59,10 +59,7 @@ export const BottomTabNavigation = () => {
                 title: t(route.name),
                 unmountOnBlur: true,
                 tabBarStyle: style.navigationTabBar,
-                headerStyle: {
-                    elevation: 0, // remove shadow on Android
-                    shadowOpacity: 0, // remove shadow on iOS
-                },
+                headerStyle: style.headerBar,
                 // eslint-disable-next-line react/display-name
                 headerTitle: () => <AppIcon height={40} width={35} onPress={goToHome} />,
                 headerRight: UserAvatar,
@@ -71,7 +68,7 @@ export const BottomTabNavigation = () => {
                 tabBarIcon: ({ focused }) => renderTabIcon(route.name, focused),
             })}
         >
-            <Tab.Screen component={Home} name="home" />
+            <Tab.Screen component={HomeNavigation} name="home" />
             <Tab.Screen component={DeckNavigation} name="deck" />
             <Tab.Screen component={CardNavigation} name="card" />
         </Tab.Navigator>
