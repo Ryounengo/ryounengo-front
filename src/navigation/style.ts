@@ -1,22 +1,25 @@
 import { StyleSheet } from "react-native";
 import { useColorModeValue, useTheme } from "native-base";
+import { useContrastTextColor } from "@hooks/useContrastTextColor";
 
 export const useStyle = () => {
     const { colors, fontSizes, fonts } = useTheme();
 
     const backgroundColor = useColorModeValue(colors.white, colors.dark[100]);
+    const backgroundColorContrast = useContrastTextColor(backgroundColor);
 
     return StyleSheet.create({
         navigationTitle: {
             fontFamily: fonts.body,
             fontWeight: "300",
             fontSize: fontSizes.md,
+            color: backgroundColorContrast,
         },
         navigationCardBackground: {
             backgroundColor,
         },
         navigationHeaderBackButton: {
-            color: colors.white,
+            color: backgroundColorContrast,
             marginRight: -20,
         },
         navigationTabBar: {

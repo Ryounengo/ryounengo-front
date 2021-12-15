@@ -12,5 +12,16 @@
     "publish": "Publier",
     "publishTip": "Publier le deck pour le rendre visible par tous.",
     "searchDeck": "Rechercher un deck",
-    "reviewedXTimes": "Revu {{ count }} fois"
+    "reviewedXTimes": "Revu {{ count }} fois",
+    "deckInformation": "Information du deck",
+    "defaultValues": "Valeurs par défaut",
+    "isDefaultReversed": "Active les cartes inverse en revision",
+    "textCard": {
+        "name":  "Carte à texte",
+        "description":  "Personnalise le recto et verso des cartes avec du texte"
+    },
+    "imageCard": {
+        "name":  "Carte illustrée",
+        "description":  "Personnalise tes cartes avec une image pour apprendre sans mots"
+    }
 }

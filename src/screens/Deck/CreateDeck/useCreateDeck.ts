@@ -17,7 +17,8 @@ export const useCreateDeck = () => {
             name: "",
             description: "",
             tags: "",
-            isPrivate: false,
+            isPrivate: true,
+            isDefaultReversed: false,
         },
     });
     const { update, isLoading } = usePostApi<IDeckSummaryResponse>();

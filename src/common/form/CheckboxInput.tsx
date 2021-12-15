@@ -1,25 +1,25 @@
 import { Checkbox, FormControl, Text } from "native-base";
-import { Controller, FieldError, FieldValues, UseControllerProps } from "react-hook-form";
+import { Controller, FieldError, FieldValues, Path, UseControllerProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ViewStyle } from "react-native";
 
 interface IParams<T> {
-    name: string;
+    name: Path<T>;
     error: FieldError | undefined;
     control: UseControllerProps<T>["control"];
     label: string;
     isRequired?: boolean;
+    style?: ViewStyle;
 }
 
 export const CheckboxInput = <T extends FieldValues>(props: IParams<T>) => {
-    const { name, error, control, label, isRequired } = props;
+    const { name, error, control, label, isRequired, style } = props;
     const { t } = useTranslation("validation");
 
     return (
-        <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+        <FormControl isInvalid={Boolean(error)} isRequired={isRequired} style={style}>
             <Controller
                 control={control}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 name={name}
                 render={(renderProps) => (
                     <Checkbox
@@ -27,7 +27,7 @@ export const CheckboxInput = <T extends FieldValues>(props: IParams<T>) => {
                         value={renderProps.field.value}
                         onChange={(isSelected) => renderProps.field.onChange(isSelected)}
                     >
-                        <Text>{label}</Text>
+                        <Text ml={2}>{label}</Text>
                     </Checkbox>
                 )}
                 rules={{

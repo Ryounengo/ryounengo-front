@@ -13,5 +13,16 @@
     "publishTip": "Publish the deck to make it visible to everyone.",
     "searchDeck": "Search a deck",
     "reviewedXTimes": "Reviewed {{count}} time",
-    "reviewedXTimes_plural": "Reviewed {{count}} times"
+    "reviewedXTimes_plural": "Reviewed {{count}} times",
+    "deckInformation": "Deck information",
+    "defaultValues": "Default values",
+    "isDefaultReversed": "Activate the reverse cards in review",
+    "textCard": {
+        "name":  "Text card",
+        "description":  "Custom the back and front of the card with text fields"
+    },
+    "imageCard": {
+        "name":  "Illustrated card",
+        "description":  "Custom your cards with a picture to get a meaning without words"
+    }
 }

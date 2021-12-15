@@ -35,4 +35,5 @@ export interface IDeckEditForm {
     description: string;
     tags: string;
     isPrivate: boolean;
+    isDefaultReversed: boolean;
 }

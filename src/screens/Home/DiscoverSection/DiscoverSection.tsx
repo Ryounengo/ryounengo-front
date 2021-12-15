@@ -24,7 +24,7 @@ type NavigationProps = CompositeNavigationProp<
 export const DiscoverSection = (props: IParams) => {
     const { deckList } = props;
     const style = useStyle();
-    const { t } = useTranslation(["common", "discover"]);
+    const { t } = useTranslation(["common", "home"]);
     const { push, navigate } = useNavigation<NavigationProps>();
     const mostPopularDeckQuery: IDeckFilter = {
         ...defaultPagination,
@@ -39,6 +39,9 @@ export const DiscoverSection = (props: IParams) => {
             <Heading marginLeft={4} marginTop={2}>
                 {t("home:discover")}
             </Heading>
+            <Text marginLeft={4} variant="caption">
+                {t("home:discoverSubtitle")}
+            </Text>
             <View style={style.container}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={style.deckList}>
                     {deckList.map((deck, index) => (

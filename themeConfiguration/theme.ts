@@ -71,6 +71,18 @@ export const theme = extendTheme({
             baseStyle: {
                 fontFamily: "Rubik",
             },
+            variants: {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                caption: ({ colorMode }) => ({
+                    color: colorMode === "dark" ? "dark.500" : "dark.300",
+                }),
+            },
+        },
+        Input: {
+            defaultProps: {
+                variant: "underlined",
+            },
         },
         FAB: {
             baseStyle: {

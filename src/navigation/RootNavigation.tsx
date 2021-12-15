@@ -34,6 +34,7 @@ export const RootNavigation = () => {
                             presentation: "modal",
                             headerTitleStyle: style.navigationTitle,
                             cardStyle: style.navigationCardBackground,
+                            headerStyle: style.headerBar,
                             // eslint-disable-next-line react/display-name
                             headerBackImage: (_props) => <ChevronLeftIcon style={style.navigationHeaderBackButton} />,
                         }}
