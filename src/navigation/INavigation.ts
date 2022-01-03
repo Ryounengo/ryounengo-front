@@ -1,4 +1,4 @@
-import { IDeckFilter } from "@typings/interfaces";
+import { IDeckFilter, IDeckSummary } from "@typings/interfaces";
 import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type TDeckNavigation = {
@@ -27,7 +27,9 @@ export type TBottomTabNavigation = {
 };
 
 export type TRootNavigation = {
-    createDeck: undefined;
+    editDeck: {
+        deck?: IDeckSummary;
+    };
     createCard: {
         deckId: string;
     };

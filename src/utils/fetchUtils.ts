@@ -61,7 +61,9 @@ export const fetcher = async <T>(input: RequestInfo, init?: IRequestInit): Promi
         const contentType = response.headers.get(CONTENT_TYPE_HEADER_PARAM);
 
         if (response.ok && NO_CONTENT_RESPONSE_STATUS.includes(response.status)) {
-            return undefined;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            return true;
         }
 
         if (!contentType) {

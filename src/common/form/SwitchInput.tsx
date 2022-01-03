@@ -7,10 +7,11 @@ interface IParams<T> extends IBoxProps {
     error: FieldError | undefined;
     control: UseControllerProps<T>["control"];
     label: string;
+    disabled?: boolean;
 }
 
 export const SwitchInput = <T extends FieldValues>(props: IParams<T>) => {
-    const { name, error, control, label, ...boxProps } = props;
+    const { name, error, control, label, disabled, ...boxProps } = props;
     const { colors } = useTheme();
 
     return (
@@ -20,6 +21,7 @@ export const SwitchInput = <T extends FieldValues>(props: IParams<T>) => {
                 name={name}
                 render={({ field }) => (
                     <Switch
+                        disabled={disabled}
                         ref={field.ref}
                         thumbColor={colors.white}
                         trackColor={{ false: colors.dark[600], true: colors.primary[500] }}

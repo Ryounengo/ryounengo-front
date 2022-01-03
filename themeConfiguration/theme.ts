@@ -3,16 +3,16 @@ import { extendTheme } from "native-base";
 export const theme = extendTheme({
     colors: {
         primary: {
-            50: "#f4e3ff",
-            100: "#d5b2ff",
-            200: "#b77fff",
-            300: "#9b4cff",
-            400: "#7e1aff",
-            500: "#6500e6",
-            600: "#4e00b4",
-            700: "#380082",
-            800: "#220050",
-            900: "#0d0020",
+            50: "#deecff",
+            100: "#b1caff",
+            200: "#81acfd",
+            300: "#5191f9",
+            400: "#2278f6",
+            500: "#0966dd",
+            600: "#0143ad",
+            700: "#00287d",
+            800: "#00124e",
+            900: "#000320",
         },
         error: {
             50: "#ffe3ed",
@@ -87,7 +87,7 @@ export const theme = extendTheme({
         FAB: {
             baseStyle: {
                 borderRadius: 10,
-                backgroundColor: "#6500e6",
+                backgroundColor: "primary.500",
             },
             defaultProps: {
                 placement: "bottom-right",

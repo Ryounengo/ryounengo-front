@@ -7,23 +7,23 @@ import { ErrorAndLoading } from "@common/ErrorAndLoading";
 import { useStyle } from "./style";
 import { useStyle as useNavigationStyle } from "@navigation/style";
 import { CardList } from "@screens/Card/CardList/CardList/CardList";
-import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { RightActionButton } from "@common/Navigation/RightActionButton";
 import { lightenColor } from "@utils/color";
+import { deckToSummary } from "@utils/deckUtils";
 
 type Params = StackScreenProps<TRootNavigation, "deckDetails">;
 
 export const DeckDetails = (props: Params) => {
-    const { route } = props;
+    const { route, navigation } = props;
     const { params } = route;
     const { t } = useTranslation(["common", "deck"]);
-    const { setOptions } = useNavigation();
-
+    const { setOptions, push } = navigation;
     const { deckDetails, deleteDeck, updateDeck, error } = useDeckDetails(params.deckId);
     const { isOpen, onOpen, onClose } = useDisclose();
     const style = useStyle({ deckId: deckDetails?.id });
     const navigationStyle = useNavigationStyle();
+    const goToEditDeck = () => push("editDeck", { deck: deckDetails ? deckToSummary(deckDetails) : undefined });
 
     useEffect(() => {
         setOptions({
@@ -78,7 +78,7 @@ export const DeckDetails = (props: Params) => {
             </ScrollView>
             <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
                 <Actionsheet.Content>
-                    <Actionsheet.Item>{t("common:edit")}</Actionsheet.Item>
+                    <Actionsheet.Item onPress={goToEditDeck}>{t("common:edit")}</Actionsheet.Item>
                     <Actionsheet.Item onPress={deleteDeck}>{t("common:remove")}</Actionsheet.Item>
                     <Actionsheet.Item onPress={() => updateDeck({ isPrivate: false })}>
                         {t("deck:publish")}

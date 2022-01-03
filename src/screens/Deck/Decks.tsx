@@ -22,7 +22,7 @@ export const Decks = () => {
     const { params } = useRoute<StackProps>();
     const { t } = useTranslation("deck");
 
-    const goToCreateDeck = () => push("createDeck");
+    const goToCreateDeck = () => push("editDeck", { deck: undefined });
 
     const goToDeckDetails = (deckId: string) => navigate("deckDetails", { deckId: deckId });
 

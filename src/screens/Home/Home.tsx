@@ -3,9 +3,9 @@ import { defaultPagination } from "@utils/pagination";
 import { DiscoverSection } from "@screens/Home/DiscoverSection/DiscoverSection";
 import { IDeckFilter } from "@typings/interfaces";
 import { ReviewSection } from "@screens/Home/ReviewSection/ReviewSection";
-import { useDeckList } from "@common/Deck";
 import { ErrorAndLoading } from "@common/ErrorAndLoading/ErrorAndLoading";
 import { useCardReviewList } from "@hooks/Review";
+import { useDeckList } from "@hooks/Deck/useDeckList";
 
 export const Home = () => {
     const publicDecksQuery: IDeckFilter = {

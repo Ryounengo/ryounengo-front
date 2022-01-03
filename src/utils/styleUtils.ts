@@ -16,7 +16,7 @@ const stringToSignature = (value: string): number => {
 export const getRandomThemeColor = (theme: ICustomTheme, id?: string) => {
     const { colors } = theme;
 
-    const themePaletteColors: string[] = [Object.values(colors.primary), Object.values(colors.dark)].flat();
+    const themePaletteColors: string[] = [Object.values(colors.primary)].flat();
 
     const constantPicker = id ? stringToSignature(id) % (themePaletteColors.length - 1) : undefined;
 

@@ -1,22 +1,21 @@
 import { Box, Button, Heading, ScrollView, VStack } from "native-base";
-import { TextInput } from "../form";
+import { TextInput } from "@common/form";
 import { tagsRegex, textRegex } from "@utils/regex";
-import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { IDeckEditForm } from "@typings/interfaces";
-import { useStyle } from "./style";
+import { useStyle } from "@screens/Deck/DeckEdit/style";
 import { CardTypeCard } from "@common/Card/CardTypeCard/CardTypeCard";
 import AddTextCardIcon from "@static/images/addTextCard.svg";
 import { SwitchInput } from "@common/form/SwitchInput";
+import { useDeckEdit } from "@screens/Deck/DeckEdit/useDeckEdit";
+import { StackScreenProps } from "@react-navigation/stack";
+import { TRootNavigation } from "@navigation/INavigation";
 
-interface IParams {
-    formMethods: UseFormReturn<IDeckEditForm>;
-    isLoading: boolean;
-    submit(formData: IDeckEditForm): void;
-}
+type TParams = StackScreenProps<TRootNavigation, "editDeck">;
 
-export const DeckEditForm = (props: IParams) => {
-    const { formMethods, isLoading, submit } = props;
+export const DeckEdit = (props: TParams) => {
+    const { route } = props;
+    const { deck } = route.params;
+    const { formMethods, submit, isLoading } = useDeckEdit(deck);
     const { t } = useTranslation(["common", "deck", "validation"]);
     const { control, handleSubmit, formState } = formMethods;
     const { errors } = formState;
@@ -51,6 +50,7 @@ export const DeckEditForm = (props: IParams) => {
                 />
                 <SwitchInput
                     control={control}
+                    disabled={deck && !deck.isPrivate}
                     error={errors.isPrivate}
                     label={t("deck:isPrivate")}
                     name="isPrivate"

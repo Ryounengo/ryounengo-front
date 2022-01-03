@@ -14,10 +14,9 @@ export const useCustomToast = () => {
         });
 
     const toastSuccessCreation = (item: string) =>
-        toast.show({ status: "success", description: t("successCreation", { item }) });
+        toast.show({ status: "success", title: t("successCreation", { item }) });
 
-    const toastSuccessUpdate = (item: string) =>
-        toast.show({ status: "success", description: t("successUpdate", { item }) });
+    const toastSuccessUpdate = (item: string) => toast.show({ status: "success", title: t("successUpdate", { item }) });
 
     return {
         toastError,
