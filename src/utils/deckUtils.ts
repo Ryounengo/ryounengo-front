@@ -5,6 +5,8 @@ export const deckToSummary = (deck: IDeck): IDeckSummary => ({
     tags: deck.tags,
     isPrivate: deck.isPrivate,
     name: deck.name,
-    cards: deck.cards.map((card) => card.id),
+    cards: deck.cards.totalElements,
     description: deck.description,
+    defaultReviewReverseCard: deck.defaultReviewReverseCard,
+    defaultCardType: deck.defaultCardType,
 });

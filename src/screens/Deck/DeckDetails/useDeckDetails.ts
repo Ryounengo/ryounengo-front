@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { getDeckDetailsRoute, getDeckRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckMapper";
-import { IDeck } from "@typings/interfaces";
+import { IDeck, IDeckResponse } from "@typings/interfaces";
 import { useDeleteApi, useGetApi, usePutApi } from "@hooks/api";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
@@ -14,15 +13,14 @@ type NavigationProps = CompositeNavigationProp<
 >;
 
 export const useDeckDetails = (deckId: string) => {
-    const [deckDetails, setDeckDetails] = useState<IDeck>();
     const { goBack } = useNavigation<NavigationProps>();
     const {
-        data: deckResponse,
+        data: deckDetails,
         error,
         isValidating,
         refresh,
         isRefreshLoading,
-    } = useGetApi<IDeck>(getDeckDetailsRoute(deckId, 0));
+    } = useGetApi<IDeckResponse, IDeck>(getDeckDetailsRoute(deckId, 0), { mapper: responseToState });
     const { isLoading: isDeleteLoading, remove } = useDeleteApi();
     const { isLoading: isUpdateLoading, update } = usePutApi();
 
@@ -31,15 +29,12 @@ export const useDeckDetails = (deckId: string) => {
         if (deckDetails) {
             const { name, description, tags, isPrivate } = { ...deckDetails, ...updatedDeck };
             const payload: IDeckPayload = { name, description, tags, isPrivate };
-            update(getDeckRoute(deckId), payload).then(() => refresh());
-        }
-    };
 
-    useEffect(() => {
-        if (deckResponse) {
-            setDeckDetails(responseToState(deckResponse));
+            return update(getDeckRoute(deckId), payload).then(() => refresh());
         }
-    }, [deckResponse]);
+
+        return Promise.resolve();
+    };
 
     return {
         deckDetails,

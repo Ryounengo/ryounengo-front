@@ -27,31 +27,30 @@ export const BottomTabNavigation = () => {
     const { navigate } = useNavigation<NavigationProps>();
     const style = useStyle();
 
-    const renderTabIcon = (route: string, isFocused: boolean) => {
+    const renderTabIcon = (route: keyof TBottomTabNavigation, isFocused: boolean) => {
         let icon;
 
         switch (route) {
-            case "home":
+            case "homeStack":
                 icon = HomeNav;
                 break;
             case "deck":
                 icon = DeckNav;
                 break;
             case "card":
+            default:
                 icon = CardNav;
                 break;
-            default:
-                icon = DeckNav;
         }
 
         return <NavIcon icon={icon} isFocused={isFocused} />;
     };
 
-    const goToHome = () => navigate("home", { screen: "home" });
+    const goToHome = () => navigate("homeStack", { screen: "home" });
 
     return (
         <Tab.Navigator
-            initialRouteName="home"
+            initialRouteName="homeStack"
             screenListeners={({ navigation }) => ({
                 blur: () => navigation.setParams({ screen: undefined, params: undefined }),
             })}
@@ -68,7 +67,7 @@ export const BottomTabNavigation = () => {
                 tabBarIcon: ({ focused }) => renderTabIcon(route.name, focused),
             })}
         >
-            <Tab.Screen component={HomeNavigation} name="home" />
+            <Tab.Screen component={HomeNavigation} name="homeStack" />
             <Tab.Screen component={DeckNavigation} name="deck" />
             <Tab.Screen component={CardNavigation} name="card" />
         </Tab.Navigator>

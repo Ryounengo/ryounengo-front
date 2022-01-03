@@ -23,7 +23,10 @@ export const DeckDetails = (props: Params) => {
     const { isOpen, onOpen, onClose } = useDisclose();
     const style = useStyle({ deckId: deckDetails?.id });
     const navigationStyle = useNavigationStyle();
-    const goToEditDeck = () => push("editDeck", { deck: deckDetails ? deckToSummary(deckDetails) : undefined });
+    const goToEditDeck = () => {
+        onClose();
+        push("editDeck", { deck: deckDetails ? deckToSummary(deckDetails) : undefined });
+    };
 
     useEffect(() => {
         setOptions({
@@ -68,19 +71,19 @@ export const DeckDetails = (props: Params) => {
             </View>
             <ScrollView>
                 <ErrorAndLoading error={error} isLoading={!deckDetails}>
-                    {deckDetails?.cards?.length !== undefined && deckDetails?.cards.length > 0 && (
+                    {deckDetails?.cards && deckDetails?.cards.totalElements > 0 && (
                         <Heading marginLeft={4} marginTop={4}>
-                            {t("totalResult", { count: deckDetails?.cards.length })}
+                            {t("totalResult", { count: deckDetails?.cards.totalElements })}
                         </Heading>
                     )}
-                    <CardList cardList={deckDetails?.cards} />
+                    <CardList cardList={deckDetails?.cards.content} />
                 </ErrorAndLoading>
             </ScrollView>
             <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
                 <Actionsheet.Content>
                     <Actionsheet.Item onPress={goToEditDeck}>{t("common:edit")}</Actionsheet.Item>
-                    <Actionsheet.Item onPress={deleteDeck}>{t("common:remove")}</Actionsheet.Item>
-                    <Actionsheet.Item onPress={() => updateDeck({ isPrivate: false })}>
+                    <Actionsheet.Item onPress={() => deleteDeck().then(onClose)}>{t("common:remove")}</Actionsheet.Item>
+                    <Actionsheet.Item onPress={() => updateDeck({ isPrivate: false }).then(onClose)}>
                         {t("deck:publish")}
                     </Actionsheet.Item>
                 </Actionsheet.Content>

@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TRootNavigation } from "@navigation/INavigation";
 import { usePostApi, usePutApi } from "@hooks/api";
 import { useCustomToast } from "@hooks/useCustomToast";
+import { ECardType } from "@typings/enums";
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "editDeck">;
 
@@ -18,7 +19,8 @@ export const useDeckEdit = (deck?: IDeckSummary) => {
             description: deck?.description ?? "",
             tags: deck?.tags.join(",") ?? "",
             isPrivate: deck?.isPrivate ?? true,
-            isDefaultReversed: false,
+            defaultReviewReverseCard: deck?.defaultReviewReverseCard ?? false,
+            defaultCardType: deck?.defaultCardType ?? ECardType.TEXT,
         },
     });
     const { update: postUpdate, isLoading: isPostLoading } = usePostApi<IDeckSummaryResponse>();

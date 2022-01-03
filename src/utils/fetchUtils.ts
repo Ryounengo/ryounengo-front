@@ -8,7 +8,7 @@ export const objectToQuery = (object: Record<string, unknown>) =>
         .map(([key, value]) => `${key}=${encodeURIComponent(`${value}`)}`)
         .join("&");
 
-interface IRequestInit extends RequestInit {
+export interface IRequestInit extends RequestInit {
     isSecured?: boolean;
     body: any;
 }

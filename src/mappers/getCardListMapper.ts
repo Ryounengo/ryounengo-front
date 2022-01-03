@@ -1,7 +1,10 @@
 import { ICardSummary, ICardSummaryResponse } from "@typings/interfaces";
+import { IPaginatedResponse } from "@typings/interfaces/IPagination";
 
-export const responseToState = (cardList: ICardSummaryResponse[]): ICardSummary[] =>
-    cardList.map((card) => ({
+export const responseToState = (
+    response: IPaginatedResponse<ICardSummaryResponse[]>
+): IPaginatedResponse<ICardSummary[]> => ({
+    content: response.content.map((card) => ({
         id: card.id,
         front: card.front,
         back: card.back,
@@ -9,4 +12,6 @@ export const responseToState = (cardList: ICardSummaryResponse[]): ICardSummary[
         example: card.example,
         referenceCard: card.referenceCard,
         type: card.type,
-    }));
+    })),
+    totalElements: response.totalElements,
+});

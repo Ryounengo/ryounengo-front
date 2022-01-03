@@ -1,31 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getDecksRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckListMapper";
 import { objectToQuery } from "@utils/fetchUtils";
 import { IDeckFilter, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 import { useGetApi } from "@hooks/api";
 import { defaultPagination } from "@utils/pagination";
+import { IPaginatedResponse } from "@typings/interfaces/IPagination";
 
 export const useDeckList = (publicDecksQuery?: IDeckFilter) => {
-    const [deckList, setDeckList] = useState<IDeckSummary[]>();
     const [deckFilter, setDeckFilter] = useState(publicDecksQuery);
-
-    const query = `?${objectToQuery(deckFilter ? { ...deckFilter } : { ...defaultPagination })}`;
+    const query = `?${objectToQuery(deckFilter ? { ...deckFilter } : { ...defaultPagination, isReviewed: true })}`;
 
     const {
-        data: deckResponse,
+        data: deckList,
         error,
         isValidating,
         refresh,
         isRefreshLoading,
         mutate,
-    } = useGetApi<IDeckSummaryResponse[]>(getDecksRoute(query));
-
-    useEffect(() => {
-        if (deckResponse) {
-            setDeckList(responseToState(deckResponse));
-        }
-    }, [deckResponse]);
+    } = useGetApi<IPaginatedResponse<IDeckSummaryResponse[]>, IPaginatedResponse<IDeckSummary[]>>(
+        getDecksRoute(query),
+        { mapper: responseToState }
+    );
 
     return {
         deckList,

@@ -1,33 +1,34 @@
 import { ICardSummary } from "./ICard";
-import { IPagination } from "@typings/interfaces/IPagination";
+import { IPaginatedResponse, IPagination } from "@typings/interfaces/IPagination";
+import { ECardType } from "@typings/enums";
 
 export interface IDeckFilter extends IPagination {
+    isReviewed: boolean;
     name?: string;
     tags?: string[];
-    isPrivate?: boolean;
+    isToReview?: boolean;
 }
 
 export interface IDeckSummary {
     id: string;
+    name: string;
     description: string;
     tags: string[];
-    cards: string[];
+    cards: number;
     isPrivate: boolean;
-    name: string;
-}
-
-export interface IVirtualDeck {
-    tags: string[];
-    cards: string[];
+    defaultCardType: ECardType;
+    defaultReviewReverseCard: boolean;
 }
 
 export interface IDeck {
     id: string;
     description: string;
     tags: string[];
-    cards: ICardSummary[];
+    cards: IPaginatedResponse<ICardSummary[]>;
     isPrivate: boolean;
     name: string;
+    defaultReviewReverseCard: boolean;
+    defaultCardType: ECardType;
 }
 
 export interface IDeckEditForm {
@@ -35,5 +36,6 @@ export interface IDeckEditForm {
     description: string;
     tags: string;
     isPrivate: boolean;
-    isDefaultReversed: boolean;
+    defaultReviewReverseCard: boolean;
+    defaultCardType: ECardType;
 }

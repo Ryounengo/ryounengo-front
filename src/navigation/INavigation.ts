@@ -20,10 +20,9 @@ export type TStackSettings = {
 };
 
 export type TBottomTabNavigation = {
-    home: NavigatorScreenParams<THomeNavigation>;
+    homeStack: NavigatorScreenParams<THomeNavigation>;
     deck: NavigatorScreenParams<TDeckNavigation>;
     card: NavigatorScreenParams<TCardNavigation>;
-    settings: undefined;
 };
 
 export type TRootNavigation = {

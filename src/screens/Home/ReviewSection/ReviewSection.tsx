@@ -11,7 +11,7 @@ interface IParams {
 }
 
 type NavigationProps = CompositeNavigationProp<
-    NativeStackNavigationProp<TBottomTabNavigation, "home">,
+    NativeStackNavigationProp<TBottomTabNavigation, "homeStack">,
     NativeStackNavigationProp<TRootNavigation>
 >;
 

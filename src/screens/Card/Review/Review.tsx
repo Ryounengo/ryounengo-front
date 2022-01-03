@@ -8,7 +8,7 @@ import { useCardReviewList } from "@hooks/Review/useCardReviewList";
 
 export const Review = () => {
     const { reviewCardList, error } = useCardReviewList();
-    const { reviewCard, currentCard } = useReviewCard({ reviewCardList });
+    const { reviewCard, currentCard } = useReviewCard({ reviewCardList: reviewCardList?.content });
 
     return (
         <View>

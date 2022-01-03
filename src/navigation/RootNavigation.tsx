@@ -39,7 +39,7 @@ export const RootNavigation = () => {
                             headerBackImage: (_props) => <ChevronLeftIcon style={style.navigationHeaderBackButton} />,
                         }}
                     >
-                        <Stack.Screen component={DeckEdit} name="editDeck" options={{ title: t("deck:createDeck") }} />
+                        <Stack.Screen component={DeckEdit} name="editDeck" />
                         <Stack.Screen
                             component={CreateCard}
                             name="createCard"

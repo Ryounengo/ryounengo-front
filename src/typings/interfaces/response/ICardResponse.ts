@@ -19,6 +19,7 @@ export interface ICardResponse {
     type: ECardType;
     referenceCard: string;
     toReview: boolean;
+    reverseToReview: boolean;
 }
 
 export interface ICardEditResponse {

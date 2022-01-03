@@ -31,7 +31,7 @@ export const DeckSummary = (props: IParams) => {
                 <Heading style={style.deckName}>{name}</Heading>
             </View>
             <View style={[style.item]}>
-                <Text style={style.cards}>{t("card:cardsCounter", { count: cards.length })}</Text>
+                <Text style={style.cards}>{t("card:cardsCounter", { count: cards })}</Text>
             </View>
             <DeckCirclePattern style={style.circlePattern} viewBox="40 -10 60 60" width="100%" />
             <DeckLinesPattern style={style.linesPattern} viewBox="-25 40 60 85" width="100%" />

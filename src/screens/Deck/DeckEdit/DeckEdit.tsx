@@ -13,13 +13,17 @@ import { TRootNavigation } from "@navigation/INavigation";
 type TParams = StackScreenProps<TRootNavigation, "editDeck">;
 
 export const DeckEdit = (props: TParams) => {
-    const { route } = props;
+    const { route, navigation } = props;
     const { deck } = route.params;
     const { formMethods, submit, isLoading } = useDeckEdit(deck);
     const { t } = useTranslation(["common", "deck", "validation"]);
     const { control, handleSubmit, formState } = formMethods;
     const { errors } = formState;
     const style = useStyle();
+
+    navigation.setOptions({
+        title: t(deck ? "deck:updateDeck" : "deck:createDeck"),
+    });
 
     return (
         <ScrollView>
@@ -72,7 +76,7 @@ export const DeckEdit = (props: TParams) => {
                     control={control}
                     error={errors.isPrivate}
                     label={t("deck:isDefaultReversed")}
-                    name="isDefaultReversed"
+                    name="defaultReviewReverseCard"
                 />
                 <Box mt={4}>
                     <CardTypeCard
@@ -83,7 +87,7 @@ export const DeckEdit = (props: TParams) => {
                     />
                 </Box>
                 <Button isLoading={isLoading} margin="auto" mt={8} width="50%" onPress={handleSubmit(submit)}>
-                    {t("deck:createDeck")}
+                    {t(deck ? "deck:updateDeck" : "deck:createDeck")}
                 </Button>
             </VStack>
         </ScrollView>

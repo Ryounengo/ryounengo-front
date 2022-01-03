@@ -17,7 +17,7 @@ interface IParams {
 }
 
 type NavigationProps = CompositeNavigationProp<
-    NativeStackNavigationProp<TBottomTabNavigation, "home">,
+    NativeStackNavigationProp<TBottomTabNavigation, "homeStack">,
     CompositeNavigationProp<NativeStackNavigationProp<TRootNavigation>, NativeStackNavigationProp<TDeckNavigation>>
 >;
 
@@ -28,7 +28,7 @@ export const DiscoverSection = (props: IParams) => {
     const { push, navigate } = useNavigation<NavigationProps>();
     const mostPopularDeckQuery: IDeckFilter = {
         ...defaultPagination,
-        isPrivate: false,
+        isReviewed: false,
     };
 
     const goToDeckList = () => navigate("deck", { screen: "decks", params: { deckQuery: mostPopularDeckQuery } });
@@ -54,24 +54,26 @@ export const DiscoverSection = (props: IParams) => {
                             <DeckSummary deck={deck} />
                         </Pressable>
                     ))}
-                    <Pressable
-                        alignContent={"center"}
-                        alignItems="center"
-                        justifyContent="center"
-                        width={style.deck.width}
-                        onPress={goToDeckList}
-                    >
-                        <OutlinedIcon
-                            borderWidth={2}
-                            color={style.discoverMore.color}
-                            icon={AddIcon}
-                            size={30}
-                            style={style.discoverMore}
-                        />
-                        <Text color={style.discoverMore.color} style={style.discoverMore}>
-                            {t("common:seeMore")}
-                        </Text>
-                    </Pressable>
+                    {deckList?.length > 0 && (
+                        <Pressable
+                            alignContent="center"
+                            alignItems="center"
+                            justifyContent="center"
+                            width={style.deck.width}
+                            onPress={goToDeckList}
+                        >
+                            <OutlinedIcon
+                                borderWidth={2}
+                                color={style.discoverMore.color}
+                                icon={AddIcon}
+                                size={30}
+                                style={style.discoverMore}
+                            />
+                            <Text color={style.discoverMore.color} style={style.discoverMore}>
+                                {t("common:seeMore")}
+                            </Text>
+                        </Pressable>
+                    )}
                 </ScrollView>
                 {deckList?.length === 0 && <NoResult />}
             </View>

@@ -11,7 +11,7 @@ export const Home = () => {
     const publicDecksQuery: IDeckFilter = {
         ...defaultPagination,
         limit: 6,
-        isPrivate: false,
+        isReviewed: false,
     };
     const { reviewCardList, error: reviewCardListError } = useCardReviewList();
     const { deckList, error: deckListError } = useDeckList(publicDecksQuery);
@@ -21,10 +21,10 @@ export const Home = () => {
             <VStack>
                 {/* TODO search Bar Deck + Card (need server route)*/}
                 <ErrorAndLoading error={deckListError} isLoading={!deckList}>
-                    {deckList && <DiscoverSection deckList={deckList} />}
+                    {deckList && <DiscoverSection deckList={deckList.content} />}
                 </ErrorAndLoading>
                 <ErrorAndLoading error={reviewCardListError} isLoading={!reviewCardList}>
-                    {reviewCardList && <ReviewSection cardReviewList={reviewCardList} />}
+                    {reviewCardList && <ReviewSection cardReviewList={reviewCardList.content} />}
                 </ErrorAndLoading>
             </VStack>
         </ScrollView>

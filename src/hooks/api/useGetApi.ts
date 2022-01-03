@@ -3,11 +3,18 @@ import { useIsFocused } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
 import { IError } from "@typings/interfaces";
 
-export const useGetApi = <T>(url: string, options?: SWRConfiguration) => {
+interface IOptions<MappedResponse, Response> extends SWRConfiguration {
+    mapper: (response: Response) => MappedResponse;
+}
+
+export const useGetApi = <Response, MappedResponse = Response>(
+    url: string,
+    options?: IOptions<MappedResponse, Response>
+) => {
     const isFocused = useIsFocused();
     const [isRefreshLoading, setIsRefreshLoading] = useState(false);
 
-    const { data, error, isValidating, mutate } = useSWR<T | undefined, IError>(url, options);
+    const { data, error, isValidating, mutate } = useSWR<Response | undefined, IError>(url, options);
 
     useEffect(() => {
         if (isFocused) {
@@ -21,7 +28,7 @@ export const useGetApi = <T>(url: string, options?: SWRConfiguration) => {
     }, [mutate]);
 
     return {
-        data,
+        data: data ? ((options?.mapper ? options.mapper(data) : data) as MappedResponse) : undefined,
         error,
         isValidating,
         isRefreshLoading,
