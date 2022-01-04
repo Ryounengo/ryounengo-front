@@ -14,6 +14,8 @@ export const responseToState = (
         defaultReviewReverseCard: deck.defaultReviewReverseCard,
         defaultCardType: deck.defaultCardType,
         isOwn: deck.isOwn,
+        isReviewed: deck.isReviewed,
+        isToReview: deck.isToReview,
     })),
     totalElements: deckResponse.totalElements,
 });

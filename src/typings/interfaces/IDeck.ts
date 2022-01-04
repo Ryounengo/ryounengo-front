@@ -19,6 +19,8 @@ export interface IDeckSummary {
     defaultCardType: ECardType;
     defaultReviewReverseCard: boolean;
     isOwn: boolean;
+    isReviewed: boolean;
+    isToReview: boolean;
 }
 
 export interface IDeck {
@@ -32,6 +34,7 @@ export interface IDeck {
     defaultReviewReverseCard: boolean;
     defaultCardType: ECardType;
     isOwn: boolean;
+    isToReview: boolean;
 }
 
 export interface IDeckEditForm {

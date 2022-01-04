@@ -23,8 +23,15 @@ export const DeckSummary = (props: IParams) => {
     return (
         <View style={style.container}>
             <View style={[style.item, style.additionalInfo]}>
-                <OutlinedIcon color={contrastColor ?? colors.white} icon={AddIcon} size={10} style={style.addReview} />
-                <Text style={style.r}>R</Text>
+                {!deck.isReviewed && (
+                    <OutlinedIcon
+                        color={contrastColor ?? colors.white}
+                        icon={AddIcon}
+                        size={10}
+                        style={style.addReview}
+                    />
+                )}
+                {deck.isToReview && <Text style={style.r}>R</Text>}
                 {isPrivate && <OutlinedIcon color={contrastColor ?? colors.white} icon={PrivateIcon} size={10} />}
             </View>
             <View style={style.item}>

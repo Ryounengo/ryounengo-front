@@ -10,4 +10,6 @@ export const deckToSummary = (deck: IDeck): IDeckSummary => ({
     defaultReviewReverseCard: deck.defaultReviewReverseCard,
     defaultCardType: deck.defaultCardType,
     isOwn: deck.isOwn,
+    isReviewed: deck.isReviewed,
+    isToReview: deck.isToReview,
 });

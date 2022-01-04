@@ -32,6 +32,7 @@ export const Decks = () => {
         <>
             <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
                 <MainScreenLayout space={4}>
+                    {/* TODO search Bar Deck + Card (need server route)*/}
                     <Heading marginLeft={4}>{t("totalResult", { count: deckList?.totalElements ?? 0 })}</Heading>
                     <DeckFilter defaultValues={params?.deckQuery} setFilter={setDeckFilter} />
                     <ErrorAndLoading error={error} isLoading={isValidating && !deckList}>

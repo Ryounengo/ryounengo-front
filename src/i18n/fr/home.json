@@ -1,4 +1,6 @@
 {
   "discover": "Découverte",
-  "discoverSubtitle": "Découvre ce que la communauté apprend."
+  "discoverSubtitle": "Découvre ce que la communauté apprend.",
+  "review": "Révision",
+  "reviewSubtitle": "Mes decks à réviser."
 }

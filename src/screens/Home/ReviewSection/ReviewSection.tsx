@@ -1,13 +1,16 @@
-import { ICard } from "@typings/interfaces";
-import { CardReviewList } from "@screens/Home/ReviewSection/CardReviewList";
-import { Box, Center, Heading, Pressable } from "native-base";
+import { IDeckSummary } from "@typings/interfaces";
+import { Heading, Pressable, ScrollView, Text, View } from "native-base";
 import { useStyle } from "@screens/Home/ReviewSection/styles";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TBottomTabNavigation, TRootNavigation } from "@navigation/INavigation";
+import { useTranslation } from "react-i18next";
+import { Fragment } from "react";
+import { DeckSummary } from "@common/Deck/Summary/DeckSummary";
+import { NoResult } from "@common/NoResult/NoResult";
 
 interface IParams {
-    cardReviewList: ICard[];
+    deckList: IDeckSummary[];
 }
 
 type NavigationProps = CompositeNavigationProp<
@@ -16,20 +19,36 @@ type NavigationProps = CompositeNavigationProp<
 >;
 
 export const ReviewSection = (props: IParams) => {
-    const { cardReviewList } = props;
+    const { deckList } = props;
     const style = useStyle();
-    const { navigate } = useNavigation<NavigationProps>();
+    const { t } = useTranslation(["common", "home"]);
+    const { push } = useNavigation<NavigationProps>();
 
-    const goToReview = () => navigate("reviewCards");
+    const goToDetails = (deckId: string) => push("deckDetails", { deckId });
 
     return (
-        <Pressable onPress={goToReview}>
-            <Box style={style.reviewCard}>
-                <Heading>Cards to review</Heading>
-                <Center marginY="auto">
-                    <CardReviewList cardReviewList={cardReviewList} />
-                </Center>
-            </Box>
-        </Pressable>
+        <Fragment>
+            <Heading marginLeft={4} marginTop={2}>
+                {t("home:review")}
+            </Heading>
+            <Text marginLeft={4} variant="caption">
+                {t("home:reviewSubtitle")}
+            </Text>
+            <View style={style.container}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={style.deckList}>
+                    {deckList.map((deck, index) => (
+                        <Pressable
+                            key={deck.id}
+                            marginLeft={index === 0 ? style.firstDeck.marginLeft : undefined}
+                            style={style.deck}
+                            onPress={() => goToDetails(deck.id)}
+                        >
+                            <DeckSummary deck={deck} />
+                        </Pressable>
+                    ))}
+                </ScrollView>
+                {deckList?.length === 0 && <NoResult />}
+            </View>
+        </Fragment>
     );
 };

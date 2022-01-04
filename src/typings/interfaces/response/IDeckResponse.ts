@@ -13,4 +13,5 @@ export interface IDeckResponse {
     defaultReviewReverseCard: boolean;
     defaultCardType: ECardType;
     isOwn: boolean;
+    isToReview: boolean;
 }
