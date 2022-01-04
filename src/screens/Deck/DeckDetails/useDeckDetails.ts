@@ -1,7 +1,7 @@
-import { getDeckDetailsRoute, getDeckRoute } from "@routes";
+import { getDeckDetailsRoute, getDeckRoute, joinDeckRoute, leaveDeckRoute } from "@routes";
 import { responseToState } from "@mappers/getDeckMapper";
 import { IDeck, IDeckResponse } from "@typings/interfaces";
-import { useDeleteApi, useGetApi, usePutApi } from "@hooks/api";
+import { useDeleteApi, useGetApi, usePostApi, usePutApi } from "@hooks/api";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
@@ -22,15 +22,19 @@ export const useDeckDetails = (deckId: string) => {
         isRefreshLoading,
     } = useGetApi<IDeckResponse, IDeck>(getDeckDetailsRoute(deckId, 0), { mapper: responseToState });
     const { isLoading: isDeleteLoading, remove } = useDeleteApi();
-    const { isLoading: isUpdateLoading, update } = usePutApi();
+    const { isLoading: isPutLoading, update: put } = usePutApi();
+    const { isLoading: isPostLoading, update: post } = usePostApi();
 
     const deleteDeck = () => remove(getDeckRoute(deckId)).then(() => goBack());
+    const joinDeck = () => post(joinDeckRoute(deckId)).then(() => refresh());
+    const leaveDeck = () => remove(leaveDeckRoute(deckId)).then(() => refresh());
+
     const updateDeck = (updatedDeck: Partial<IDeckPayload>) => {
         if (deckDetails) {
             const { name, description, tags, isPrivate } = { ...deckDetails, ...updatedDeck };
             const payload: IDeckPayload = { name, description, tags, isPrivate };
 
-            return update(getDeckRoute(deckId), payload).then(() => refresh());
+            return put(getDeckRoute(deckId), payload).then(() => refresh());
         }
 
         return Promise.resolve();
@@ -42,8 +46,10 @@ export const useDeckDetails = (deckId: string) => {
         isValidating,
         refresh,
         isRefreshLoading,
-        isLoading: isUpdateLoading || isDeleteLoading,
+        isLoading: isPutLoading || isPostLoading || isDeleteLoading,
         deleteDeck,
         updateDeck,
+        joinDeck,
+        leaveDeck,
     };
 };

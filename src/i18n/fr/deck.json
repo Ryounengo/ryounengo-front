@@ -1,11 +1,10 @@
 {
-    "basic": "Basique",
-    "free": "Libre",
-    "kanji": "Kanji",
     "createDeck": "Créer un deck",
     "updateDeck": "Modifier le deck",
     "deck": "Deck",
     "decks": "Decks",
+    "joinDeck": "Réviser ce deck",
+    "leaveDeck": "Ne plus réviser",
     "deckDetails": "Details du deck",
     "isPrivate": "Ce deck est privé",
     "tagsExamples": "nature,fleurs",

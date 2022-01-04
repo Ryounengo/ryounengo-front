@@ -9,6 +9,8 @@ export interface IDeckResponse {
     cards: IPaginatedResponse<ICardSummaryResponse[]>;
     isPrivate: boolean;
     name: string;
+    isReviewed: boolean;
     defaultReviewReverseCard: boolean;
     defaultCardType: ECardType;
+    isOwn: boolean;
 }

@@ -18,6 +18,7 @@ export interface IDeckSummary {
     isPrivate: boolean;
     defaultCardType: ECardType;
     defaultReviewReverseCard: boolean;
+    isOwn: boolean;
 }
 
 export interface IDeck {
@@ -26,9 +27,11 @@ export interface IDeck {
     tags: string[];
     cards: IPaginatedResponse<ICardSummary[]>;
     isPrivate: boolean;
+    isReviewed: boolean;
     name: string;
     defaultReviewReverseCard: boolean;
     defaultCardType: ECardType;
+    isOwn: boolean;
 }
 
 export interface IDeckEditForm {

@@ -14,7 +14,6 @@ export const useFilter = (setFilter: (filter: IDeckFilter) => void, filter?: IDe
 
     const filterToState = (filterForm: IFilterForm): IDeckFilter => ({
         ...defaultPagination,
-        tags: filterForm.tags.split(","),
         name: filterForm.name,
         isReviewed: filterForm.isReviewed === YES_OPTION,
     });

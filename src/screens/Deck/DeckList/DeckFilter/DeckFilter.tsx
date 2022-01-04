@@ -6,7 +6,6 @@ import { SearchBar } from "@common/form";
 
 interface IParams {
     setFilter(filter: IDeckFilter): void;
-    isLoading: boolean;
     defaultValues?: IDeckFilter;
 }
 

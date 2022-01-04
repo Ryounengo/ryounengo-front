@@ -8,9 +8,9 @@ export const responseToState = (response: IPaginatedResponse<ICardResponse[]>): 
         back: card.back,
         deck: card.deck,
         example: card.example,
-        referenceCard: card.referenceCard,
         type: card.type,
-        toReview: card.toReview || card.reverseToReview,
+        toReview: card.toReview,
+        reverseToReview: card.reverseToReview,
     })),
     totalElements: response.totalElements,
 });

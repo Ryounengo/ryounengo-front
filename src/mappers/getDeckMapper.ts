@@ -10,4 +10,6 @@ export const responseToState = (deck: IDeckResponse): IDeck => ({
     cards: cardResponseToState(deck.cards),
     defaultCardType: deck.defaultCardType,
     defaultReviewReverseCard: deck.defaultReviewReverseCard,
+    isReviewed: deck.isReviewed,
+    isOwn: deck.isOwn,
 });

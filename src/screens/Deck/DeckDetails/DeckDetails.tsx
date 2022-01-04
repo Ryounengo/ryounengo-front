@@ -19,7 +19,9 @@ export const DeckDetails = (props: Params) => {
     const { params } = route;
     const { t } = useTranslation(["common", "deck"]);
     const { setOptions, push } = navigation;
-    const { deckDetails, deleteDeck, updateDeck, error } = useDeckDetails(params.deckId);
+    const { deckDetails, deleteDeck, updateDeck, error, isValidating, joinDeck, leaveDeck } = useDeckDetails(
+        params.deckId
+    );
     const { isOpen, onOpen, onClose } = useDisclose();
     const style = useStyle({ deckId: deckDetails?.id });
     const navigationStyle = useNavigationStyle();
@@ -49,45 +51,66 @@ export const DeckDetails = (props: Params) => {
     }, [navigationStyle, onOpen, setOptions, style.actionButton, style.deckName.color]);
 
     return (
-        <View>
-            <Box
-                bg={{
-                    linearGradient: {
-                        colors: [style.background.backgroundColor, lightenColor(style.background.backgroundColor, 20)],
-                        start: [0, 0],
-                        end: [1, 0.5],
-                    },
-                }}
-                style={style.background}
-            />
-            <View style={style.container}>
-                <View style={style.item}>
-                    <Heading style={style.deckName}>{deckDetails?.name}</Heading>
-                    <Text style={style.tags}>{deckDetails?.tags.join(", ")}</Text>
+        <ErrorAndLoading error={error} isLoading={isValidating && !deckDetails}>
+            <View>
+                <Box
+                    bg={{
+                        linearGradient: {
+                            colors: [
+                                style.background.backgroundColor,
+                                lightenColor(style.background.backgroundColor, 20),
+                            ],
+                            start: [0, 0],
+                            end: [1, 0.5],
+                        },
+                    }}
+                    style={style.background}
+                />
+                <View style={style.container}>
+                    <View style={style.item}>
+                        <Heading style={style.deckName}>{deckDetails?.name}</Heading>
+                        <Text style={style.tags}>{deckDetails?.tags.join(", ")}</Text>
+                    </View>
+                    <View style={[style.item, style.reviewCountContainer]}>
+                        <Text style={style.reviewCount}>{t("deck:reviewedXTimes", { count: 0 })}</Text>
+                    </View>
                 </View>
-                <View style={[style.item, style.reviewCountContainer]}>
-                    <Text style={style.reviewCount}>{t("deck:reviewedXTimes", { count: 0 })}</Text>
-                </View>
+                <ScrollView>
+                    <ErrorAndLoading error={error} isLoading={!deckDetails}>
+                        {deckDetails?.cards && deckDetails?.cards.totalElements > 0 && (
+                            <Heading marginLeft={4} marginTop={4}>
+                                {t("totalResult", { count: deckDetails?.cards.totalElements })}
+                            </Heading>
+                        )}
+                        <CardList cardList={deckDetails?.cards.content} />
+                    </ErrorAndLoading>
+                </ScrollView>
+                <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
+                    <Actionsheet.Content>
+                        {deckDetails?.isOwn && (
+                            <>
+                                <Actionsheet.Item onPress={goToEditDeck}>{t("common:edit")}</Actionsheet.Item>
+                                <Actionsheet.Item onPress={() => deleteDeck().then(onClose)}>
+                                    {t("common:remove")}
+                                </Actionsheet.Item>
+                                <Actionsheet.Item onPress={() => updateDeck({ isPrivate: false }).then(onClose)}>
+                                    {t("deck:publish")}
+                                </Actionsheet.Item>
+                            </>
+                        )}
+                        {deckDetails?.isReviewed && !deckDetails.isOwn && (
+                            <Actionsheet.Item onPress={() => leaveDeck().then(onClose)}>
+                                {t("deck:leaveDeck")}
+                            </Actionsheet.Item>
+                        )}
+                        {!deckDetails?.isReviewed && !deckDetails?.isOwn && (
+                            <Actionsheet.Item onPress={() => joinDeck().then(onClose)}>
+                                {t("deck:joinDeck")}
+                            </Actionsheet.Item>
+                        )}
+                    </Actionsheet.Content>
+                </Actionsheet>
             </View>
-            <ScrollView>
-                <ErrorAndLoading error={error} isLoading={!deckDetails}>
-                    {deckDetails?.cards && deckDetails?.cards.totalElements > 0 && (
-                        <Heading marginLeft={4} marginTop={4}>
-                            {t("totalResult", { count: deckDetails?.cards.totalElements })}
-                        </Heading>
-                    )}
-                    <CardList cardList={deckDetails?.cards.content} />
-                </ErrorAndLoading>
-            </ScrollView>
-            <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
-                <Actionsheet.Content>
-                    <Actionsheet.Item onPress={goToEditDeck}>{t("common:edit")}</Actionsheet.Item>
-                    <Actionsheet.Item onPress={() => deleteDeck().then(onClose)}>{t("common:remove")}</Actionsheet.Item>
-                    <Actionsheet.Item onPress={() => updateDeck({ isPrivate: false }).then(onClose)}>
-                        {t("deck:publish")}
-                    </Actionsheet.Item>
-                </Actionsheet.Content>
-            </Actionsheet>
-        </View>
+        </ErrorAndLoading>
     );
 };

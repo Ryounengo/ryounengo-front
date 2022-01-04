@@ -33,8 +33,8 @@ export const Decks = () => {
             <ScrollView refreshControl={<RefreshControl refreshing={isRefreshLoading} onRefresh={refresh} />}>
                 <MainScreenLayout space={4}>
                     <Heading marginLeft={4}>{t("totalResult", { count: deckList?.totalElements ?? 0 })}</Heading>
-                    <DeckFilter defaultValues={params?.deckQuery} isLoading={isValidating} setFilter={setDeckFilter} />
-                    <ErrorAndLoading error={error} isLoading={!deckList}>
+                    <DeckFilter defaultValues={params?.deckQuery} setFilter={setDeckFilter} />
+                    <ErrorAndLoading error={error} isLoading={isValidating && !deckList}>
                         {deckList && <DeckList deckList={deckList.content} goToDetails={goToDeckDetails} />}
                     </ErrorAndLoading>
                 </MainScreenLayout>

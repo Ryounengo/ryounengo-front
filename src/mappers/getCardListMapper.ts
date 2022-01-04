@@ -10,8 +10,9 @@ export const responseToState = (
         back: card.back,
         deck: card.deck,
         example: card.example,
-        referenceCard: card.referenceCard,
         type: card.type,
+        toReview: card.toReview,
+        reverseToReview: card.reverseToReview,
     })),
     totalElements: response.totalElements,
 });

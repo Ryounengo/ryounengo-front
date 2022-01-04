@@ -13,6 +13,7 @@ export const responseToState = (
         cards: deck.cards,
         defaultReviewReverseCard: deck.defaultReviewReverseCard,
         defaultCardType: deck.defaultCardType,
+        isOwn: deck.isOwn,
     })),
     totalElements: deckResponse.totalElements,
 });

@@ -9,4 +9,5 @@ export interface IDeckSummaryResponse {
     name: string;
     defaultReviewReverseCard: boolean;
     defaultCardType: ECardType;
+    isOwn: boolean;
 }

@@ -11,7 +11,7 @@ export const useEditCard = (submit: (card: ICardEdit) => void, card?: ICardSumma
         front: card?.front ?? [],
         back: card?.back ?? [],
         example: card?.example ?? "",
-        reverseCard: Boolean(card?.referenceCard),
+        reverseCard: false, //TODO check default deck + card later
         type: card?.type ?? cardType,
     });
 

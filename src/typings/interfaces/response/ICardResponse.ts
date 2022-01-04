@@ -7,7 +7,8 @@ export interface ICardSummaryResponse {
     example: string;
     id: string;
     type: ECardType;
-    referenceCard: string;
+    toReview: boolean;
+    reverseToReview: boolean;
 }
 
 export interface ICardResponse {

@@ -4,9 +4,10 @@ import { useContrastTextColor } from "@hooks/useContrastTextColor";
 
 interface IParams {
     fullView: boolean;
+    toReview: boolean;
 }
 
-export const useStyle = ({ fullView }: IParams) => {
+export const useStyle = ({ fullView, toReview }: IParams) => {
     const theme = useTheme();
     const { space, fonts, colors, radii, fontSizes } = theme;
     const cardColor = useColorModeValue(colors.dark["700"], colors.dark["200"]);
@@ -28,7 +29,7 @@ export const useStyle = ({ fullView }: IParams) => {
         },
         reviewLevel: {
             position: "absolute",
-            color: colors.red[500],
+            color: toReview ? colors.red[500] : colors.green[500],
         },
         card: {
             overflow: "hidden",

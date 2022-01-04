@@ -1,11 +1,10 @@
 {
-    "basic": "Basic",
-    "free": "Free",
-    "kanji": "Kanji",
     "createDeck": "Create a deck",
     "updateDeck": "Update the deck",
     "deck": "Deck",
     "decks": "Decks",
+    "joinDeck": "Review this deck",
+    "leaveDeck": "Stop reviewing",
     "deckDetails": "Deck details",
     "isPrivate": "This deck is private",
     "tagsExamples": "nature,flower",

@@ -70,7 +70,6 @@ export const DeckEdit = (props: TParams) => {
                         pattern: { value: tagsRegex, message: t("common:wrongFormat") },
                     }}
                 />
-
                 <Heading marginY={8}>{t("deck:defaultValues")}</Heading>
                 <SwitchInput
                     control={control}

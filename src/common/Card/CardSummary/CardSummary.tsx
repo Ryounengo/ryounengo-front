@@ -11,7 +11,8 @@ interface IParams {
 
 export const CardSummary = (props: IParams) => {
     const { card, fullView } = props;
-    const style = useStyle({ fullView: Boolean(fullView) });
+    const { back, example, front, toReview, reverseToReview } = card;
+    const style = useStyle({ fullView: Boolean(fullView), toReview: toReview || reverseToReview });
 
     return (
         <View style={style.container}>
@@ -21,16 +22,16 @@ export const CardSummary = (props: IParams) => {
                 </View>
                 <View style={[style.item, style.cardText]}>
                     <Text numberOfLines={1} style={style.text}>
-                        {card.front[ECardFrontField.KANJI]}
+                        {front[ECardFrontField.KANJI]}
                     </Text>
                     <Heading numberOfLines={1} style={style.text}>
-                        {card.front[ECardFrontField.HIRAGANA]}
+                        {front[ECardFrontField.HIRAGANA]}
                     </Heading>
                     <Text numberOfLines={1} style={style.text}>
-                        {card.back[0]}
+                        {back[0]}
                     </Text>
                 </View>
-                <View style={[style.item]}>{fullView && <Text style={style.example}>{card.example}</Text>}</View>
+                <View style={[style.item]}>{fullView && <Text style={style.example}>{example}</Text>}</View>
             </Box>
             <CardIcon height={style.cardIcon.height} style={style.cardIcon} width={style.cardIcon.width} />
         </View>
