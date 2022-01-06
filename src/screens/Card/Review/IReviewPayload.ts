@@ -9,4 +9,5 @@ export enum ECardReviewName {
 
 export interface IReviewPayload {
     reviewLevel: ECardReviewName;
+    isReverseReview: boolean;
 }

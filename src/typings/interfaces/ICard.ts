@@ -22,6 +22,10 @@ export interface ICard {
     reverseToReview: boolean;
 }
 
+export interface IReversedCard extends ICard {
+    isReversed: true;
+}
+
 export interface ICardEdit {
     front: string[];
     back: string[];

@@ -1,12 +1,13 @@
 import { ECardReviewName, IReviewPayload } from "@screens/Card/Review/IReviewPayload";
 import { getCardsReviewRoute } from "@routes";
 import { ICard } from "@typings/interfaces";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { TBottomTabNavigation, TRootNavigation } from "@navigation/INavigation";
 import { usePostApi } from "@hooks/api";
 import { useCustomToast } from "@hooks/useCustomToast";
+import { getReverseCard } from "@utils/cardUtils";
 
 interface IParams {
     reviewCardList?: ICard[];
@@ -20,27 +21,37 @@ type NavigationProps = CompositeNavigationProp<
 export const useReviewCard = (props: IParams) => {
     const { reviewCardList } = props;
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
-    const { navigate } = useNavigation<NavigationProps>();
-    const [currentCard, setCurrentCard] = useState<ICard>();
+    const { pop } = useNavigation<NavigationProps>();
     const { isLoading, update } = usePostApi();
     const { toastError } = useCustomToast();
 
-    useEffect(() => {
-        if (reviewCardList) {
-            setCurrentCard(reviewCardList[currentCardIndex]);
-        }
-    }, [currentCardIndex, reviewCardList]);
+    const shuffledCards: ICard[] =
+        useMemo(
+            () =>
+                reviewCardList?.flatMap((card) => {
+                    if (card.reverseToReview) {
+                        return [card, getReverseCard(card)];
+                    }
+
+                    return card;
+                }),
+            [reviewCardList]
+        )?.sort(() => Math.random() - Math.random()) ?? [];
+
+    const currentCard = shuffledCards[currentCardIndex];
+    const isCurrenCardReversed = currentCard && "isReversed" in currentCard;
 
     const reviewCard = (cardId: string, quality: ECardReviewName) => {
         const payload: IReviewPayload = {
             reviewLevel: quality,
+            isReverseReview: false,
         };
 
         update(getCardsReviewRoute(cardId), payload)
             .then(() => {
-                if (reviewCardList) {
-                    if (currentCardIndex === reviewCardList.length - 1) {
-                        navigate("homeStack", { screen: "home" });
+                if (shuffledCards) {
+                    if (currentCardIndex === shuffledCards.length - 1) {
+                        pop();
 
                         return;
                     }
@@ -55,5 +66,6 @@ export const useReviewCard = (props: IParams) => {
         reviewCard,
         currentCard,
         isLoading,
+        isCurrenCardReversed,
     };
 };

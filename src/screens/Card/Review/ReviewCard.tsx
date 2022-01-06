@@ -1,18 +1,27 @@
 import { ICard } from "@typings/interfaces";
 import { Center, Pressable, Text } from "native-base";
 import { useStyle } from "@screens/Card/Review/styles";
-import { useRef } from "react";
 import { Animated } from "react-native";
+import { useEffect, useRef } from "react";
 
 interface IParams {
     card: ICard;
+    isCurrenCardReversed: boolean;
 }
 
 export const ReviewCard = (props: IParams) => {
-    const { card } = props;
+    const { card, isCurrenCardReversed } = props;
     const style = useStyle();
 
     const flipAnimation = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.timing(flipAnimation, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+        }).start();
+    }, [card, flipAnimation]);
 
     let flipRotation = 0;
     flipAnimation.addListener(({ value }) => (flipRotation = value));
@@ -57,22 +66,27 @@ export const ReviewCard = (props: IParams) => {
 
     const flipCard = () => (flipRotation ? flipToBack() : flipToFront());
 
+    const front = isCurrenCardReversed ? card.back : card.front;
+    const back = isCurrenCardReversed ? card.front : card.back;
+
     return (
-        <Pressable style={style.card} onPress={flipCard}>
+        <Pressable onPress={flipCard}>
             <Animated.View style={[style.frontCard, flipToFrontStyle]}>
                 <Center marginY="auto">
-                    {card.front.map((field, index) => (
+                    {front.map((field, index) => (
                         // eslint-disable-next-line react/no-array-index-key
                         <Text key={index}>{field}</Text>
                     ))}
+                    {!isCurrenCardReversed && card.example}
                 </Center>
             </Animated.View>
             <Animated.View style={[style.backCard, flipToBackStyle]}>
                 <Center marginY="auto">
-                    {card.back.map((field, index) => (
+                    {back.map((field, index) => (
                         // eslint-disable-next-line react/no-array-index-key
                         <Text key={index}>{field}</Text>
                     ))}
+                    {isCurrenCardReversed && card.example}
                 </Center>
             </Animated.View>
         </Pressable>

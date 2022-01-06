@@ -5,16 +5,20 @@ export const useStyle = () => {
     const { colors } = useTheme();
 
     return StyleSheet.create({
-        card: {},
+        button: {
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+        },
         frontCard: {
             position: "absolute",
             width: "100%",
-            height: "90%",
+            height: "100%",
             backgroundColor: colors.darkBlue[300],
         },
         backCard: {
             backgroundColor: colors.red[300],
-            height: "90%",
+            height: "100%",
             backfaceVisibility: "hidden",
         },
     });

@@ -3,7 +3,7 @@ import { Heading, Pressable, ScrollView, Text, View } from "native-base";
 import { useStyle } from "@screens/Home/ReviewSection/styles";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TBottomTabNavigation, TRootNavigation } from "@navigation/INavigation";
+import { THomeNavigation, TRootNavigation } from "@navigation/INavigation";
 import { useTranslation } from "react-i18next";
 import { Fragment } from "react";
 import { DeckSummary } from "@common/Deck/Summary/DeckSummary";
@@ -14,7 +14,7 @@ interface IParams {
 }
 
 type NavigationProps = CompositeNavigationProp<
-    NativeStackNavigationProp<TBottomTabNavigation, "homeStack">,
+    NativeStackNavigationProp<THomeNavigation, "home">,
     NativeStackNavigationProp<TRootNavigation>
 >;
 
@@ -24,7 +24,7 @@ export const ReviewSection = (props: IParams) => {
     const { t } = useTranslation(["common", "home"]);
     const { push } = useNavigation<NavigationProps>();
 
-    const goToDetails = (deckId: string) => push("deckDetails", { deckId });
+    const goToReview = (deckId: string) => push("reviewCards", { deckId });
 
     return (
         <Fragment>
@@ -41,7 +41,7 @@ export const ReviewSection = (props: IParams) => {
                             key={deck.id}
                             marginLeft={index === 0 ? style.firstDeck.marginLeft : undefined}
                             style={style.deck}
-                            onPress={() => goToDetails(deck.id)}
+                            onPress={() => goToReview(deck.id)}
                         >
                             <DeckSummary deck={deck} />
                         </Pressable>
