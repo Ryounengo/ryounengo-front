@@ -60,7 +60,12 @@ export const CardEditRectoForm = (props: IParams) => {
                     }}
                 />
             </Box>
-            <IconButton icon={<ChevronRightIcon />} mt={-5} style={style.nextButton} onPress={submitRecto} />
+            <IconButton
+                icon={<ChevronRightIcon color={style.nextButton.color} />}
+                mt={-5}
+                style={style.nextButton}
+                onPress={submitRecto}
+            />
         </VStack>
     );
 };

@@ -6,11 +6,12 @@ import { useContrastTextColor } from "@hooks/useContrastTextColor";
 interface IParams {
     step: number;
     setStep: (stepL: number) => void;
-    stepNumber: number;
+    stepTitles: string[];
 }
 
 export const StepperBar = (props: IParams) => {
-    const { step, setStep, stepNumber } = props;
+    const { step, setStep, stepTitles } = props;
+    const stepNumber = stepTitles.length;
     const style = useStyle();
     const goToStep = (newStep: number) => setStep(newStep);
     const textDisabledColor = useContrastTextColor(style.disabled.backgroundColor);
@@ -21,16 +22,21 @@ export const StepperBar = (props: IParams) => {
     for (let renderedStep = 0; renderedStep < stepNumber; renderedStep++) {
         stepperList.push(
             <>
-                <Button
-                    disabled={step < renderedStep}
-                    style={[style.stepButton, step < renderedStep ? style.disabled : undefined]}
-                    onPress={() => goToStep(renderedStep)}
-                >
-                    {step > renderedStep && <CheckIcon color={textColor} size={4} />}
-                    {step <= renderedStep && (
-                        <Text color={step < renderedStep ? textDisabledColor : textColor}>{renderedStep + 1}</Text>
-                    )}
-                </Button>
+                <Box>
+                    <Button
+                        disabled={step < renderedStep}
+                        style={[style.stepButton, step < renderedStep ? style.disabled : undefined]}
+                        onPress={() => goToStep(renderedStep)}
+                    >
+                        {step > renderedStep && <CheckIcon color={textColor} size={4} />}
+                        {step <= renderedStep && (
+                            <Text color={step < renderedStep ? textDisabledColor : textColor}>{renderedStep + 1}</Text>
+                        )}
+                    </Button>
+                    <Text fontSize={"xs"} textAlign={"center"}>
+                        {stepTitles[renderedStep]}
+                    </Text>
+                </Box>
                 {renderedStep !== stepNumber - 1 && (
                     <Box style={[style.separator, step <= renderedStep ? style.disabled : undefined]} />
                 )}

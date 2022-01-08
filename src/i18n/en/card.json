@@ -15,5 +15,8 @@
     "romajiPlaceholder": "Konnichiwa",
     "examplePlaceholder": "こんにちはみなさん、げんきですか。",
     "mainTextPlaceholder": "Hello",
-    "optionalTextPlaceholder": "To say hello during the day"
+    "optionalTextPlaceholder": "To say hello during the day",
+    "type": "Type",
+    "front": "Front",
+    "back": "Back"
 }

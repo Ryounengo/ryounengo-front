@@ -29,7 +29,11 @@ export const CardTypeForm = (props: IParams) => {
                 />
                 <TextTypeCard />
             </Box>
-            <IconButton icon={<ChevronRightIcon />} style={style.nextButton} onPress={submitType} />
+            <IconButton
+                icon={<ChevronRightIcon color={style.nextButton.color} />}
+                style={style.nextButton}
+                onPress={submitType}
+            />
         </Box>
     );
 };

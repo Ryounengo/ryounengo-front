@@ -14,7 +14,7 @@ export const useCustomToast = () => {
         });
 
     const toastSuccessCreation = (item: string) =>
-        toast.show({ status: "success", title: t("successCreation", { item }) });
+        toast.show({ status: "success", title: t("successCreation", { item }), backgroundColor: "green.500" });
 
     const toastSuccessUpdate = (item: string) => toast.show({ status: "success", title: t("successUpdate", { item }) });
 

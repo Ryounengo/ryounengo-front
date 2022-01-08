@@ -22,6 +22,7 @@ export const useStyle = () => {
             height: 1,
             backgroundColor: colors.primary[500],
             alignSelf: "center",
+            transform: [{ translateY: -10 }],
             marginHorizontal: space[2],
             flexGrow: 1,
         },

@@ -12,7 +12,7 @@ const App = () => {
     const [error, setError] = useState<unknown>();
     const { t } = useTranslation("common");
     const { setColorMode } = useColorMode();
-    setColorMode("dark");
+    setColorMode("light");
 
     useEffect(() => {
         refreshToken()

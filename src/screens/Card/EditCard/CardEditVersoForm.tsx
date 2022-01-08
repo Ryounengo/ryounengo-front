@@ -43,7 +43,7 @@ export const CardEditVersoForm = (props: IParams) => {
                 />
             </Box>
             <IconButton
-                icon={<ChevronRightIcon />}
+                icon={<ChevronRightIcon color={style.nextButton.color} />}
                 isDisabled={isLoading}
                 mt={-5}
                 style={style.nextButton}

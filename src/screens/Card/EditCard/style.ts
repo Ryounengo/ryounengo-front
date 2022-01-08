@@ -37,7 +37,7 @@ export const useStyle = () => {
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: colors.primary[500],
-            text: contrastPrimaryColor,
+            color: contrastPrimaryColor,
             width: 40,
             height: 40,
             borderRadius: radii.full,
