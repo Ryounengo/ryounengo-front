@@ -29,8 +29,8 @@ export type TRootNavigation = {
     editDeck: {
         deck?: IDeckSummary;
     };
-    createCard: {
-        deckId: string;
+    editCard: {
+        deck: IDeckSummary;
     };
     deckDetails: {
         deckId: string;

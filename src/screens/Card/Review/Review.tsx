@@ -29,7 +29,10 @@ export const Review = (props: TParams) => {
                         <ReviewCard card={currentCard} isCurrenCardReversed={isCurrenCardReversed} />
                         <View style={style.button}>
                             {qualityLevels.map((level) => (
-                                <Button key={level} onPress={() => reviewCard(currentCard?.id, level)}>
+                                <Button
+                                    key={level}
+                                    onPress={() => reviewCard(currentCard?.id, level, isCurrenCardReversed)}
+                                >
                                     {`review ${level}`}
                                 </Button>
                             ))}

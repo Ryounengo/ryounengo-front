@@ -1,4 +1,4 @@
-export enum ECreateCard {
+export enum EEditCardStep {
     SELECT_TYPE,
     RECTO,
     VERSO,

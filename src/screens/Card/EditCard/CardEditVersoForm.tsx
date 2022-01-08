@@ -1,52 +1,46 @@
 import { Button, VStack } from "native-base";
-import { TextInput } from "../form";
+import { TextInput } from "@common/form";
 import { textRegex } from "@utils/regex";
 import { useTranslation } from "react-i18next";
-import { ICardEditVersoForm } from "./ICardEdit";
-import { ICardSummary } from "@typings/interfaces";
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
+import { ICardEditForm } from "@screens/Card/EditCard/ICardEdit";
 
 interface IParams {
-    submitVerso(formData: ICardEditVersoForm): void;
-    card?: ICardSummary;
+    submit(): void;
     isLoading: boolean;
 }
 
 export const CardEditVersoForm = (props: IParams) => {
-    const { card, submitVerso, isLoading } = props;
+    const { submit, isLoading } = props;
     const { t } = useTranslation(["common", "card", "validation"]);
-    const { control, handleSubmit, formState } = useForm<ICardEditVersoForm>({
-        defaultValues: {
-            mainText: card?.back[0] ?? "",
-            optionalText: card?.back[1] ?? "",
-        },
-    });
+    const { formState, control } = useFormContext<ICardEditForm>();
     const { errors } = formState;
 
     return (
         <VStack>
             <TextInput
                 control={control}
-                error={errors.mainText}
+                error={errors.back?.mainText}
                 isRequired
                 label={t("card:mainText")}
-                name="mainText"
+                name="back.mainText"
                 placeholder={t("card:mainText")}
                 rules={{
+                    required: t<string>("validation:required"),
                     pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
             <TextInput
                 control={control}
-                error={errors.optionalText}
+                error={errors.back?.optionalText}
                 label={t("card:optionalText")}
-                name="optionalText"
+                name="back.optionalText"
                 placeholder={t("card:optionalText")}
                 rules={{
                     pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
-            <Button isLoading={isLoading} variant="outline" onPress={handleSubmit(submitVerso)}>
+            <Button isLoading={isLoading} variant="outline" onPress={submit}>
                 {t("submit")}
             </Button>
         </VStack>

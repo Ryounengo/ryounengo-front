@@ -7,13 +7,13 @@ import { TRootNavigation } from "./INavigation";
 import { Register } from "@screens/Authentication/Register/Register";
 import { LostPassword } from "@screens/Authentication/LostPassword/LostPassword";
 import { UpdatePassword } from "@screens/Authentication/LostPassword/UpdatePassword";
-import { CreateCard } from "@screens/Card/CreateCard/CreateCard";
 import { DeckDetails } from "@screens/Deck/DeckDetails/DeckDetails";
 import { useTranslation } from "react-i18next";
 import { Review } from "@screens/Card/Review/Review";
 import { useStyle } from "./style";
 import { ChevronLeftIcon } from "native-base";
 import { DeckEdit } from "@screens/Deck/DeckEdit/DeckEdit";
+import { CardEdit } from "@screens/Card/EditCard/CardEdit";
 
 const Stack = createStackNavigator<TRootNavigation>();
 
@@ -40,11 +40,7 @@ export const RootNavigation = () => {
                         }}
                     >
                         <Stack.Screen component={DeckEdit} name="editDeck" />
-                        <Stack.Screen
-                            component={CreateCard}
-                            name="createCard"
-                            options={{ title: t("card:createCard") }}
-                        />
+                        <Stack.Screen component={CardEdit} name="editCard" options={{ title: t("card:createCard") }} />
                         <Stack.Screen
                             component={DeckDetails}
                             name="deckDetails"

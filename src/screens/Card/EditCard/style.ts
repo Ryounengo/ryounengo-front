@@ -5,6 +5,14 @@ export const useStyle = () => {
     const { colors } = useTheme();
 
     return StyleSheet.create({
+        button: {
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+        },
+        textCard: {
+            backgroundColor: colors.primary[500],
+        },
         card: {
             height: 150,
             width: 150,

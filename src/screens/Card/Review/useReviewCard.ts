@@ -41,10 +41,10 @@ export const useReviewCard = (props: IParams) => {
     const currentCard = shuffledCards[currentCardIndex];
     const isCurrenCardReversed = currentCard && "isReversed" in currentCard;
 
-    const reviewCard = (cardId: string, quality: ECardReviewName) => {
+    const reviewCard = (cardId: string, quality: ECardReviewName, isReverseReview: boolean) => {
         const payload: IReviewPayload = {
             reviewLevel: quality,
-            isReverseReview: false,
+            isReverseReview,
         };
 
         update(getCardsReviewRoute(cardId), payload)

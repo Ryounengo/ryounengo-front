@@ -1,47 +1,39 @@
 import { Button, VStack } from "native-base";
-import { TextInput } from "../form";
+import { TextInput } from "@common/form";
 import { textRegex } from "@utils/regex";
 import { useTranslation } from "react-i18next";
-import { ICardEditRectoForm } from "./ICardEdit";
-import { ICardSummary } from "@typings/interfaces";
-import { useForm } from "react-hook-form";
+import { ICardEditForm } from "@screens/Card/EditCard/ICardEdit";
+import { useFormContext } from "react-hook-form";
 
 interface IParams {
-    submitRecto(formData: ICardEditRectoForm): void;
-    card?: ICardSummary;
+    submitRecto(): void;
 }
 
 export const CardEditRectoForm = (props: IParams) => {
-    const { card, submitRecto } = props;
+    const { submitRecto } = props;
     const { t } = useTranslation(["common", "card", "validation"]);
-    const { control, handleSubmit, formState } = useForm<ICardEditRectoForm>({
-        defaultValues: {
-            mainText: card?.front[0] ?? "",
-            secondaryText: card?.front[1] ?? "",
-            optionalText: card?.front[2] ?? "",
-            exampleText: card?.example ?? "",
-        },
-    });
+    const { formState, control } = useFormContext<ICardEditForm>();
     const { errors } = formState;
 
     return (
         <VStack>
             <TextInput
                 control={control}
-                error={errors.mainText}
+                error={errors.front?.mainText}
                 isRequired
                 label={t("card:mainText")}
-                name="mainText"
+                name="front.mainText"
                 placeholder={t("card:mainText")}
                 rules={{
+                    required: t<string>("validation:required"),
                     pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
             <TextInput
                 control={control}
-                error={errors.secondaryText}
+                error={errors.front?.secondaryText}
                 label={t("card:secondaryText")}
-                name="secondaryText"
+                name="front.secondaryText"
                 placeholder={t("card:secondaryText")}
                 rules={{
                     pattern: { value: textRegex, message: "validation:textError" },
@@ -49,9 +41,9 @@ export const CardEditRectoForm = (props: IParams) => {
             />
             <TextInput
                 control={control}
-                error={errors.optionalText}
+                error={errors.front?.optionalText}
                 label={t("card:optionalText")}
-                name="optionalText"
+                name="front.optionalText"
                 placeholder={t("card:optionalText")}
                 rules={{
                     pattern: { value: textRegex, message: "validation:textError" },
@@ -59,16 +51,16 @@ export const CardEditRectoForm = (props: IParams) => {
             />
             <TextInput
                 control={control}
-                error={errors.exampleText}
+                error={errors.front?.exampleText}
                 label={t("card:exampleText")}
-                name="exampleText"
+                name="front.exampleText"
                 placeholder={t("card:exampleText")}
                 rules={{
                     maxLength: { value: 250, message: t("validation:maxLength", { count: 250 }) },
                     pattern: { value: textRegex, message: "validation:textError" },
                 }}
             />
-            <Button variant="outline" onPress={handleSubmit(submitRecto)}>
+            <Button variant="outline" onPress={submitRecto}>
                 {t("submit")}
             </Button>
         </VStack>

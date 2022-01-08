@@ -1,7 +1,7 @@
 import { useDeckDetails } from "./useDeckDetails";
 import { TRootNavigation } from "@navigation/INavigation";
 import { StackScreenProps } from "@react-navigation/stack";
-import { ScrollView, View, Text, Heading, useDisclose, Actionsheet, ChevronLeftIcon, Box } from "native-base";
+import { ScrollView, View, Text, Heading, useDisclose, Actionsheet, ChevronLeftIcon, Box, Fab } from "native-base";
 import { useTranslation } from "react-i18next";
 import { ErrorAndLoading } from "@common/ErrorAndLoading";
 import { useStyle } from "./style";
@@ -17,7 +17,7 @@ type Params = StackScreenProps<TRootNavigation, "deckDetails">;
 export const DeckDetails = (props: Params) => {
     const { route, navigation } = props;
     const { params } = route;
-    const { t } = useTranslation(["common", "deck"]);
+    const { t } = useTranslation(["common", "deck", "card"]);
     const { setOptions, push } = navigation;
     const { deckDetails, deleteDeck, updateDeck, error, isValidating, joinDeck, leaveDeck } = useDeckDetails(
         params.deckId
@@ -28,6 +28,12 @@ export const DeckDetails = (props: Params) => {
     const goToEditDeck = () => {
         onClose();
         push("editDeck", { deck: deckDetails ? deckToSummary(deckDetails) : undefined });
+    };
+
+    const goToCreateCard = () => {
+        if (deckDetails) {
+            push("editCard", { deck: deckToSummary(deckDetails) });
+        }
     };
 
     useEffect(() => {
@@ -111,6 +117,7 @@ export const DeckDetails = (props: Params) => {
                     </Actionsheet.Content>
                 </Actionsheet>
             </View>
+            <Fab label={t("card:createCard")} padding={2} onPress={goToCreateCard} />
         </ErrorAndLoading>
     );
 };
