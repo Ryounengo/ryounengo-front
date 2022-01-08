@@ -9,5 +9,12 @@
     "secondaryText": "Texte secondaire",
     "optionalText": "Texte optionnel",
     "exampleText": "Exemple",
-    "searchCard": "Rechercher une carte"
+    "searchCard": "Rechercher une carte",
+    "kanjiPlaceholder": "今日は",
+    "kanaPlaceholder": "こんにちは",
+    "romajiPlaceholder": "Konnichiwa",
+    "examplePlaceholder": "こんにちはみなさん、げんきですか。",
+    "mainTextPlaceholder": "Bonjour",
+    "optionalTextPlaceholder": "Pour saluer dans la journée"
+
 }

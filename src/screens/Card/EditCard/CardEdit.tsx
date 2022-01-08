@@ -17,7 +17,7 @@ export const CardEdit = (props: TParams) => {
     const { isLoading, submitRecto, step, submitType, submit, formMethods, setStep } = useEditCard(route.params.deck);
 
     return (
-        <Box p={4}>
+        <Box p={10}>
             <StepperBar setStep={setStep} step={step} stepNumber={Object.keys(EEditCardStep).length / 2} />
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <FormProvider {...formMethods}>

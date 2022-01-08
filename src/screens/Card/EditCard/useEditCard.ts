@@ -17,7 +17,7 @@ export const useEditCard = (deck: IDeckSummary, card?: ICard) => {
     const { isLoading, update } = usePostApi();
     const { replace } = useNavigation<NavigationProps>();
     const { toastSuccessCreation, toastError } = useCustomToast();
-    const [step, setStep] = useState<EEditCardStep>(EEditCardStep.SELECT_TYPE);
+    const [step, setStep] = useState<EEditCardStep>(EEditCardStep.RECTO);
     const goToNextStep = () => setStep((previousStep) => previousStep + 1);
 
     const formMethods = useForm<ICardEditForm>({

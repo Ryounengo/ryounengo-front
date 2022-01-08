@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
-import { useTheme } from "native-base";
+import { useColorModeValue, useTheme } from "native-base";
+import { useContrastTextColor } from "@hooks/useContrastTextColor";
 
 export const useStyle = () => {
-    const { colors } = useTheme();
+    const { colors, radii, space, shadows } = useTheme();
+    const contrastPrimaryColor = useContrastTextColor(colors.primary[500]);
 
     return StyleSheet.create({
         button: {
@@ -30,6 +32,25 @@ export const useStyle = () => {
             justifyContent: "space-between",
             flexDirection: "row",
             padding: 24,
+        },
+        nextButton: {
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: colors.primary[500],
+            text: contrastPrimaryColor,
+            width: 40,
+            height: 40,
+            borderRadius: radii.full,
+            alignSelf: "center",
+            ...shadows[4],
+        },
+        editCardWrapper: {
+            backgroundColor: useColorModeValue(colors.dark[800], colors.dark[200]),
+            borderRadius: radii.xl,
+            padding: space[8],
+            marginTop: space[2],
+            paddingBottom: space[10],
+            ...shadows[3],
         },
     });
 };

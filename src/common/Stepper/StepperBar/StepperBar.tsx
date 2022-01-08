@@ -28,7 +28,7 @@ export const StepperBar = (props: IParams) => {
                 >
                     {step > renderedStep && <CheckIcon color={textColor} size={4} />}
                     {step <= renderedStep && (
-                        <Text color={step < renderedStep ? textDisabledColor : textColor}>{renderedStep}</Text>
+                        <Text color={step < renderedStep ? textDisabledColor : textColor}>{renderedStep + 1}</Text>
                     )}
                 </Button>
                 {renderedStep !== stepNumber - 1 && (

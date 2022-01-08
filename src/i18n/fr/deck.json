@@ -15,7 +15,7 @@
     "reviewedXTimes": "Revu {{ count }} fois",
     "deckInformation": "Information du deck",
     "defaultValues": "Valeurs par défaut",
-    "isDefaultReversed": "Active les cartes inverse en revision",
+    "isReversed": "Active les cartes inverse en revision",
     "textCard": {
         "name":  "Carte à texte",
         "description":  "Personnalise le recto et verso des cartes avec du texte"

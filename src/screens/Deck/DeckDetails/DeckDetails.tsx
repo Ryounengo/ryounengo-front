@@ -117,7 +117,7 @@ export const DeckDetails = (props: Params) => {
                     </Actionsheet.Content>
                 </Actionsheet>
             </View>
-            <Fab label={t("card:createCard")} padding={2} onPress={goToCreateCard} />
+            {deckDetails?.isOwn && <Fab label={t("card:createCard")} padding={2} onPress={goToCreateCard} />}
         </ErrorAndLoading>
     );
 };

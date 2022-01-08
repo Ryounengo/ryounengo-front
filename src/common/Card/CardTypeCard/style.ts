@@ -31,5 +31,8 @@ export const useStyle = () => {
         item: {
             marginTop: space[1],
         },
+        textCard: {
+            backgroundColor: colors.primary[500],
+        },
     });
 };

@@ -3,12 +3,11 @@ import { TextInput } from "@common/form";
 import { tagsRegex, textRegex } from "@utils/regex";
 import { useTranslation } from "react-i18next";
 import { useStyle } from "@screens/Deck/DeckEdit/style";
-import { CardTypeCard } from "@common/Card/CardTypeCard/CardTypeCard";
-import AddTextCardIcon from "@static/images/addTextCard.svg";
 import { SwitchInput } from "@common/form/SwitchInput";
 import { useDeckEdit } from "@screens/Deck/DeckEdit/useDeckEdit";
 import { StackScreenProps } from "@react-navigation/stack";
 import { TRootNavigation } from "@navigation/INavigation";
+import { TextTypeCard } from "@common/Card/CardTypeCard/TextCard";
 
 type TParams = StackScreenProps<TRootNavigation, "editDeck">;
 
@@ -74,16 +73,11 @@ export const DeckEdit = (props: TParams) => {
                 <SwitchInput
                     control={control}
                     error={errors.isPrivate}
-                    label={t("deck:isDefaultReversed")}
+                    label={t("deck:isReversed")}
                     name="defaultReviewReverseCard"
                 />
                 <Box mt={4}>
-                    <CardTypeCard
-                        backgroundColor={style.textCard.backgroundColor}
-                        description={t("deck:textCard.description")}
-                        icon={AddTextCardIcon}
-                        name={t("deck:textCard.name")}
-                    />
+                    <TextTypeCard />
                 </Box>
                 <Button isLoading={isLoading} margin="auto" mt={8} width="50%" onPress={handleSubmit(submit)}>
                     {t(deck ? "deck:updateDeck" : "deck:createDeck")}

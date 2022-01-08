@@ -16,7 +16,7 @@
     "reviewedXTimes_plural": "Reviewed {{count}} times",
     "deckInformation": "Deck information",
     "defaultValues": "Default values",
-    "isDefaultReversed": "Activate the reverse cards in review",
+    "isReversed": "Activate the reverse cards in review",
     "textCard": {
         "name":  "Text card",
         "description":  "Custom the back and front of the card with text fields"

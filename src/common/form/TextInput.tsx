@@ -1,4 +1,4 @@
-import { FormControl, Input } from "native-base";
+import { FormControl, Input, useTheme } from "native-base";
 import { ComponentProps, ReactElement } from "react";
 import {
     Controller,
@@ -27,9 +27,10 @@ interface IParams<T> extends ComponentProps<typeof Input> {
 export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
     const { name, error, placeholder, control, label, rules, isRequired, prependedComponent, ...inputProps } = props;
     const { t } = useTranslation("validation");
+    const { fontSizes } = useTheme();
 
     return (
-        <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+        <FormControl isInvalid={Boolean(error)} isRequired={isRequired} {...inputProps} mt={2}>
             {label && <FormControl.Label>{label}</FormControl.Label>}
             <Controller
                 control={control}
@@ -39,7 +40,9 @@ export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
                 render={(renderProps) => (
                     <Input
                         InputLeftElement={prependedComponent}
+                        fontSize={fontSizes.xl}
                         isRequired={isRequired}
+                        paddingBottom={1}
                         placeholder={placeholder}
                         value={renderProps.field.value}
                         onBlur={renderProps.field.onBlur}

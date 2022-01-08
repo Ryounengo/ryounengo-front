@@ -1,6 +1,9 @@
-import { Box, Checkbox, Pressable, Text } from "native-base";
+import { Box, ChevronRightIcon, IconButton } from "native-base";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { SwitchInput } from "@common/form/SwitchInput";
+import { useFormContext } from "react-hook-form";
+import { ICardEditForm } from "@screens/Card/EditCard/ICardEdit";
+import { TextTypeCard } from "@common/Card/CardTypeCard/TextCard";
 import { useStyle } from "./style";
 
 interface IParams {
@@ -9,20 +12,24 @@ interface IParams {
 
 export const CardTypeForm = (props: IParams) => {
     const { submitType } = props;
-    const [isReversed, setIsReversed] = useState(true);
-    const { t } = useTranslation("card");
-    const styles = useStyle();
+    const { formState, control } = useFormContext<ICardEditForm>();
+    const { errors } = formState;
+    const style = useStyle();
+    const { t } = useTranslation("deck");
 
     return (
         <Box>
-            <Checkbox isChecked={isReversed} value="" onChange={setIsReversed}>
-                <Text>{t("makeCardReversed")}</Text>
-            </Checkbox>
-            <Pressable onPress={submitType}>
-                <Text style={styles.selectedCard} textAlign="center">
-                    {t("textCard")}
-                </Text>
-            </Pressable>
+            <Box mb={4}>
+                <SwitchInput
+                    control={control}
+                    error={errors.type?.cardType}
+                    label={t("isReversed")}
+                    mb={2}
+                    name="type.isReversed"
+                />
+                <TextTypeCard />
+            </Box>
+            <IconButton icon={<ChevronRightIcon />} style={style.nextButton} onPress={submitType} />
         </Box>
     );
 };
