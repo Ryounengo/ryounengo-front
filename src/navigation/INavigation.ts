@@ -1,4 +1,4 @@
-import { IDeckFilter, IDeckSummary } from "@typings/interfaces";
+import { ICard, IDeckFilter, IDeckSummary } from "@typings/interfaces";
 import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type TDeckNavigation = {
@@ -30,7 +30,9 @@ export type TRootNavigation = {
         deck?: IDeckSummary;
     };
     editCard: {
-        deck: IDeckSummary;
+        deck?: IDeckSummary;
+        deckId?: string;
+        card?: ICard;
     };
     deckDetails: {
         deckId: string;

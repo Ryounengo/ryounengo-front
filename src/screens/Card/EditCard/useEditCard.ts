@@ -10,10 +10,18 @@ import { TRootNavigation } from "@navigation/INavigation";
 import { ICard, IDeckSummary } from "@typings/interfaces";
 import { ICardEditForm } from "@screens/Card/EditCard/ICardEdit";
 import { EEditCardStep } from "@screens/Card/EditCard/ICreateCard";
+import { ECardType } from "@typings/enums";
+
+interface IParams {
+    deck?: IDeckSummary;
+    card?: ICard;
+    deckId?: string;
+}
 
 type NavigationProps = NativeStackNavigationProp<TRootNavigation, "editCard">;
 
-export const useEditCard = (deck: IDeckSummary, card?: ICard) => {
+export const useEditCard = (props: IParams) => {
+    const { card, deckId, deck } = props;
     const { isLoading, update } = usePostApi();
     const { replace } = useNavigation<NavigationProps>();
     const { toastSuccessCreation, toastError } = useCustomToast();
@@ -23,8 +31,8 @@ export const useEditCard = (deck: IDeckSummary, card?: ICard) => {
     const formMethods = useForm<ICardEditForm>({
         defaultValues: {
             type: {
-                isReversed: deck.defaultReviewReverseCard,
-                cardType: deck.defaultCardType,
+                isReversed: card?.isReversedCard ?? deck?.defaultReviewReverseCard ?? false,
+                cardType: card?.type ?? deck?.defaultCardType ?? ECardType.TEXT,
             },
             front: {
                 mainText: card?.front[0] ?? "",
@@ -53,12 +61,14 @@ export const useEditCard = (deck: IDeckSummary, card?: ICard) => {
     };
 
     const submit = handleSubmit((formData) => {
-        update(getDeckAddCardRoute(deck.id), stateToRequest(formData))
-            .then(() => {
-                toastSuccessCreation(formData.front.mainText);
-                replace("editCard", { deck });
-            })
-            .catch((error) => toastError(error.message));
+        if (deck || deckId) {
+            update(getDeckAddCardRoute(deck?.id ?? (deckId as string)), stateToRequest(formData))
+                .then(() => {
+                    toastSuccessCreation(formData.front.mainText);
+                    replace("editCard", { deck });
+                })
+                .catch((error) => toastError(error.message));
+        }
     });
 
     return {

@@ -2,11 +2,11 @@ import { Box, Heading, Stack, Text, View } from "native-base";
 import { ECardFrontField } from "@typings/enums";
 import CardIcon from "@static/images/card-nav.svg";
 import { useStyle } from "./style";
-import { ICardSummary } from "@typings/interfaces";
+import { ICard } from "@typings/interfaces";
 import { getColoredExample } from "@utils/cardUtils";
 
 interface IParams {
-    card: ICardSummary;
+    card: ICard;
 }
 
 export const CardFront = (props: IParams) => {
@@ -35,6 +35,7 @@ export const CardFront = (props: IParams) => {
                     <Text style={style.example}>{getColoredExample(example, front)}</Text>
                 </View>
             </Box>
+            <View style={style.cardBackground} />
             <CardIcon height={style.cardIcon.height} style={style.cardIcon} width={style.cardIcon.width} />
         </View>
     );

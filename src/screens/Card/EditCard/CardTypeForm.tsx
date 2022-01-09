@@ -8,10 +8,11 @@ import { useStyle } from "./style";
 
 interface IParams {
     submitType(): void;
+    isEdit: boolean;
 }
 
 export const CardTypeForm = (props: IParams) => {
-    const { submitType } = props;
+    const { submitType, isEdit } = props;
     const { formState, control } = useFormContext<ICardEditForm>();
     const { errors } = formState;
     const style = useStyle();
@@ -22,6 +23,7 @@ export const CardTypeForm = (props: IParams) => {
             <Box mb={4}>
                 <SwitchInput
                     control={control}
+                    disabled={isEdit}
                     error={errors.type?.cardType}
                     label={t("isReversed")}
                     mb={2}

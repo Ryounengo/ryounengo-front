@@ -20,7 +20,7 @@ export const Cards = () => {
                 <CardFilter setFilter={setCardFilter} />
                 <Heading marginLeft={4}>{t("totalResult", { count: cardList?.totalElements ?? 0 })}</Heading>
                 <ErrorAndLoading error={error} isLoading={!cardList}>
-                    {cardList && <CardList cardList={cardList.content} />}
+                    {cardList && <CardList cardList={cardList.content} refresh={refresh} />}
                 </ErrorAndLoading>
             </MainScreenLayout>
         </ScrollView>

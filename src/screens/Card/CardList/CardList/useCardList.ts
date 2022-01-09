@@ -1,5 +1,5 @@
 import { objectToQuery } from "@utils/fetchUtils";
-import { ICardSummary, ICardSummaryResponse } from "@typings/interfaces";
+import { ICardResponse, ICard } from "@typings/interfaces";
 import { ICardFilter } from "@screens/Card/CardList/CardFilter/ICardFilter";
 import { responseToState } from "@mappers/getCardListMapper";
 import { getCardsRoute } from "@routes";
@@ -15,10 +15,9 @@ export const useCardList = (cardFilter: ICardFilter | undefined) => {
         isValidating,
         refresh,
         isRefreshLoading,
-    } = useGetApi<IPaginatedResponse<ICardSummaryResponse[]>, IPaginatedResponse<ICardSummary[]>>(
-        getCardsRoute(query),
-        { mapper: responseToState }
-    );
+    } = useGetApi<IPaginatedResponse<ICardResponse[]>, IPaginatedResponse<ICard[]>>(getCardsRoute(query), {
+        mapper: responseToState,
+    });
 
     return {
         cardList,

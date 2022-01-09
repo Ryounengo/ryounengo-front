@@ -2,10 +2,10 @@ import { Box, Heading, Stack, Text, View } from "native-base";
 import { ECardFrontField } from "@typings/enums";
 import CardIcon from "@static/images/card-nav.svg";
 import { useStyle } from "./style";
-import { ICardSummary } from "@typings/interfaces";
+import { ICard } from "@typings/interfaces";
 
 interface IParams {
-    card: ICardSummary;
+    card: ICard;
     fullView?: boolean;
 }
 

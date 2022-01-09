@@ -10,7 +10,8 @@ export const getReverseCard = (card: ICard): IReversedCard => ({
     id: card.id,
     type: card.type,
     example: card.example,
-    isReversed: true,
+    isReversedCard: card.isReversedCard,
+    isReverse: true,
 });
 
 export const getColoredExample = (example: string, front: string[]) => {

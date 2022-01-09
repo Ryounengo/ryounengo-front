@@ -11,6 +11,7 @@ export const responseToState = (response: IPaginatedResponse<ICardResponse[]>): 
         type: card.type,
         toReview: card.toReview,
         reverseToReview: card.reverseToReview,
+        isReversedCard: card.isReverse,
     })),
     totalElements: response.totalElements,
 });

@@ -1,4 +1,4 @@
-import { ICardSummary } from "./ICard";
+import { ICard } from "./ICard";
 import { IPaginatedResponse, IPagination } from "@typings/interfaces/IPagination";
 import { ECardType } from "@typings/enums";
 
@@ -27,7 +27,7 @@ export interface IDeck {
     id: string;
     description: string;
     tags: string[];
-    cards: IPaginatedResponse<ICardSummary[]>;
+    cards: IPaginatedResponse<ICard[]>;
     isPrivate: boolean;
     isReviewed: boolean;
     name: string;

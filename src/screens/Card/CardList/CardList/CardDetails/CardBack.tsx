@@ -1,10 +1,10 @@
 import { Box, Heading, Stack, Text, View } from "native-base";
 import CardIcon from "@static/images/card-nav.svg";
 import { useStyle } from "./style";
-import { ICardSummary } from "@typings/interfaces";
+import { ICard } from "@typings/interfaces";
 
 interface IParams {
-    card: ICardSummary;
+    card: ICard;
 }
 
 export const CardBack = (props: IParams) => {
@@ -28,6 +28,7 @@ export const CardBack = (props: IParams) => {
                 </Stack>
                 <View style={[style.item]} />
             </Box>
+            <View style={style.cardBackground} />
             <CardIcon
                 height={style.cardIcon.height}
                 style={[style.cardIcon, style.rotate]}

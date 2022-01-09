@@ -37,12 +37,11 @@ export const useStyle = ({ toReview }: IParams) => {
         },
         card: {
             overflow: "hidden",
-            display: "flex",
             justifyContent: "space-between",
             alignContent: "center",
             height: "100%",
-            backgroundColor: cardColor,
             padding: space[4],
+            zIndex: 1,
             borderRadius: radii.lg,
             flexWrap: "wrap",
         },
@@ -57,6 +56,13 @@ export const useStyle = ({ toReview }: IParams) => {
         },
         cardText: {
             flexWrap: "wrap",
+        },
+        cardBackground: {
+            borderRadius: radii.lg,
+            backgroundColor: cardColor,
+            position: "absolute",
+            width: "100%",
+            height: "100%",
         },
         cardIcon: {
             position: "absolute",
@@ -78,6 +84,21 @@ export const useStyle = ({ toReview }: IParams) => {
         },
         rotate: {
             transform: [{ rotate: "200deg" }],
+        },
+        optionItems: {
+            flexDirection: "column",
+            justifyContent: "center",
+            alignSelf: "center",
+            height: "100%",
+        },
+        move: {
+            color: colors.blue[500],
+        },
+        delete: {
+            color: colors.error[500],
+        },
+        edit: {
+            color: cardColorContrast,
         },
     });
 };

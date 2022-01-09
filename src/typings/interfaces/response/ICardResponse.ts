@@ -1,16 +1,5 @@
 import { ECardType } from "@typings/enums/ECard";
 
-export interface ICardSummaryResponse {
-    deck: string;
-    front: string[];
-    back: string[];
-    example: string;
-    id: string;
-    type: ECardType;
-    toReview: boolean;
-    reverseToReview: boolean;
-}
-
 export interface ICardResponse {
     deck: string;
     front: string[];
@@ -21,6 +10,7 @@ export interface ICardResponse {
     referenceCard: string;
     toReview: boolean;
     reverseToReview: boolean;
+    isReverse: boolean;
 }
 
 export interface ICardEditResponse {

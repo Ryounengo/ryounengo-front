@@ -15,7 +15,11 @@ type TParams = StackScreenProps<TRootNavigation, "editCard">;
 export const CardEdit = (props: TParams) => {
     const { route } = props;
     const { t } = useTranslation("card");
-    const { isLoading, submitRecto, step, submitType, submit, formMethods, setStep } = useEditCard(route.params.deck);
+    const { isLoading, submitRecto, step, submitType, submit, formMethods, setStep } = useEditCard({
+        deck: route.params.deck,
+        deckId: route.params.deckId,
+        card: route.params.card,
+    });
     const stepTitles = [t("type"), t("front"), t("back")];
 
     return (
@@ -24,7 +28,7 @@ export const CardEdit = (props: TParams) => {
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <FormProvider {...formMethods}>
                 <StepperView currentViewIndex={step} stepTitles={stepTitles}>
-                    <CardTypeForm submitType={submitType} />
+                    <CardTypeForm isEdit={Boolean(route.params.card)} submitType={submitType} />
                     <CardEditRectoForm submitRecto={submitRecto} />
                     <CardEditVersoForm isLoading={isLoading} submit={submit} />
                 </StepperView>

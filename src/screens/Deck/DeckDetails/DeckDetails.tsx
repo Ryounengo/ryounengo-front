@@ -19,7 +19,7 @@ export const DeckDetails = (props: Params) => {
     const { params } = route;
     const { t } = useTranslation(["common", "deck", "card"]);
     const { setOptions, push } = navigation;
-    const { deckDetails, deleteDeck, updateDeck, error, isValidating, joinDeck, leaveDeck } = useDeckDetails(
+    const { deckDetails, deleteDeck, updateDeck, error, isValidating, joinDeck, leaveDeck, refresh } = useDeckDetails(
         params.deckId
     );
     const { isOpen, onOpen, onClose } = useDisclose();
@@ -87,7 +87,7 @@ export const DeckDetails = (props: Params) => {
                             {t("totalResult", { count: deckDetails?.cards.totalElements })}
                         </Heading>
                     )}
-                    <CardList cardList={deckDetails?.cards.content} />
+                    <CardList cardList={deckDetails?.cards.content} refresh={refresh} />
                 </ErrorAndLoading>
                 <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
                     <Actionsheet.Content>
