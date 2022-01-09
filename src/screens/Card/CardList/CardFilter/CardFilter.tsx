@@ -1,9 +1,8 @@
-import { IconButton, SearchIcon, Stack } from "native-base";
+import { Stack } from "native-base";
 import { useFilter } from "./useFilter";
-import { useTranslation } from "react-i18next";
 import { ICardFilter } from "./ICardFilter";
 import { useStyle } from "@screens/Card/CardList/CardFilter/styles";
-import { TextInput } from "@common/form";
+import { SearchBar } from "@common/form";
 
 interface IParams {
     setFilter(filter: ICardFilter): void;
@@ -12,23 +11,13 @@ interface IParams {
 
 export const CardFilter = (props: IParams) => {
     const { setFilter } = props;
-    const { t } = useTranslation(["common", "validation"]);
     const style = useStyle();
     const { formMethods, submit } = useFilter(setFilter);
-    const { control, handleSubmit, formState, setValue, clearErrors } = formMethods;
-    const { errors } = formState;
+    const { control, handleSubmit } = formMethods;
 
     return (
         <Stack style={style.filters}>
-            <TextInput
-                clearError={clearErrors}
-                control={control}
-                error={errors.search}
-                name="search"
-                placeholder={t("card:searchCard")}
-                prependedComponent={<IconButton icon={<SearchIcon />} onPress={handleSubmit(submit)} />}
-                setValue={setValue}
-            />
+            <SearchBar control={control} name="search" submit={handleSubmit(submit)} />
         </Stack>
     );
 };

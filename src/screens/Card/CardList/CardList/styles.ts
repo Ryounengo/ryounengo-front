@@ -16,10 +16,21 @@ export const useStyle = () => {
             height: 200,
             padding: space[2],
         },
+        cardDetail: {
+            width: "80%",
+            height: "70%",
+        },
         cardList: {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
+        },
+        cardFront: {
+            position: "absolute",
+            height: "100%",
+        },
+        cardBack: {
+            backfaceVisibility: "hidden",
         },
     });
 };

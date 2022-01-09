@@ -1,8 +1,8 @@
-import { Pressable, View } from "native-base";
+import { View } from "native-base";
 import { ICardSummary } from "@typings/interfaces";
 import { useStyle } from "@screens/Card/CardList/CardList/styles";
-import { CardSummary } from "@common/Card/CardSummary/CardSummary";
 import { NoResult } from "@common/NoResult/NoResult";
+import { CardDetails } from "@screens/Card/CardList/CardList/CardDetails";
 
 interface IParams {
     cardList?: ICardSummary[];
@@ -16,9 +16,7 @@ export const CardList = (props: IParams) => {
         <View style={style.container}>
             <View style={style.cardList}>
                 {cardList?.map((card) => (
-                    <Pressable key={card.id} style={style.card}>
-                        <CardSummary card={card} />
-                    </Pressable>
+                    <CardDetails card={card} key={card.id} />
                 ))}
             </View>
             {cardList?.length === 0 && <NoResult />}

@@ -3,11 +3,10 @@ import { useColorModeValue, useTheme } from "native-base";
 import { useContrastTextColor } from "@hooks/useContrastTextColor";
 
 interface IParams {
-    fullView: boolean;
     toReview: boolean;
 }
 
-export const useStyle = ({ fullView, toReview }: IParams) => {
+export const useStyle = ({ toReview }: IParams) => {
     const theme = useTheme();
     const { space, fonts, colors, radii, fontSizes } = theme;
     const cardColor = useColorModeValue(colors.dark["700"], colors.dark["200"]);
@@ -15,20 +14,25 @@ export const useStyle = ({ fullView, toReview }: IParams) => {
 
     return StyleSheet.create({
         text: {
+            lineHeight: 40,
             flexBasis: "100%",
             color: cardColorContrast,
             fontFamily: fonts.body,
             textAlign: "center",
-            fontSize: fullView ? fontSizes["2xl"] : fontSizes.sm,
+            fontSize: fontSizes["3xl"],
         },
         example: {
             textAlign: "center",
+            fontSize: fontSizes.xl,
         },
         reviewLevelItem: {
             justifyContent: "flex-start",
         },
         reviewLevel: {
+            lineHeight: 30,
+            top: 0,
             position: "absolute",
+            fontSize: fontSizes["3xl"],
             color: toReview ? colors.red[500] : colors.green[500],
         },
         card: {
@@ -61,7 +65,19 @@ export const useStyle = ({ fullView, toReview }: IParams) => {
             bottom: 0,
             width: "100%",
             height: "100%",
-            transform: [{ skewY: "10deg" }],
+            transform: [{ rotate: "20deg" }],
+        },
+        hiragana: {
+            fontSize: fontSizes["4xl"],
+        },
+        kanji: {
+            fontSize: fontSizes["2xl"],
+        },
+        roumaji: {
+            fontSize: fontSizes.xl,
+        },
+        rotate: {
+            transform: [{ rotate: "200deg" }],
         },
     });
 };

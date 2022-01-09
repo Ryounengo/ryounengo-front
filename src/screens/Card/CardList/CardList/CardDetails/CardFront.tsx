@@ -3,16 +3,16 @@ import { ECardFrontField } from "@typings/enums";
 import CardIcon from "@static/images/card-nav.svg";
 import { useStyle } from "./style";
 import { ICardSummary } from "@typings/interfaces";
+import { getColoredExample } from "@utils/cardUtils";
 
 interface IParams {
     card: ICardSummary;
-    fullView?: boolean;
 }
 
-export const CardSummary = (props: IParams) => {
-    const { card, fullView } = props;
-    const { front, back, example, toReview } = card;
-    const style = useStyle({ fullView: Boolean(fullView), toReview });
+export const CardFront = (props: IParams) => {
+    const { card } = props;
+    const { front, example, toReview } = card;
+    const style = useStyle({ toReview });
 
     return (
         <View style={style.container}>
@@ -21,17 +21,19 @@ export const CardSummary = (props: IParams) => {
                     <Text style={style.reviewLevel}>R</Text>
                 </View>
                 <Stack space={4} style={[style.item, style.cardText]}>
-                    <Text numberOfLines={1} style={style.text}>
+                    <Text numberOfLines={1} style={[style.text, style.kanji]}>
                         {front[ECardFrontField.KANJI]}
                     </Text>
-                    <Heading numberOfLines={1} style={style.text}>
+                    <Heading numberOfLines={1} style={[style.text, style.hiragana]}>
                         {front[ECardFrontField.HIRAGANA]}
                     </Heading>
-                    <Text numberOfLines={1} style={style.text}>
-                        {back[0]}
-                    </Text>
+                    <Heading numberOfLines={1} style={[style.text, style.roumaji]}>
+                        {front[ECardFrontField.ROUMAJI]}
+                    </Heading>
                 </Stack>
-                <View style={[style.item]}>{fullView && <Text style={style.example}>{example}</Text>}</View>
+                <View style={[style.item]}>
+                    <Text style={style.example}>{getColoredExample(example, front)}</Text>
+                </View>
             </Box>
             <CardIcon height={style.cardIcon.height} style={style.cardIcon} width={style.cardIcon.width} />
         </View>
