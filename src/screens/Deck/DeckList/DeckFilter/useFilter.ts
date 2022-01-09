@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { IFilterForm } from "./IDeckFilter";
 import { defaultPagination } from "@utils/pagination";
-import { YES_OPTION } from "../../../../constants";
+import { NO_OPTION, YES_OPTION } from "../../../../constants";
 import { IDeckFilter } from "@typings/interfaces";
 
 export const useFilter = (setFilter: (filter: IDeckFilter) => void, filter?: IDeckFilter) => {
     const defaultValues: IFilterForm = {
-        isReviewed: YES_OPTION,
+        isReviewed: filter?.isReviewed ?? true ? YES_OPTION : NO_OPTION,
         name: filter?.name ?? "",
         tags: filter?.tags?.join(",") ?? "",
     };

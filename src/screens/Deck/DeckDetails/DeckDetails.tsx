@@ -58,7 +58,7 @@ export const DeckDetails = (props: Params) => {
 
     return (
         <ErrorAndLoading error={error} isLoading={isValidating && !deckDetails}>
-            <View>
+            <ScrollView>
                 <Box
                     bg={{
                         linearGradient: {
@@ -81,16 +81,14 @@ export const DeckDetails = (props: Params) => {
                         <Text style={style.reviewCount}>{t("deck:reviewedXTimes", { count: 0 })}</Text>
                     </View>
                 </View>
-                <ScrollView>
-                    <ErrorAndLoading error={error} isLoading={!deckDetails}>
-                        {deckDetails?.cards && deckDetails?.cards.totalElements > 0 && (
-                            <Heading marginLeft={4} marginTop={4}>
-                                {t("totalResult", { count: deckDetails?.cards.totalElements })}
-                            </Heading>
-                        )}
-                        <CardList cardList={deckDetails?.cards.content} />
-                    </ErrorAndLoading>
-                </ScrollView>
+                <ErrorAndLoading error={error} isLoading={!deckDetails}>
+                    {deckDetails?.cards && deckDetails?.cards.totalElements > 0 && (
+                        <Heading marginLeft={4} marginTop={4}>
+                            {t("totalResult", { count: deckDetails?.cards.totalElements })}
+                        </Heading>
+                    )}
+                    <CardList cardList={deckDetails?.cards.content} />
+                </ErrorAndLoading>
                 <Actionsheet hideDragIndicator isOpen={isOpen} onClose={onClose}>
                     <Actionsheet.Content>
                         {deckDetails?.isOwn && (
@@ -116,7 +114,7 @@ export const DeckDetails = (props: Params) => {
                         )}
                     </Actionsheet.Content>
                 </Actionsheet>
-            </View>
+            </ScrollView>
             {deckDetails?.isOwn && <Fab label={t("card:createCard")} padding={2} onPress={goToCreateCard} />}
         </ErrorAndLoading>
     );
