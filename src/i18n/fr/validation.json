@@ -6,5 +6,9 @@
   "maxLength_plural": "Ce champ ne peut pas comporter plus de {{count}} caractères.",
   "emailError": "Ce champ doit être un email valide.",
   "samePasswordError": "Les 2 mots de passe doivent être similaires.",
-  "exactNumberLengthError": "Ce champ doit faire exactement {{count}} nombres de long."
+  "exactNumberLengthError": "Ce champ doit faire exactement {{count}} nombres de long.",
+  "isRomajiError": "Ce champ doit être un roumaji",
+  "isKanjiError": "Ce champ doit être un Kanji",
+  "isKanaError": "Ce champ doit être un Kana (Hiragana ou katakana)",
+  "textError": "Ce champ doit être un texte"
 }

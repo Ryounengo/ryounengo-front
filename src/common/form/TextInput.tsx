@@ -25,17 +25,16 @@ interface IParams<T> extends ComponentProps<typeof Input> {
 }
 
 export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
-    const { name, error, placeholder, control, label, rules, isRequired, prependedComponent, ...inputProps } = props;
+    const { name, error, placeholder, control, label, rules, isRequired, prependedComponent, onBlur, ...inputProps } =
+        props;
     const { t } = useTranslation("validation");
     const { fontSizes } = useTheme();
 
     return (
-        <FormControl isInvalid={Boolean(error)} isRequired={isRequired} {...inputProps} mt={2}>
+        <FormControl isInvalid={Boolean(error)} isRequired={isRequired} mt={2}>
             {label && <FormControl.Label>{label}</FormControl.Label>}
             <Controller
                 control={control}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 name={name}
                 render={(renderProps) => (
                     <Input
@@ -45,7 +44,12 @@ export const TextInput = <T extends FieldValues>(props: IParams<T>) => {
                         paddingBottom={1}
                         placeholder={placeholder}
                         value={renderProps.field.value}
-                        onBlur={renderProps.field.onBlur}
+                        onBlur={(event) => {
+                            if (onBlur) {
+                                onBlur(event);
+                            }
+                            renderProps.field.onBlur();
+                        }}
                         onChangeText={(val) => renderProps.field.onChange(val)}
                         {...inputProps}
                     />

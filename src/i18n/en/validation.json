@@ -6,5 +6,9 @@
   "maxLength_plural": "This field cannot be longer than {{count}} characters.",
   "emailError": "This field should be a valid email.",
   "samePasswordError": "The 2 passwords should be the same.",
-  "exactNumberLengthError": "The field should be {{count}} number long."
+  "exactNumberLengthError": "The field should be {{count}} number long.",
+  "isRomajiError": "The field should be a roumaji",
+  "isKanjiError": "The field should be a Kanji",
+  "isKanaError": "The field should be a Kana (Hiragana or katakana)",
+  "textError": "The field should be a text"
 }
