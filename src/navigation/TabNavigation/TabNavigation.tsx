@@ -1,6 +1,6 @@
 import { BottomTabNavigationProp, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { CardNavigation } from "../CardNavigation";
-import { TBottomTabNavigation, TRootNavigation } from "../INavigation";
+import { TBottomTabNavigation, TLoggedNavigation } from "../INavigation";
 import { DeckNavigation } from "@navigation/DeckNavigation";
 import { useTheme } from "native-base";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
@@ -17,7 +17,7 @@ import { HomeNavigation } from "@navigation/HomeNavigation";
 const Tab = createBottomTabNavigator<TBottomTabNavigation>();
 
 type NavigationProps = CompositeNavigationProp<
-    BottomTabNavigationProp<TRootNavigation, "main">,
+    BottomTabNavigationProp<TLoggedNavigation, "main">,
     BottomTabNavigationProp<TBottomTabNavigation>
 >;
 

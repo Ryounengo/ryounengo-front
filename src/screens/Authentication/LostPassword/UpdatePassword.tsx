@@ -5,6 +5,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { TRootNavigation } from "@navigation/INavigation";
 import { otpCodeRegex } from "@utils/regex";
 import { TextInput } from "@common/form";
+
 type TParams = StackScreenProps<TRootNavigation, "updatePassword">;
 
 export const UpdatePassword = (props: TParams) => {

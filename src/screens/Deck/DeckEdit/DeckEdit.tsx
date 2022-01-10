@@ -6,10 +6,10 @@ import { useStyle } from "@screens/Deck/DeckEdit/style";
 import { SwitchInput } from "@common/form/SwitchInput";
 import { useDeckEdit } from "@screens/Deck/DeckEdit/useDeckEdit";
 import { StackScreenProps } from "@react-navigation/stack";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { TextTypeCard } from "@common/Card/CardTypeCard/TextCard";
 
-type TParams = StackScreenProps<TRootNavigation, "editDeck">;
+type TParams = StackScreenProps<TLoggedNavigation, "editDeck">;
 
 export const DeckEdit = (props: TParams) => {
     const { route, navigation } = props;

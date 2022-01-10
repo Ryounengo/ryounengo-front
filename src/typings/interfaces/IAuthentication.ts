@@ -5,11 +5,7 @@ export interface IToken {
     refreshTokenExpiresAt: Date;
 }
 
-interface IProfile {
-    username: string;
-}
-
 export interface IUser {
     email: string;
-    profile: IProfile;
+    username: string;
 }

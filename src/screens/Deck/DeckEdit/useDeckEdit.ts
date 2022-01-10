@@ -4,12 +4,12 @@ import { stateToRequest } from "@mappers/postDeckMapper";
 import { IDeckEditForm, IDeckSummary, IDeckSummaryResponse } from "@typings/interfaces";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { usePostApi, usePutApi } from "@hooks/api";
 import { useCustomToast } from "@hooks/useCustomToast";
 import { ECardType } from "@typings/enums";
 
-type NavigationProps = NativeStackNavigationProp<TRootNavigation, "editDeck">;
+type NavigationProps = NativeStackNavigationProp<TLoggedNavigation, "editDeck">;
 
 export const useDeckEdit = (deck?: IDeckSummary) => {
     const { navigate, goBack } = useNavigation<NavigationProps>();

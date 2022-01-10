@@ -6,7 +6,7 @@ import { usePostApi } from "@hooks/api";
 import { useNavigation } from "@react-navigation/native";
 import { useCustomToast } from "@hooks/useCustomToast";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { ICard, IDeckSummary } from "@typings/interfaces";
 import { ICardEditForm } from "@screens/Card/EditCard/ICardEdit";
 import { EEditCardStep } from "@screens/Card/EditCard/ICreateCard";
@@ -18,7 +18,7 @@ interface IParams {
     deckId?: string;
 }
 
-type NavigationProps = NativeStackNavigationProp<TRootNavigation, "editCard">;
+type NavigationProps = NativeStackNavigationProp<TLoggedNavigation, "editCard">;
 
 export const useEditCard = (props: IParams) => {
     const { card, deckId, deck } = props;

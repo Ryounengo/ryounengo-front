@@ -4,7 +4,7 @@ import { ICard } from "@typings/interfaces";
 import { useMemo, useState } from "react";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TBottomTabNavigation, TRootNavigation } from "@navigation/INavigation";
+import { TBottomTabNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { usePostApi } from "@hooks/api";
 import { useCustomToast } from "@hooks/useCustomToast";
 import { getReverseCard } from "@utils/cardUtils";
@@ -14,7 +14,7 @@ interface IParams {
 }
 
 type NavigationProps = CompositeNavigationProp<
-    NativeStackNavigationProp<TRootNavigation, "reviewCards">,
+    NativeStackNavigationProp<TLoggedNavigation, "reviewCards">,
     NativeStackNavigationProp<TBottomTabNavigation>
 >;
 

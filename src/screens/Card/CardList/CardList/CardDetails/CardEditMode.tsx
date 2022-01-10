@@ -5,7 +5,7 @@ import { ICard, IError } from "@typings/interfaces";
 import RemoveIcon from "@static/images/remove.svg";
 import EditIcon from "@static/images/edit.svg";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
-import { TCardNavigation, TRootNavigation } from "@navigation/INavigation";
+import { TCardNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { useDeleteApi } from "@hooks/api";
 import { useCustomToast } from "@hooks/useCustomToast";
@@ -20,7 +20,7 @@ interface IParams {
 
 type NavigationProps = CompositeNavigationProp<
     NativeStackNavigationProp<TCardNavigation, "cards">,
-    NativeStackNavigationProp<TRootNavigation>
+    NativeStackNavigationProp<TLoggedNavigation>
 >;
 export const CardEditMode = (props: IParams) => {
     const { card, setCardDetails, refresh } = props;

@@ -3,7 +3,7 @@ import { CompositeNavigationProp, RouteProp, useNavigation, useRoute } from "@re
 import { RefreshControl } from "react-native";
 import { DeckFilter } from "./DeckList/DeckFilter/DeckFilter";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
+import { TDeckNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { MainScreenLayout } from "@common/Layout";
 import { ErrorAndLoading } from "@common/ErrorAndLoading/ErrorAndLoading";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,7 @@ import { DeckList } from "./DeckList/DeckList";
 
 type NavigationProps = CompositeNavigationProp<
     NativeStackNavigationProp<TDeckNavigation, "decks">,
-    NativeStackNavigationProp<TRootNavigation>
+    NativeStackNavigationProp<TLoggedNavigation>
 >;
 
 type StackProps = RouteProp<TDeckNavigation, "decks">;

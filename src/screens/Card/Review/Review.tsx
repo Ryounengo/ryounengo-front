@@ -6,10 +6,10 @@ import { ECardReviewName } from "@screens/Card/Review/IReviewPayload";
 import { ErrorAndLoading } from "@common/ErrorAndLoading";
 import { useCardReviewList } from "@hooks/Review/useCardReviewList";
 import { StackScreenProps } from "@react-navigation/stack";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { useStyle } from "@screens/Card/Review/styles";
 
-type TParams = StackScreenProps<TRootNavigation, "reviewCards">;
+type TParams = StackScreenProps<TLoggedNavigation, "reviewCards">;
 
 export const Review = (props: TParams) => {
     const { route } = props;

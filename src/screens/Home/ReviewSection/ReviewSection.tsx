@@ -3,7 +3,7 @@ import { Heading, Pressable, ScrollView, Text, View } from "native-base";
 import { useStyle } from "@screens/Home/ReviewSection/styles";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { THomeNavigation, TRootNavigation } from "@navigation/INavigation";
+import { THomeNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { useTranslation } from "react-i18next";
 import { Fragment } from "react";
 import { DeckSummary } from "@common/Deck/Summary/DeckSummary";
@@ -15,7 +15,7 @@ interface IParams {
 
 type NavigationProps = CompositeNavigationProp<
     NativeStackNavigationProp<THomeNavigation, "home">,
-    NativeStackNavigationProp<TRootNavigation>
+    NativeStackNavigationProp<TLoggedNavigation>
 >;
 
 export const ReviewSection = (props: IParams) => {

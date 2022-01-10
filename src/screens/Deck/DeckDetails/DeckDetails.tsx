@@ -1,5 +1,5 @@
 import { useDeckDetails } from "./useDeckDetails";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { StackScreenProps } from "@react-navigation/stack";
 import { ScrollView, View, Text, Heading, useDisclose, Actionsheet, ChevronLeftIcon, Box, Fab } from "native-base";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,7 @@ import { RightActionButton } from "@common/Navigation/RightActionButton";
 import { lightenColor } from "@utils/color";
 import { deckToSummary } from "@utils/deckUtils";
 
-type Params = StackScreenProps<TRootNavigation, "deckDetails">;
+type Params = StackScreenProps<TLoggedNavigation, "deckDetails">;
 
 export const DeckDetails = (props: Params) => {
     const { route, navigation } = props;

@@ -4,11 +4,11 @@ import { IDeck, IDeckResponse } from "@typings/interfaces";
 import { useDeleteApi, useGetApi, usePostApi, usePutApi } from "@hooks/api";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
-import { TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
+import { TDeckNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { IDeckPayload } from "@typings/interfaces/request/IDeck";
 
 type NavigationProps = CompositeNavigationProp<
-    BottomTabNavigationProp<TRootNavigation, "deckDetails">,
+    BottomTabNavigationProp<TLoggedNavigation, "deckDetails">,
     BottomTabNavigationProp<TDeckNavigation>
 >;
 

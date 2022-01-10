@@ -3,14 +3,14 @@ import { CardEditRectoForm } from "@screens/Card/EditCard/CardEditRectoForm";
 import { useEditCard } from "@screens/Card/EditCard/useEditCard";
 import { CardEditVersoForm } from "@screens/Card/EditCard/CardEditVersoForm";
 import { StackScreenProps } from "@react-navigation/stack";
-import { TRootNavigation } from "@navigation/INavigation";
+import { TLoggedNavigation } from "@navigation/INavigation";
 import { StepperView } from "@common/Stepper/StepperView/StepperView";
 import { FormProvider } from "react-hook-form";
 import { StepperBar } from "@common/Stepper/StepperBar/StepperBar";
 import { Box } from "native-base";
 import { useTranslation } from "react-i18next";
 
-type TParams = StackScreenProps<TRootNavigation, "editCard">;
+type TParams = StackScreenProps<TLoggedNavigation, "editCard">;
 
 export const CardEdit = (props: TParams) => {
     const { route } = props;

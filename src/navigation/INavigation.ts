@@ -25,7 +25,11 @@ export type TBottomTabNavigation = {
     card: NavigatorScreenParams<TCardNavigation>;
 };
 
-export type TRootNavigation = {
+export type TDrawerNavigation = {
+    logged: NavigatorScreenParams<TLoggedNavigation>;
+};
+
+export type TLoggedNavigation = {
     editDeck: {
         deck?: IDeckSummary;
     };
@@ -41,6 +45,10 @@ export type TRootNavigation = {
     reviewCards: {
         deckId?: string;
     };
+};
+
+export type TRootNavigation = {
+    drawerStack: NavigatorScreenParams<TDrawerNavigation>;
     login: undefined;
     register: undefined;
     lostPassword: undefined;

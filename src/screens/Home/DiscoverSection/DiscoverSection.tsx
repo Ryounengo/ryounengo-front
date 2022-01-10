@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { defaultPagination } from "@utils/pagination";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
-import { TBottomTabNavigation, TDeckNavigation, TRootNavigation } from "@navigation/INavigation";
+import { TBottomTabNavigation, TDeckNavigation, TLoggedNavigation } from "@navigation/INavigation";
 
 interface IParams {
     deckList: IDeckSummary[];
@@ -18,7 +18,7 @@ interface IParams {
 
 type NavigationProps = CompositeNavigationProp<
     NativeStackNavigationProp<TBottomTabNavigation, "homeStack">,
-    CompositeNavigationProp<NativeStackNavigationProp<TRootNavigation>, NativeStackNavigationProp<TDeckNavigation>>
+    CompositeNavigationProp<NativeStackNavigationProp<TLoggedNavigation>, NativeStackNavigationProp<TDeckNavigation>>
 >;
 
 export const DiscoverSection = (props: IParams) => {
