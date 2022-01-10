@@ -1,9 +1,9 @@
 import { Box, Stack, Text } from "native-base";
-import CardIcon from "@static/images/card-nav.svg";
+import CardIcon from "@static/icons/card-nav.svg";
 import { useStyle } from "./style";
 import { ICard, IError } from "@typings/interfaces";
-import RemoveIcon from "@static/images/remove.svg";
-import EditIcon from "@static/images/edit.svg";
+import RemoveIcon from "@static/icons/remove.svg";
+import EditIcon from "@static/icons/edit.svg";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
 import { TCardNavigation, TLoggedNavigation } from "@navigation/INavigation";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";

@@ -1,6 +1,6 @@
 import { useStyle } from "./style";
 import { Box, Heading, VStack } from "native-base";
-import TumbleweedIcon from "@static/images/tumbleweed.svg";
+import TumbleweedIcon from "@static/icons/tumbleweed.svg";
 import { useTranslation } from "react-i18next";
 
 export const NoResult = () => {

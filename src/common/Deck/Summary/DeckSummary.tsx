@@ -1,9 +1,9 @@
 import { Heading, Text, useTheme, View } from "native-base";
 import { IDeckSummary } from "@typings/interfaces";
-import DeckCirclePattern from "@static/images/circle-card.svg";
-import DeckLinesPattern from "@static/images/lines-card.svg";
-import AddIcon from "@static/images/add.svg";
-import PrivateIcon from "@static/images/private.svg";
+import DeckCirclePattern from "@static/icons/circle-card.svg";
+import DeckLinesPattern from "@static/icons/lines-card.svg";
+import AddIcon from "@static/icons/add.svg";
+import PrivateIcon from "@static/icons/private.svg";
 import { useStyle } from "./styles";
 import { useTranslation } from "react-i18next";
 import { OutlinedIcon } from "@common/OutlinedIcon/OutlinedIcon";

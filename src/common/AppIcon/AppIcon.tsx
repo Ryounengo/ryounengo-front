@@ -1,4 +1,4 @@
-import Logo from "@static/images/icon.svg";
+import Logo from "@static/icons/icon.svg";
 import { useStyle } from "./style";
 import { SvgProps } from "react-native-svg";
 

@@ -1,5 +1,5 @@
 import { CardTypeCard } from "@common/Card/CardTypeCard/CardTypeCard";
-import AddTextCardIcon from "@static/images/addTextCard.svg";
+import AddTextCardIcon from "@static/icons/addTextCard.svg";
 import { useTranslation } from "react-i18next";
 import { useStyle } from "./style";
 

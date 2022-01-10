@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { LoggedNavigation } from "@navigation/LoggedNavigation";
-import { DrawerContent } from "@navigation/DrawerNavigation/DrawerContent";
+import { DrawerContent } from "@navigation/DrawerNavigation/DrawerContent/DrawerContent";
 import { useStyle } from "../style";
 
 export const DrawerNavigation = () => {

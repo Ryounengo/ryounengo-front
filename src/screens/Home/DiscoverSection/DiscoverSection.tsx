@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Heading, Pressable, ScrollView, Text, View } from "native-base";
 import { DeckSummary } from "@common/Deck/Summary/DeckSummary";
 import { OutlinedIcon } from "@common/OutlinedIcon/OutlinedIcon";
-import AddIcon from "@static/images/add.svg";
+import AddIcon from "@static/icons/add.svg";
 import { NoResult } from "@common/NoResult/NoResult";
 import { useStyle } from "@screens/Home/DiscoverSection/styles";
 import { useTranslation } from "react-i18next";

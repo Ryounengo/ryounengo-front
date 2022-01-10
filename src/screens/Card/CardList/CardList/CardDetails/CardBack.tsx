@@ -1,5 +1,5 @@
 import { Box, Heading, Stack, Text, View } from "native-base";
-import CardIcon from "@static/images/card-nav.svg";
+import CardIcon from "@static/icons/card-nav.svg";
 import { useStyle } from "./style";
 import { ICard } from "@typings/interfaces";
 
